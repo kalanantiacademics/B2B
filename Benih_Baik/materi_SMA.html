@@ -1,0 +1,3194 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Fundamentals (SMA) - Creative Studio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-yellow: #FDB913;
+            --color-green: #00A651;
+            --color-blue: #0054A6;
+            --color-pink: #F49AC2;
+            --color-black: #231F20;
+            --color-cream: #FFF8E7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-black);
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Geometric Shapes & Backgrounds */
+        .bg-geo-1 {
+            background-image:
+                radial-gradient(circle at 10% 10%, var(--color-yellow) 10%, transparent 10.5%),
+                radial-gradient(circle at 90% 90%, var(--color-green) 15%, transparent 15.5%),
+                linear-gradient(45deg, var(--color-cream) 0%, var(--color-cream) 100%);
+        }
+
+        .bg-geo-2 {
+            background-color: var(--color-blue);
+            color: white;
+        }
+
+        .bg-geo-3 {
+            background-color: var(--color-pink);
+        }
+
+        .shape-circle {
+            border-radius: 50%;
+        }
+
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid var(--color-black);
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid var(--color-black);
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0px var(--color-black);
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--color-black);
+        }
+
+        .btn:active {
+            transform: translate(0px, 0px);
+            box-shadow: 0px 0px 0px var(--color-black);
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: var(--color-green);
+            width: 0%;
+            transition: width 0.3s;
+            z-index: 100;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        /* Specific Slide Styles */
+        .title-slide h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .content-box {
+            background: white;
+            border: 2px solid var(--color-black);
+            padding: 2rem;
+            box-shadow: 8px 8px 0px var(--color-black);
+            max-width: 800px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            width: 100%;
+            text-align: left;
+            margin: 1rem 0;
+            border: 2px solid var(--color-black);
+        }
+
+        .teacher-notes {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: #fff;
+            border-left: 2px solid black;
+            padding: 20px;
+            transition: right 0.3s;
+            z-index: 200;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .teacher-notes.open {
+            right: 0;
+        }
+
+        .notes-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 201;
+            background: var(--color-yellow);
+            border: 2px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* Grid Layout for some slides */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+        }
+
+        /* Custom Utilities for Inline Styles */
+        .logo-ruangguru {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            z-index: 1000;
+        }
+
+        .logo-benihbaik {
+            position: fixed;
+            top: 20px;
+            left: 100px;
+            width: 120px;
+            z-index: 1000;
+        }
+
+        .meeting-select {
+            background: white;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="https://cdn-web-2.ruangguru.com/landing-pages/assets/e7d93748-818d-462d-be57-7db1e479cd62.png"
+        alt="Ruangguru Coding" class="logo-ruangguru">
+    <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" alt="Benih Baik"
+        class="logo-benihbaik">
+
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-number" id="slideNumber">1 / 25</div>
+
+    <button class="notes-toggle" onclick="toggleNotes()">📝 Notes</button>
+    <div class="teacher-notes" id="teacherNotes">
+        <h3>Teacher Notes</h3>
+        <div id="noteContent"></div>
+    </div>
+
+    <!-- SLIDES START -->
+
+    <!-- MEETING 1: Hello World & The Variables -->
+
+    <!-- Slide 1: Cover -->
+    <div class="slide active bg-geo-1 title-slide" id="meet1"
+        data-note="Mulai pertemuan 1. Perkenalan dan konsep variabel.">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-red-500 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500 transform rotate-12 border-2 border-black"></div>
+
+        <h1 class="text-6xl font-bold text-center">Python<br>Fundamentals</h1>
+        <h2 class="text-2xl mt-4 bg-yellow-400 px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 1: Hello World & The Variables</h2>
+        <p class="mt-8 text-xl">Modul Ajar SMA - Hybrid Learning</p>
+    </div>
+
+    <!-- Slide 2: Intro / Ice Breaking -->
+    <div class="slide bg-white"
+        data-note="Script: 'Halo team! Python itu dipakai Netflix lho. Mitos vs Fakta: Hacker ngetik cepet di ruang gelap?'">
+        <div class="grid-2 items-center">
+            <div>
+                <h2 class="text-5xl font-bold mb-6 text-blue-700">Welcome, Team!</h2>
+                <p class="text-2xl mb-4">Selamat datang di dunia Python.</p>
+                <p class="text-lg">Bahasa yang dipakai oleh:</p>
+                <ul class="list-disc pl-6 text-lg mt-2 space-y-2">
+                    <li>Netflix (Rekomendasi Film)</li>
+                    <li>Instagram (Backend)</li>
+                    <li>Spotify (Data Analysis)</li>
+                </ul>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Mitos vs Fakta</h3>
+                <p class="text-xl font-serif italic">"Hacker selalu ngetik cepat di ruang gelap dengan huruf warna
+                    hijau?"</p>
+                <div class="mt-6 flex gap-4">
+                    <div class="bg-green-500 text-white px-6 py-3 border-2 border-black font-bold">MITOS</div>
+                    <div class="bg-red-500 text-white px-6 py-3 border-2 border-black font-bold">FAKTA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: What is Python? -->
+    <div class="slide bg-geo-3"
+        data-note="Jelaskan Python sebagai bahasa yang 'manusiawi'. Mudah dibaca tapi powerful.">
+        <h2 class="text-4xl font-bold mb-8 text-white bg-black inline-block px-4 py-2">Why Python?</h2>
+        <div class="grid grid-cols-3 gap-6 max-w-6xl">
+            <div class="bg-white p-6 border-2 border-black shadow-[6px_6px_0px_black]">
+                <div class="text-4xl mb-2">📖</div>
+                <h3 class="text-xl font-bold">Readable</h3>
+                <p>Syntax-nya mirip bahasa Inggris. Gampang dimengerti manusia.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black shadow-[6px_6px_0px_black]">
+                <div class="text-4xl mb-2">🚀</div>
+                <h3 class="text-xl font-bold">Powerful</h3>
+                <p>Dipakai buat AI, Web, Data Science, sampai Hacking.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black shadow-[6px_6px_0px_black]">
+                <div class="text-4xl mb-2">🌏</div>
+                <h3 class="text-xl font-bold">Popular</h3>
+                <p>Komunitasnya besar banget. Cari solusi error gampang.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Google Colab Intro -->
+    <div class="slide bg-white"
+        data-note="Pastikan semua siswa sudah login Google. Jelaskan beda Code Cell dan Text Cell.">
+        <h2 class="text-4xl font-bold mb-4">Tools of Trade: Google Colab</h2>
+        <div class="content-box">
+            <p class="mb-4">Kita gak perlu install apa-apa. Cukup browser + Internet.</p>
+            <ul class="list-none space-y-4">
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 bg-yellow-400 rounded-full border-2 border-black flex items-center justify-center font-bold">1</span>
+                    <span>Buka <strong>colab.research.google.com</strong></span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 bg-yellow-400 rounded-full border-2 border-black flex items-center justify-center font-bold">2</span>
+                    <span>Klik <strong>New Notebook</strong></span>
+                </li>
+                <li class="flex items-center gap-4">
+                    <span
+                        class="w-8 h-8 bg-yellow-400 rounded-full border-2 border-black flex items-center justify-center font-bold">3</span>
+                    <span>Kenalan sama <strong>Code Cell</strong> (buat coding) & <strong>Text Cell</strong> (buat
+                        catetan)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: First Code - Print -->
+    <div class="slide bg-blue-100" data-note="Ajak siswa mengetik langsung. Jangan cuma nonton.">
+        <h2 class="text-4xl font-bold mb-6">Mission 1: Hello World</h2>
+        <p class="text-xl mb-4">Perintah pertama kita ke komputer: <strong>Tampilkan Teks</strong>.</p>
+
+        <div class="code-block text-xl">
+            print("Hello World!")<br>
+            print("Saya siap belajar Python!")
+        </div>
+
+        <div class="bg-yellow-200 p-4 border-l-4 border-black mt-4 max-w-2xl">
+            <p class="font-bold">💡 Pro Tip:</p>
+            <p>Teks harus diapit tanda kutip <code>"..."</code> atau <code>'...'</code>. Kalau lupa, error!</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Variables Concept -->
+    <div class="slide bg-white"
+        data-note="Analogi Variabel = Kotak Penyimpanan. Label kotak = Nama Variabel. Isi kotak = Value.">
+        <h2 class="text-4xl font-bold mb-8">The Concept: Variables</h2>
+        <div class="grid-2">
+            <div class="flex flex-col justify-center">
+                <p class="text-2xl mb-4">Bayangkan <strong>Variabel</strong> itu seperti sebuah <strong>KOTAK</strong>.
+                </p>
+                <ul class="space-y-2 text-lg">
+                    <li>📦 Kotak punya <strong>Label</strong> (Nama Variabel)</li>
+                    <li>🎁 Kotak punya <strong>Isi</strong> (Data/Value)</li>
+                </ul>
+            </div>
+            <div class="relative h-64 border-2 border-black bg-gray-100 flex items-center justify-center">
+                <!-- Visual representation of variable -->
+                <div class="text-center">
+                    <div class="text-xl font-bold mb-2">nama_saya</div>
+                    <div
+                        class="w-32 h-32 bg-yellow-400 border-2 border-black flex items-center justify-center text-xl font-bold shadow-[4px_4px_0px_black]">
+                        "Budi"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Variables Syntax -->
+    <div class="slide bg-geo-1"
+        data-note="Jelaskan aturan penamaan variabel: gak boleh spasi, gak boleh angka di depan.">
+        <h2 class="text-4xl font-bold mb-6">Creating Variables</h2>
+        <div class="code-block text-xl">
+            nama = "Elon Musk"<br>
+            umur = 50<br>
+            is_rich = True<br>
+            <br>
+            print(nama)<br>
+            print(umur)
+        </div>
+        <div class="mt-6 bg-white p-6 border-2 border-black max-w-2xl">
+            <h3 class="font-bold text-xl mb-2">⚠️ Aturan Main:</h3>
+            <ul class="list-disc pl-6">
+                <li>Gak boleh pakai spasi (pakai <code>_</code> underscore).</li>
+                <li>Gak boleh mulai pakai angka (<code>1nama</code> ❌).</li>
+                <li>Case Sensitive (<code>Nama</code> beda sama <code>nama</code>).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 8: Data Types -->
+    <div class="slide bg-white"
+        data-note="Jelaskan String (teks), Integer (bilangan bulat), Float (desimal), Boolean (True/False).">
+        <h2 class="text-4xl font-bold mb-8">Tipe Data (Isi Kotak)</h2>
+        <div class="grid grid-cols-2 gap-6 w-full max-w-4xl">
+            <div class="p-6 border-2 border-black bg-yellow-100">
+                <h3 class="text-2xl font-bold">String (str)</h3>
+                <p class="mt-2">Teks, huruf, kalimat.</p>
+                <code class="block mt-2 bg-white p-2 border border-black">"Halo"</code>
+            </div>
+            <div class="p-6 border-2 border-black bg-green-100">
+                <h3 class="text-2xl font-bold">Integer (int)</h3>
+                <p class="mt-2">Bilangan bulat.</p>
+                <code class="block mt-2 bg-white p-2 border border-black">10, -5, 2023</code>
+            </div>
+            <div class="p-6 border-2 border-black bg-blue-100">
+                <h3 class="text-2xl font-bold">Float</h3>
+                <p class="mt-2">Bilangan desimal.</p>
+                <code class="block mt-2 bg-white p-2 border border-black">3.14, 2.5</code>
+            </div>
+            <div class="p-6 border-2 border-black bg-pink-100">
+                <h3 class="text-2xl font-bold">Boolean (bool)</h3>
+                <p class="mt-2">Kebenaran.</p>
+                <code class="block mt-2 bg-white p-2 border border-black">True, False</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Input User -->
+    <div class="slide bg-black text-white" data-note="Interaksi! Biar program gak kaku. Pakai input().">
+        <h2 class="text-4xl font-bold mb-6 text-yellow-400">Interaksi: Input User</h2>
+        <p class="text-xl mb-8">Biar program kita bisa ngobrol, kita butuh input dari user.</p>
+
+        <div class="code-block text-xl border-white text-white bg-gray-800">
+            nama = input("Siapa nama kamu? ")<br>
+            print("Halo", nama)
+        </div>
+
+        <div class="mt-8 border-2 border-yellow-400 p-4 inline-block">
+            <p>Cobain sekarang di Colab!</p>
+        </div>
+    </div>
+
+    <!-- Slide 10: String Formatting (f-string) -->
+    <div class="slide bg-white"
+        data-note="Cara modern menggabungkan variabel ke dalam teks. Lebih rapi daripada pakai koma atau plus.">
+        <h2 class="text-4xl font-bold mb-6">Magic Formatting (f-string)</h2>
+        <p class="mb-4 text-lg">Cara paling keren buat nyelipin variabel ke dalam teks.</p>
+
+        <div class="grid-2 gap-8">
+            <div>
+                <h3 class="font-bold mb-2">Cara Lama (Ribet)</h3>
+                <div class="code-block text-sm">
+                    nama = "Budi"<br>
+                    print("Halo " + nama + ", selamat pagi")
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold mb-2 text-green-600">Cara f-string (Keren)</h3>
+                <div class="code-block text-sm border-green-500">
+                    nama = "Budi"<br>
+                    print(f"Halo {nama}, selamat pagi")
+                </div>
+            </div>
+        </div>
+        <p class="mt-4">Tinggal kasih huruf <code>f</code> di depan, terus bungkus variabel pakai <code>{}</code>.</p>
+    </div>
+
+    <!-- Slide 11: Demo Time -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Guru mencontohkan membuat Generator ID Card sederhana.">
+        <div class="text-center">
+            <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+            <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+                <h3 class="text-3xl font-bold mb-4">Project: ID Card Generator</h3>
+                <p class="text-xl mb-6">Kita akan buat program yang minta data user, terus nampilin kartu nama digital.
+                </p>
+                <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                    Input: Nama, Role, Hobi<br>
+                    Output:<br>
+                    ================<br>
+                    NAMA: ANTIGRAVITY<br>
+                    ROLE: AI AGENT<br>
+                    HOBI: CODING<br>
+                    ================
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Student Practice - Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Bio-Link Generator.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Bio-Link Generator</h2>
+        <p class="text-xl mb-8">Bikin program buat generate tampilan bio Instagram/TikTok.</p>
+
+        <div class="grid-2">
+            <div class="bg-pink-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Minta input <strong>Nama</strong>.</li>
+                    <li>Minta input <strong>Username</strong> (tanpa @).</li>
+                    <li>Minta input <strong>Followers</strong>.</li>
+                    <li>Print hasilnya pakai f-string biar rapi.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Target Output:</h3>
+                <p>--- INSTAGRAM BIO ---</p>
+                <p>Nama: Budi Santoso</p>
+                <p>User: @budigaming</p>
+                <p>Followers: 10000 orang</p>
+                <p>---------------------</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Timer / Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 15-20 menit. Guru keliling cek layar siswa.">
+        <div class="text-center text-white">
+            <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+            <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block" id="timer">15:00
+            </div>
+            <p class="mt-8 text-xl">Jangan lupa tanya kalau error!</p>
+            <button onclick="startTimer()"
+                class="mt-4 px-6 py-2 bg-white text-black font-bold border-2 border-black hover:bg-gray-200">Start
+                Timer</button>
+        </div>
+    </div>
+
+    <!-- Slide 14: Common Errors -->
+    <div class="slide bg-white" data-note="Bahas error yang sering muncul. SyntaxError, NameError.">
+        <h2 class="text-4xl font-bold mb-6 text-red-600">😱 Error? Don't Panic!</h2>
+        <div class="space-y-6 max-w-4xl">
+            <div class="flex gap-4 items-start">
+                <div class="bg-red-100 p-4 border-2 border-red-500 w-full">
+                    <h3 class="font-bold text-lg">SyntaxError: EOL while scanning string literal</h3>
+                    <p class="text-sm mt-1">Artinya: Lupa tutup tanda kutip <code>"</code>.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-start">
+                <div class="bg-red-100 p-4 border-2 border-red-500 w-full">
+                    <h3 class="font-bold text-lg">NameError: name 'x' is not defined</h3>
+                    <p class="text-sm mt-1">Artinya: Manggil variabel yang belum dibuat, atau Typo nama variabel.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-start">
+                <div class="bg-red-100 p-4 border-2 border-red-500 w-full">
+                    <h3 class="font-bold text-lg">IndentationError</h3>
+                    <p class="text-sm mt-1">Artinya: Spasi di awal baris gak pas (nanti kita bahas di If-Else).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Showcase -->
+    <div class="slide bg-green-100" data-note="Minta 1-2 siswa share screen hasil codingannya.">
+        <div class="text-center">
+            <h2 class="text-5xl font-bold mb-8">🌟 Showcase</h2>
+            <p class="text-2xl mb-8">Siapa yang berani tunjukin kodenya?</p>
+            <div class="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="h-40 bg-white border-2 border-black flex items-center justify-center text-4xl">😎</div>
+                <div class="h-40 bg-white border-2 border-black flex items-center justify-center text-4xl">🚀</div>
+                <div class="h-40 bg-white border-2 border-black flex items-center justify-center text-4xl">💻</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Recap Meeting 1 -->
+    <div class="slide bg-white" data-note="Review singkat apa yang sudah dipelajari hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap Hari Ini</h2>
+        <div class="grid grid-cols-2 gap-4 max-w-4xl">
+            <ul class="list-disc pl-6 space-y-3 text-lg">
+                <li><strong>Print</strong>: Cara komputer ngomong.</li>
+                <li><strong>Variabel</strong>: Kotak buat simpan data.</li>
+                <li><strong>Tipe Data</strong>: String (teks), Int (angka).</li>
+            </ul>
+            <ul class="list-disc pl-6 space-y-3 text-lg">
+                <li><strong>Input</strong>: Cara kita ngomong ke komputer.</li>
+                <li><strong>f-string</strong>: Cara rapi gabungin teks & variabel.</li>
+                <li><strong>Debugging</strong>: Baca error itu skill penting!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 17: Ice Breaking Akhir -->
+    <div class="slide bg-yellow-400" data-note="Game Tebak Syntax. Guru tulis kode salah, siswa benerin di chat.">
+        <h2 class="text-4xl font-bold mb-8">🧊 Ice Breaking: Tebak Syntax</h2>
+        <div class="bg-black text-white p-8 border-4 border-white max-w-2xl mx-auto text-left font-mono text-xl">
+            <p class="text-red-400"># KODE INI SALAH, DIMANA ERRORNYA?</p>
+            <br>
+            <p>nama = "Budi</p>
+            <p>print(Halo nama)</p>
+        </div>
+        <p class="mt-8 text-xl font-bold">Tulis jawaban yang benar di Chat Box!</p>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 18: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Kasih teaser buat pertemuan selanjutnya biar penasaran.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: The Decision Logic</h2>
+        <p class="text-xl mb-8">Gimana caranya komputer bisa mikir?</p>
+        <div class="flex justify-center gap-8">
+            <div class="text-center">
+                <div class="text-6xl mb-2">🤔</div>
+                <p>If This...</p>
+            </div>
+            <div class="text-center">
+                <div class="text-6xl mb-2">👉</div>
+                <p>Then That...</p>
+            </div>
+        </div>
+        <p class="mt-12 text-gray-400">See you next meeting!</p>
+    </div>
+
+    <!-- MEETING 2: The Decision Logic (If-Else) -->
+
+    <!-- Slide 19: Cover Meeting 2 -->
+    <div class="slide bg-geo-2 title-slide" id="meet2"
+        data-note="Mulai pertemuan 2. Fokus ke Logika Pengambilan Keputusan.">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-yellow-400 rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-pink-500 transform -rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">The Decision Logic</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 2: If-Else & Logic</h2>
+        <p class="mt-8 text-xl text-white">Making Computers Smart</p>
+    </div>
+
+    <!-- Slide 20: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi Game Over. Logika 'JIKA... MAKA...'.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">How Computers Think?</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Pernah mikir gimana game tau kalau HP kalian 'Game Over'?</p>
+                <div class="bg-gray-100 p-4 border-l-4 border-blue-500 text-xl font-mono">
+                    JIKA nyawa == 0:<br>
+                    &nbsp;&nbsp;MAKA Tampilkan "GAME OVER"
+                </div>
+            </div>
+            <div class="bg-pink-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Stand Up Logic</h3>
+                <p class="text-xl">"JIKA kalian pakai kacamata, BERDIRI."</p>
+                <p class="text-xl mt-2">"JIKA tidak, DUDUK."</p>
+                <p class="mt-4 text-sm italic">(Lakukan variasi: Baju hitam, Rambut pendek, dll)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 21: The Concept - Flowchart -->
+    <div class="slide bg-geo-3" data-note="Visualisasikan alur keputusan.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">The Flow of Logic</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="bg-white p-4 border-2 border-black rounded-lg w-64 text-center font-bold">START</div>
+            <div class="text-4xl">⬇️</div>
+            <div
+                class="bg-yellow-400 p-4 border-2 border-black transform rotate-45 w-48 h-48 flex items-center justify-center">
+                <div class="transform -rotate-45 text-center font-bold">
+                    Hujan?
+                </div>
+            </div>
+            <div class="flex gap-32 w-full justify-center">
+                <div class="text-center">
+                    <div class="text-4xl">↙️ (Yes)</div>
+                    <div class="bg-white p-4 border-2 border-black mt-2">Bawa Payung</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl">↘️ (No)</div>
+                    <div class="bg-white p-4 border-2 border-black mt-2">Jalan Santai</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 22: Syntax IF -->
+    <div class="slide bg-white" data-note="Jelaskan syntax dasar IF. Pentingnya Indentasi (Spasi).">
+        <h2 class="text-4xl font-bold mb-6">The Syntax: IF</h2>
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                cuaca = "hujan"<br>
+                <br>
+                if cuaca == "hujan":<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Bawa Payung!")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Hati-hati licin")
+            </div>
+            <div class="bg-yellow-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">⚠️ The Golden Rule: Indentation</h3>
+                <p class="text-lg mb-4">Python itu sensitif sama spasi.</p>
+                <p class="text-lg">Baris yang "menjorok ke dalam" artinya <strong>bagian dari IF</strong>.</p>
+                <div class="mt-4 bg-red-100 p-2 border border-red-500 text-sm">
+                    if cuaca == "hujan":<br>
+                    print("Bawa Payung") # ERROR! Kurang spasi
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 23: Comparison Operators -->
+    <div class="slide bg-blue-100" data-note="Operator perbandingan: ==, !=, >, <, >=, <=">
+        <h2 class="text-4xl font-bold mb-8">Alat Banding (Comparison Operators)</h2>
+        <div class="grid grid-cols-2 gap-6 max-w-5xl">
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="text-3xl font-bold text-blue-600">==</div>
+                <div>
+                    <h4 class="font-bold">Sama Dengan</h4>
+                    <p class="text-sm"><code>5 == 5</code> (True)</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="text-3xl font-bold text-red-600">!=</div>
+                <div>
+                    <h4 class="font-bold">Tidak Sama</h4>
+                    <p class="text-sm"><code>5 != 3</code> (True)</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="text-3xl font-bold text-green-600">></div>
+                <div>
+                    <h4 class="font-bold">Lebih Besar</h4>
+                    <p class="text-sm"><code>10 > 5</code> (True)</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="text-3xl font-bold text-purple-600">
+                    &lt;</div>
+                <div>
+                    <h4 class="font-bold">Lebih Kecil</h4>
+                    <p class="text-sm"><code>2 < 5</code> (True)</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 bg-yellow-200 p-4 border-2 border-black inline-block">
+            <p class="font-bold">Hati-hati: <code>=</code> itu assignment (isi kotak), <code>==</code> itu
+                membandingkan.</p>
+        </div>
+    </div>
+
+    <!-- Slide 24: IF - ELSE -->
+    <div class="slide bg-white" data-note="Kondisi alternatif. Kalau tidak A, maka B.">
+        <h2 class="text-4xl font-bold mb-6">Plan B: ELSE</h2>
+        <p class="text-xl mb-6">Apa yang terjadi kalau syarat IF tidak terpenuhi?</p>
+
+        <div class="code-block text-xl">
+            nilai = 50<br>
+            <br>
+            if nilai >= 75:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Lulus! Selamat.")<br>
+            else:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Remedial ya dek.")
+        </div>
+
+        <p class="mt-4 text-lg"><code>else</code> tidak butuh syarat. Dia menangkap semua sisa kemungkinan.</p>
+    </div>
+
+    <!-- Slide 25: IF - ELIF - ELSE -->
+    <div class="slide bg-geo-1" data-note="Banyak kondisi. ELIF = Else If.">
+        <h2 class="text-4xl font-bold mb-6">Banyak Cabang: ELIF</h2>
+        <p class="text-xl mb-6">Kalau pilihannya lebih dari dua?</p>
+
+        <div class="code-block text-lg">
+            lampu = "kuning"<br>
+            <br>
+            if lampu == "merah":<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Berhenti!")<br>
+            elif lampu == "kuning":<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Siap-siap...")<br>
+            elif lampu == "hijau":<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Gas pol!")<br>
+            else:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Lampu rusak?")
+        </div>
+    </div>
+
+    <!-- Slide 26: Demo - Login System -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Sistem Login Sederhana.">
+        <div class="text-center">
+            <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+            <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+                <h3 class="text-3xl font-bold mb-4">Project: Simple Login</h3>
+                <p class="text-xl mb-6">Kita buat sistem keamanan super canggih (tapi bohong).</p>
+                <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                    password_rahasia = "kalananti123"<br>
+                    <br>
+                    input_user = input("Masukkan Password: ")<br>
+                    <br>
+                    if input_user == password_rahasia:<br>
+                    &nbsp;&nbsp;print("Akses Diterima! Welcome Agent.")<br>
+                    else:<br>
+                    &nbsp;&nbsp;print("ALARM! PENYUSUP!")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 27: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Seleksi Tim E-Sport.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: E-Sport Selection</h2>
+        <p class="text-xl mb-8">Bikin program seleksi otomatis buat tim E-Sport sekolah.</p>
+
+        <div class="grid-2">
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Minta input <strong>Rank</strong> game user.</li>
+                    <li>Cek Rank-nya pakai <strong>If-Elif-Else</strong>.</li>
+                    <li>Print pesan sesuai Rank.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Rules:</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>"Mythic" -> "Kamu lolos jadi Kapten"</li>
+                    <li>"Legend" -> "Kamu masuk tim inti"</li>
+                    <li>"Epic" -> "Kamu masuk tim cadangan"</li>
+                    <li>Sisanya -> "Latihan lagi ya bro"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 28: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <div class="text-center text-white">
+            <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+            <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+            <p class="mt-8 text-xl">Ingat: Huruf besar kecil berpengaruh di string!</p>
+        </div>
+    </div>
+
+    <!-- Slide 29: Logical Operators (And, Or, Not) - Bonus -->
+    <div class="slide bg-white" data-note="Materi tambahan jika waktu cukup. Logika ganda.">
+        <h2 class="text-4xl font-bold mb-6">Bonus: Logic Combo</h2>
+        <p class="text-xl mb-6">Gimana kalau syaratnya ada dua? Misal: Harus Punya Tiket <strong>DAN</strong> Umur >
+            17.</p>
+
+        <div class="grid-cols-1 gap-4 max-w-3xl mx-auto">
+            <div class="bg-white p-4 border-2 border-black">
+                <h3 class="font-bold text-xl text-blue-600">AND</h3>
+                <p>Dua-duanya harus True.</p>
+                <code class="block mt-2 bg-gray-100 p-2">if tiket == True and umur > 17:</code>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <h3 class="font-bold text-xl text-green-600">OR</h3>
+                <p>Salah satu aja True, boleh lewat.</p>
+                <code class="block mt-2 bg-gray-100 p-2">if member == True or bayar > 50000:</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 30: Showcase -->
+    <div class="slide bg-pink-100" data-note="Minta 1-2 siswa share screen hasil codingannya.">
+        <div class="text-center">
+            <h2 class="text-5xl font-bold mb-8">🌟 Showcase</h2>
+            <p class="text-2xl mb-8">Siapa yang rank-nya Mythic?</p>
+            <div
+                class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+                🏆</div>
+        </div>
+    </div>
+
+    <!-- Slide 31: Recap Meeting 2 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Decision Making</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>If</strong>: Pintu gerbang utama.</li>
+                <li><strong>Elif</strong>: Pintu cadangan kalau yang pertama tutup.</li>
+                <li><strong>Else</strong>: Pintu darurat kalau semua tutup.</li>
+                <li><strong>Indentasi</strong>: Spasi itu nyawa di Python!</li>
+                <li><strong>Comparison</strong>: ==, !=, >, <.< /li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 32: Ice Breaking Akhir -->
+    <div class="slide bg-yellow-400" data-note="Game Sambung Cerita If.">
+        <h2 class="text-4xl font-bold mb-8">🧊 Ice Breaking: Sambung Cerita</h2>
+        <div class="bg-white p-8 border-4 border-black max-w-2xl mx-auto text-left text-xl">
+            <p class="font-bold">Guru:</p>
+            <p class="mb-4">"Jika hari ini hujan..."</p>
+            <p class="font-bold">Siswa 1:</p>
+            <p class="mb-4">"...saya pesan ojek online."</p>
+            <p class="font-bold">Siswa 2:</p>
+            <p class="mb-4">"Jika pesan ojek online..."</p>
+        </div>
+        <p class="mt-8 text-xl font-bold">Yuk lanjutin di kolom chat!</p>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 33: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Looping.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: The Power of Repetition</h2>
+        <p class="text-xl mb-8">Gimana cara suruh komputer kerja 1000x tanpa capek?</p>
+        <div class="text-center animate-bounce">
+            <div class="text-9xl">🔄</div>
+            <p class="mt-4 font-mono">while True: print("Semangat!")</p>
+        </div>
+    </div>
+
+
+
+    <!-- MEETING 3: Automation (Loops) -->
+
+    <!-- Slide 34: Cover Meeting 3 -->
+    <div class="slide bg-geo-1 title-slide" id="meet3" data-note="Mulai pertemuan 3. Fokus ke Perulangan (Looping).">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-blue-500 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-green-500 transform rotate-45 border-2 border-black">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center">Automation</h1>
+        <h2 class="text-2xl mt-4 bg-yellow-400 px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 3: Loops & Iteration</h2>
+        <p class="mt-8 text-xl">Don't Repeat Yourself (DRY)</p>
+    </div>
+
+    <!-- Slide 35: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi kirim 1000 email. Manual vs Otomatis.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">The Power of Repetition</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Bayangkan kalian harus ngirim 1000 email undangan.</p>
+                <ul class="list-disc pl-6 text-lg space-y-2">
+                    <li><strong>Manual:</strong> Copy-Paste 1000x (Jari keriting, butuh 3 hari).</li>
+                    <li><strong>Coding:</strong> Tulis 3 baris kode (Selesai dalam 1 detik).</li>
+                </ul>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: The Human Loop</h3>
+                <p class="text-xl">"Tepuk tangan 5 kali!"</p>
+                <p class="text-sm mt-2">(Siswa tepuk 5x)</p>
+                <p class="text-xl mt-4">"Tepuk tangan SELAMANYA!"</p>
+                <p class="text-sm mt-2">(Siswa tepuk terus sampai guru bilang <strong>BREAK!</strong>)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 36: The Concept - Loop -->
+    <div class="slide bg-geo-3" data-note="Konsep lingkaran setan (Loop).">
+        <h2 class="text-4xl font-bold mb-8 text-white bg-black inline-block px-4 py-2">What is a Loop?</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="bg-white p-6 border-2 border-black max-w-2xl text-center">
+                <p class="text-2xl">"Melakukan hal yang sama berulang-ulang selama syaratnya masih terpenuhi."</p>
+            </div>
+            <div class="text-6xl animate-spin mt-8">🔄</div>
+        </div>
+    </div>
+
+    <!-- Slide 37: FOR Loop -->
+    <div class="slide bg-white" data-note="Jelaskan for loop. Biasanya dipakai kalau kita tau mau ulang berapa kali.">
+        <h2 class="text-4xl font-bold mb-6">1. The 'FOR' Loop</h2>
+        <p class="text-xl mb-6">Dipakai kalau kita <strong>TAU</strong> mau mengulang berapa kali.</p>
+
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                for i in range(5):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Halo!")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print(f"Ini perulangan ke-{i}")
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">Bedah Kode:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-lg">
+                    <li><code>range(5)</code>: Bikin urutan angka 0, 1, 2, 3, 4 (Total 5 angka).</li>
+                    <li><code>i</code>: Variabel penghitung (mulai dari 0).</li>
+                    <li>Komputer akan menjalankan kode di dalam blok sebanyak 5 kali.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 38: Range Variations -->
+    <div class="slide bg-blue-100" data-note="Variasi range(start, stop, step).">
+        <h2 class="text-4xl font-bold mb-8">Mastering Range()</h2>
+        <div class="space-y-4 max-w-4xl">
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="bg-black text-white p-2 font-mono">range(5)</div>
+                <p>0, 1, 2, 3, 4 (Stop sebelum 5)</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="bg-black text-white p-2 font-mono">range(1, 6)</div>
+                <p>1, 2, 3, 4, 5 (Mulai dari 1, Stop sebelum 6)</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="bg-black text-white p-2 font-mono">range(0, 10, 2)</div>
+                <p>0, 2, 4, 6, 8 (Lompat 2)</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black flex items-center gap-4">
+                <div class="bg-black text-white p-2 font-mono">range(10, 0, -1)</div>
+                <p>10, 9, 8, ... 1 (Mundur)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 39: WHILE Loop -->
+    <div class="slide bg-white" data-note="Jelaskan while loop. Hati-hati infinite loop.">
+        <h2 class="text-4xl font-bold mb-6">2. The 'WHILE' Loop</h2>
+        <p class="text-xl mb-6">Dipakai kalau kita <strong>GAK TAU</strong> mau ulang berapa kali, tapi tau syarat
+            berhentinya.</p>
+
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                baterai = 100<br>
+                <br>
+                while baterai > 0:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Main Game...")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;baterai = baterai - 10<br>
+                <br>
+                print("HP Mati.")
+            </div>
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4 text-red-600">⚠️ DANGER ZONE: Infinite Loop</h3>
+                <p class="text-lg mb-4">Kalau syaratnya SELALU True, komputer bakal kerja selamanya sampai crash.
+                </p>
+                <div class="code-block text-sm bg-red-900 text-white border-red-500">
+                    while True:<br>
+                    &nbsp;&nbsp;print("Ini gak bakal berhenti!")
+                </div>
+                <p class="mt-2 text-sm">Solusi: Tekan tombol STOP (Kotak) di Colab.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 40: Demo - Countdown Rocket -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Hitung mundur peluncuran roket.">
+        <div class="text-center">
+            <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+            <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+                <h3 class="text-3xl font-bold mb-4">Project: Rocket Launch</h3>
+                <p class="text-xl mb-6">Kita buat simulasi hitung mundur NASA.</p>
+                <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                    import time<br>
+                    <br>
+                    for i in range(10, 0, -1):<br>
+                    &nbsp;&nbsp;print(i)<br>
+                    &nbsp;&nbsp;time.sleep(1) # Jeda 1 detik<br>
+                    <br>
+                    print("🚀 MELUNCUR!")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 41: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Spam Chat Bot.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Spam Chat Bot</h2>
+        <p class="text-xl mb-8">Bikin program buat isengin teman (tapi bohong, jangan dipake buat jahat ya).</p>
+
+        <div class="grid-2">
+            <div class="bg-pink-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Minta input <strong>Pesan</strong> yang mau dikirim.</li>
+                    <li>Minta input <strong>Jumlah</strong> pengulangan (angka).</li>
+                    <li>Pakai <strong>FOR Loop</strong> buat print pesan sebanyak jumlah itu.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Example:</h3>
+                <p>Pesan: "Woy bangun!"</p>
+                <p>Jumlah: 5</p>
+                <br>
+                <p>Output:</p>
+                <p>Woy bangun!</p>
+                <p>Woy bangun!</p>
+                <p>Woy bangun!</p>
+                <p>Woy bangun!</p>
+                <p>Woy bangun!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 42: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+        <p class="mt-8 text-xl">Coba tambahin nomor urut di depannya biar keren!</p>
+    </div>
+
+    <!-- Slide 43: Break & Continue -->
+    <div class="slide bg-white" data-note="Kontrol loop lebih lanjut. Break (berhenti paksa), Continue (skip).">
+        <h2 class="text-4xl font-bold mb-6">Control The Loop</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4 text-red-600">BREAK</h3>
+                <p>Berhenti PAKSA. Keluar dari loop sekarang juga.</p>
+                <div class="code-block text-sm mt-4 bg-white text-black border-black">
+                    for i in range(10):<br>
+                    &nbsp;&nbsp;if i == 5:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;break<br>
+                    &nbsp;&nbsp;print(i)
+                </div>
+                <p class="text-sm mt-2">Output: 0, 1, 2, 3, 4 (Stop di 5)</p>
+            </div>
+            <div class="bg-yellow-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4 text-yellow-600">CONTINUE</h3>
+                <p>Skip putaran ini, lanjut ke putaran berikutnya.</p>
+                <div class="code-block text-sm mt-4 bg-white text-black border-black">
+                    for i in range(5):<br>
+                    &nbsp;&nbsp;if i == 2:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;continue<br>
+                    &nbsp;&nbsp;print(i)
+                </div>
+                <p class="text-sm mt-2">Output: 0, 1, 3, 4 (Angka 2 hilang)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 44: Showcase -->
+    <div class="slide bg-green-100" data-note="Showcase hasil codingan siswa.">
+        <div class="text-center">
+            <h2 class="text-5xl font-bold mb-8">🌟 Showcase Spammer</h2>
+            <p class="text-2xl mb-8">Siapa yang berhasil bikin spam 1000x?</p>
+            <div
+                class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+                📨</div>
+        </div>
+    </div>
+
+    <!-- Slide 45: Recap Meeting 3 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Automation</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>Loop</strong>: Cara bikin komputer kerja keras.</li>
+                <li><strong>For Loop</strong>: Ulangi sejumlah X kali.</li>
+                <li><strong>While Loop</strong>: Ulangi SELAMA syarat terpenuhi.</li>
+                <li><strong>Range()</strong>: Bikin urutan angka.</li>
+                <li><strong>Infinite Loop</strong>: Bahaya kalau lupa syarat berhenti!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 46: Ice Breaking Akhir -->
+    <div class="slide bg-yellow-400" data-note="Game Hitung Mundur Cepat.">
+        <h2 class="text-4xl font-bold mb-8">🧊 Ice Breaking: Hitung Mundur</h2>
+        <div class="text-center">
+            <p class="text-2xl mb-4">Semua Mic ON!</p>
+            <p class="text-xl">Kita hitung mundur dari 10 ke 1 bareng-bareng SECEPAT MUNGKIN.</p>
+            <p class="text-xl mt-4">Tapi harus KOMPAK. Gak boleh balapan.</p>
+            <div class="mt-8 text-6xl font-bold">3... 2... 1... GO!</div>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 47: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Functions.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: Clean Code</h2>
+        <p class="text-xl mb-8">Kode kalian mulai berantakan? Kita butuh 'Magic Spell'.</p>
+        <div class="text-center">
+            <div class="text-9xl">🪄</div>
+            <p class="mt-4 font-mono">def magic_spell():</p>
+        </div>
+    </div>
+
+    <!-- MEETING 4: Clean Code (Functions) -->
+
+    <!-- Slide 48: Cover Meeting 4 -->
+    <div class="slide bg-geo-2 title-slide" id="meet4" data-note="Mulai pertemuan 4. Fokus ke Fungsi (Functions).">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-white rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-yellow-400 transform rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Clean Code</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 4: Functions</h2>
+        <p class="mt-8 text-xl text-white">Write Once, Use Everywhere</p>
+    </div>
+
+    <!-- Slide 49: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi Magic Spell. Bungkus kode biar rapi.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">The Art of Laziness</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Programmer jago itu pemalas (dalam arti baik).</p>
+                <p class="text-lg">Mereka gak suka nulis kode yang sama berulang-ulang. Mereka bungkus kode itu jadi
+                    satu paket.</p>
+                <p class="text-lg mt-4 font-bold">Kita sebut paket itu: FUNCTION.</p>
+            </div>
+            <div class="bg-pink-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Instruksi Robot</h3>
+                <p class="text-xl">Pilih 1 teman jadi Robot.</p>
+                <p class="text-sm mt-2">Kasih instruksi spesifik buat ambil minum.</p>
+                <div class="bg-white p-2 border border-black mt-2 text-sm font-mono">
+                    def ambil_minum():<br>
+                    &nbsp;&nbsp;berdiri()<br>
+                    &nbsp;&nbsp;jalan_maju(5 langkah)<br>
+                    &nbsp;&nbsp;ambil_botol()<br>
+                    &nbsp;&nbsp;minum()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 50: The Concept - Function -->
+    <div class="slide bg-geo-3" data-note="Definisi Fungsi. Input -> Proses -> Output.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">What is a Function?</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-4 border-2 border-black w-32 text-center">Input (Bahan)</div>
+                <div class="text-4xl">➡️</div>
+                <div
+                    class="bg-yellow-400 p-8 border-2 border-black w-48 h-48 flex items-center justify-center rounded-full shadow-[8px_8px_0px_black]">
+                    <div class="text-center font-bold">
+                        MESIN<br>(Function)
+                    </div>
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-32 text-center">Output (Hasil)</div>
+            </div>
+            <p class="mt-8 text-xl text-white">Kayak blender. Masukin buah (Input) -> Blender (Function) -> Jus
+                (Output).</p>
+        </div>
+    </div>
+
+    <!-- Slide 51: Syntax DEF -->
+    <div class="slide bg-white" data-note="Cara bikin fungsi pakai def.">
+        <h2 class="text-4xl font-bold mb-6">Creating a Function</h2>
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                def sapa_teman():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Halo bro!")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Apa kabar?")<br>
+                <br>
+                # Cara Panggil:<br>
+                sapa_teman()<br>
+                sapa_teman()
+            </div>
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">Anatomi Fungsi:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-lg">
+                    <li><code>def</code>: Kata kunci buat bikin fungsi.</li>
+                    <li><code>nama_fungsi()</code>: Nama bebas (asal gak spasi).</li>
+                    <li><code>:</code> dan Indentasi: Wajib!</li>
+                    <li><strong>Panggil Fungsi</strong>: Tulis namanya + <code>()</code>. Kalau gak dipanggil, dia
+                        diam aja.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 52: Parameters (Input) -->
+    <div class="slide bg-geo-1" data-note="Fungsi butuh data biar dinamis. Parameter.">
+        <h2 class="text-4xl font-bold mb-6">Parameters (The Ingredients)</h2>
+        <p class="text-xl mb-6">Biar fungsi kita pinter, kita kasih data pas dipanggil.</p>
+
+        <div class="code-block text-xl">
+            def sapa(nama):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print(f"Halo {nama}, selamat datang!")<br>
+            <br>
+            sapa("Budi")<br>
+            sapa("Siti")
+        </div>
+
+        <div class="mt-6 bg-white p-4 border-2 border-black inline-block">
+            <p>Output:</p>
+            <p class="font-mono">Halo Budi, selamat datang!</p>
+            <p class="font-mono">Halo Siti, selamat datang!</p>
+        </div>
+    </div>
+
+    <!-- Slide 53: Return (Output) -->
+    <div class="slide bg-white" data-note="Bedanya Print dan Return. Return itu mengembalikan nilai ke pemanggil.">
+        <h2 class="text-4xl font-bold mb-6">Return (The Result)</h2>
+        <div class="grid-2">
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">PRINT (Cuma Ngomong)</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    def tambah(a, b):<br>
+                    &nbsp;&nbsp;print(a + b)<br>
+                    <br>
+                    hasil = tambah(2, 3)<br>
+                    # hasil isinya KOSONG (None)
+                </div>
+                <p class="text-sm mt-2">Cuma tampil di layar, gak bisa disimpan.</p>
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">RETURN (Ngasih Hasil)</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    def tambah(a, b):<br>
+                    &nbsp;&nbsp;return a + b<br>
+                    <br>
+                    hasil = tambah(2, 3)<br>
+                    print(hasil * 2) # Bisa diolah lagi!
+                </div>
+                <p class="text-sm mt-2">Nilainya dikembalikan ke variabel.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 54: Demo - Temperature Converter -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Konversi Suhu.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: Suhu Converter</h3>
+            <p class="text-xl mb-6">Ubah Celcius ke Fahrenheit pakai fungsi.</p>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                def celcius_ke_fahrenheit(c):<br>
+                &nbsp;&nbsp;f = (c * 9/5) + 32<br>
+                &nbsp;&nbsp;return f<br>
+                <br>
+                suhu_jakarta = 30<br>
+                suhu_f = celcius_ke_fahrenheit(suhu_jakarta)<br>
+                print(f"Suhu Jakarta: {suhu_f} F")
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 55: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Kalkulator Diskon.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Discount Calculator</h2>
+        <p class="text-xl mb-8">Bantu kasir hitung harga diskon otomatis.</p>
+
+        <div class="grid-2">
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Buat fungsi <code>hitung_diskon(harga, persen)</code>.</li>
+                    <li>Di dalamnya, hitung potongan harga.</li>
+                    <li><strong>Return</strong> harga akhir setelah dipotong.</li>
+                    <li>Panggil fungsi itu buat 3 barang beda.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Example:</h3>
+                <p>Baju: 100.000, Diskon 20%</p>
+                <p>-> Bayar: 80.000</p>
+                <br>
+                <p>Sepatu: 500.000, Diskon 50%</p>
+                <p>-> Bayar: 250.000</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 56: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+        <p class="mt-8 text-xl">Rumus Diskon: Harga - (Harga * Persen / 100)</p>
+    </div>
+
+    <!-- Slide 57: Showcase -->
+    <div class="slide bg-pink-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Diskon</h2>
+        <p class="text-2xl mb-8">Siapa yang kodenya paling rapi?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            🏷️</div>
+    </div>
+
+    <!-- Slide 58: Recap Meeting 4 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Functions</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>Def</strong>: Cara bikin fungsi.</li>
+                <li><strong>Parameter</strong>: Data yang masuk ke fungsi.</li>
+                <li><strong>Return</strong>: Data yang keluar dari fungsi.</li>
+                <li><strong>Modular</strong>: Pecah program besar jadi fungsi-fungsi kecil.</li>
+                <li><strong>DRY</strong>: Don't Repeat Yourself!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 59: Phase 1 Completion -->
+    <div class="slide bg-yellow-400" data-note="Selamat! Fase 1 selesai.">
+        <h2 class="text-6xl font-bold mb-4">🎉 CONGRATULATIONS!</h2>
+        <p class="text-2xl mb-8">Kalian sudah menyelesaikan FASE 1: THE LOGIC OF CODE.</p>
+        <div class="grid grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
+            <div class="bg-white p-4 border-2 border-black font-bold">Variables ✅</div>
+            <div class="bg-white p-4 border-2 border-black font-bold">If-Else ✅</div>
+            <div class="bg-white p-4 border-2 border-black font-bold">Loops ✅</div>
+            <div class="bg-white p-4 border-2 border-black font-bold">Functions ✅</div>
+        </div>
+        <p class="mt-12 text-xl">Next Phase: DATA STRUCTURES (List, Dictionary, Files)</p>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 60: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser List.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: Data Collections</h2>
+        <p class="text-xl mb-8">Gimana cara simpan 1000 nama siswa tanpa bikin 1000 variabel?</p>
+        <div class="text-center">
+            <div class="text-9xl">📚</div>
+            <p class="mt-4 font-mono">daftar_siswa = [...]</p>
+        </div>
+    </div>
+
+    <!-- MEETING 5: Data Collections (List) -->
+
+    <!-- Slide 61: Cover Meeting 5 -->
+    <div class="slide bg-geo-1 title-slide" id="meet5" data-note="Mulai pertemuan 5. Fokus ke List.">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-pink-500 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500 transform rotate-45 border-2 border-black">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center">Data Collections</h1>
+        <h2 class="text-2xl mt-4 bg-yellow-400 px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 5: Lists</h2>
+        <p class="mt-8 text-xl">Managing Chaos</p>
+    </div>
+
+    <!-- Slide 62: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi Playlist, Keranjang Belanja.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">One Box, Many Items</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Bayangkan kalau Spotify Playlist kalian harus dibuat pakai variabel
+                    satu-satu:</p>
+                <div class="code-block text-sm">
+                    lagu1 = "Hati-hati di Jalan"<br>
+                    lagu2 = "Sial"<br>
+                    lagu3 = "Komang"<br>
+                    # Capek banget kan?
+                </div>
+                <p class="text-lg mt-4">Solusinya: <strong>LIST</strong>.</p>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Absen Makanan</h3>
+                <p class="text-xl">Absen satu-satu, tapi jawabnya pakai <strong>Makanan Favorit</strong>.</p>
+                <p class="text-sm mt-2">Guru catat di layar:</p>
+                <div class="bg-white p-2 border border-black mt-2 font-mono">
+                    menu_kelas = ['Nasi Goreng', 'Bakso', 'Seblak', ...]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 63: The Concept - List -->
+    <div class="slide bg-geo-3" data-note="Konsep List = Gerbong Kereta. Ada urutannya (Index).">
+        <h2 class="text-4xl font-bold mb-8 text-white bg-black inline-block px-4 py-2">What is a List?</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex gap-2">
+                <div class="bg-white p-4 border-2 border-black w-24 text-center">
+                    <div class="text-xs text-gray-500">Index 0</div>
+                    <div class="font-bold">Apel</div>
+                </div>
+                <div class="bg-white p-4 border-2 border-black w-24 text-center">
+                    <div class="text-xs text-gray-500">Index 1</div>
+                    <div class="font-bold">Jeruk</div>
+                </div>
+                <div class="bg-white p-4 border-2 border-black w-24 text-center">
+                    <div class="text-xs text-gray-500">Index 2</div>
+                    <div class="font-bold">Mangga</div>
+                </div>
+                <div class="bg-white p-4 border-2 border-black w-24 text-center">
+                    <div class="text-xs text-gray-500">Index 3</div>
+                    <div class="font-bold">...</div>
+                </div>
+            </div>
+            <p class="mt-8 text-xl text-white">Kumpulan data yang <strong>TERURUT</strong> dan bisa
+                <strong>DIUBAH</strong>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 64: Syntax List -->
+    <div class="slide bg-white" data-note="Cara bikin list pakai kurung siku [].">
+        <h2 class="text-4xl font-bold mb-6">Creating a List</h2>
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                # List Kosong<br>
+                tas = []<br>
+                <br>
+                # List Isi<br>
+                hero = ["Layla", "Miya", "Zilong"]<br>
+                angka = [10, 50, 100]<br>
+                campur = ["Budi", 17, True]
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">Aturan Main:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-lg">
+                    <li>Pakai kurung siku <code>[]</code>.</li>
+                    <li>Pemisah antar item pakai koma <code>,</code>.</li>
+                    <li>Isinya boleh beda tipe data (String campur Int boleh).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 65: Accessing Data (Indexing) -->
+    <div class="slide bg-blue-100" data-note="Index mulai dari 0. Hati-hati Index Error.">
+        <h2 class="text-4xl font-bold mb-6">Indexing (Nomor Urut)</h2>
+        <p class="text-xl mb-6">Komputer itu aneh, hitungnya mulai dari <strong>NOL (0)</strong>.</p>
+
+        <div class="code-block text-xl">
+            buah = ["Apel", "Jeruk", "Mangga"]<br>
+            <br>
+            print(buah[0]) # Output: Apel<br>
+            print(buah[1]) # Output: Jeruk<br>
+            print(buah[2]) # Output: Mangga
+        </div>
+
+        <div class="mt-6 bg-red-100 p-4 border-2 border-red-500 inline-block">
+            <p class="font-bold">⚠️ IndexError: list index out of range</p>
+            <p>Artinya: Kamu panggil nomor yang gak ada. (Misal <code>buah[3]</code> padahal cuma sampai 2).</p>
+        </div>
+    </div>
+
+    <!-- Slide 66: Modifying List (Append, Remove) -->
+    <div class="slide bg-white" data-note="Menambah dan menghapus data. Append, Insert, Remove, Pop.">
+        <h2 class="text-4xl font-bold mb-6">Modifying List</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Menambah Data</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    hero = ["Layla"]<br>
+                    <br>
+                    # Tambah di belakang<br>
+                    hero.append("Miya")<br>
+                    <br>
+                    # Tambah di posisi tertentu<br>
+                    hero.insert(0, "Alucard")
+                </div>
+            </div>
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Menghapus Data</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    # Hapus berdasarkan nama<br>
+                    hero.remove("Layla")<br>
+                    <br>
+                    # Hapus yang paling belakang<br>
+                    hero.pop()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 67: Demo - Simple Queue -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Sistem Antrian.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: Antrian Dokter</h3>
+            <p class="text-xl mb-6">Simulasi antrian pasien pakai List.</p>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                antrian = []<br>
+                <br>
+                # Pasien datang<br>
+                antrian.append("Budi")<br>
+                antrian.append("Siti")<br>
+                print(f"Antrian: {antrian}")<br>
+                <br>
+                # Pasien dipanggil<br>
+                panggil = antrian.pop(0)<br>
+                print(f"Memanggil {panggil}...")<br>
+                print(f"Sisa: {antrian}")
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 68: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan To-Do List.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: To-Do List V1</h2>
+        <p class="text-xl mb-8">Bikin aplikasi pencatat tugas harian.</p>
+
+        <div class="grid-2">
+            <div class="bg-pink-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Buat list kosong <code>tugas = []</code>.</li>
+                    <li>Pakai <strong>While Loop</strong> biar program jalan terus.</li>
+                    <li>Minta input user: "Masukkan tugas (ketik 'stop' untuk berhenti)".</li>
+                    <li>Kalau input bukan "stop", masukkan ke list (append).</li>
+                    <li>Kalau "stop", break loop dan print semua tugas.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Logic Hint:</h3>
+                <p>while True:</p>
+                <p>&nbsp;&nbsp;isi = input("...")</p>
+                <p>&nbsp;&nbsp;if isi == "stop":</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;break</p>
+                <p>&nbsp;&nbsp;tugas.append(isi)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 69: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+        <p class="mt-8 text-xl">Bonus: Tampilkan tugas pakai nomor urut (For Loop).</p>
+    </div>
+
+    <!-- Slide 70: Showcase -->
+    <div class="slide bg-green-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase To-Do List</h2>
+        <p class="text-2xl mb-8">Siapa yang tugasnya paling banyak?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            📝</div>
+    </div>
+
+    <!-- Slide 71: Recap Meeting 5 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Lists</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>List</strong>: Variabel yang bisa simpan banyak data.</li>
+                <li><strong>Index</strong>: Alamat data, mulai dari 0.</li>
+                <li><strong>Append</strong>: Nambah data di belakang.</li>
+                <li><strong>Pop/Remove</strong>: Hapus data.</li>
+                <li><strong>Len()</strong>: Hitung jumlah data di list.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 72: Ice Breaking Akhir -->
+    <div class="slide bg-yellow-400" data-note="Game Memory Test.">
+        <h2 class="text-4xl font-bold mb-8">🧊 Ice Breaking: Memory Test</h2>
+        <div class="text-center">
+            <p class="text-xl mb-4">Saya akan sebutkan 5 benda. Ingat urutannya!</p>
+            <p class="text-2xl font-bold bg-white p-4 border-2 border-black inline-block">Kucing, Meja, Awan,
+                Sepatu, Lampu</p>
+            <p class="mt-8 text-xl">(Tutup slide ini setelah 5 detik)</p>
+            <p class="mt-2">Tulis ulang di chat sesuai urutan!</p>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 73: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Dictionary.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: Smart Data</h2>
+        <p class="text-xl mb-8">List itu bagus, tapi kalau datanya ribuan, susah carinya.</p>
+        <div class="text-center">
+            <div class="text-9xl">📖</div>
+            <p class="mt-4 font-mono">{'nama': 'Budi', 'umur': 17}</p>
+        </div>
+    </div>
+
+    <!-- MEETING 6: Smart Data (Dictionary) -->
+
+    <!-- Slide 74: Cover Meeting 6 -->
+    <div class="slide bg-geo-2 title-slide" id="meet6" data-note="Mulai pertemuan 6. Fokus ke Dictionary.">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-green-500 rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-yellow-400 transform -rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Smart Data</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 6: Dictionary</h2>
+        <p class="mt-8 text-xl text-white">Key & Value Pairs</p>
+    </div>
+
+    <!-- Slide 75: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi Kamus. Kata Kunci -> Arti.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">The Dictionary Concept</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">List itu bagus kalau datanya cuma urutan angka.</p>
+                <p class="text-lg">Tapi kalau datanya kompleks kayak <strong>Profil Instagram</strong>?</p>
+                <ul class="list-disc pl-6 mt-2 text-lg">
+                    <li>Nama: Budi</li>
+                    <li>Followers: 1000</li>
+                    <li>Verified: True</li>
+                </ul>
+                <p class="mt-4">Kita butuh label (Key) dan isi (Value). Ini namanya <strong>DICTIONARY</strong>.</p>
+            </div>
+            <div class="bg-pink-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Tebak Profil</h3>
+                <p class="text-xl">Saya sebutkan isinya (Value), kalian tebak bendanya (Key).</p>
+                <div class="bg-white p-4 border border-black mt-4">
+                    <p>"Putih, Manis, Dingin"</p>
+                    <p class="font-bold mt-2">Jawab: Es Krim Vanilla</p>
+                </div>
+                <div class="bg-white p-4 border border-black mt-4">
+                    <p>"Bulat, Ditendang, Gol"</p>
+                    <p class="font-bold mt-2">Jawab: Bola Sepak</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 76: The Concept - Key Value -->
+    <div class="slide bg-geo-3" data-note="Struktur Key-Value.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">Key-Value Pair</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div
+                    class="bg-yellow-400 p-4 border-2 border-black w-48 text-center font-bold shadow-[4px_4px_0px_black]">
+                    KEY (Kunci)<br>
+                    "username"
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-48 text-center font-bold shadow-[4px_4px_0px_black]">
+                    VALUE (Nilai)<br>
+                    "@antigravity"
+                </div>
+            </div>
+            <div class="mt-8 bg-white p-6 border-2 border-black max-w-2xl">
+                <p class="text-xl">"Kunci harus unik. Nilai boleh apa saja."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 77: Syntax Dictionary -->
+    <div class="slide bg-white" data-note="Cara bikin dictionary pakai kurung kurawal {}.">
+        <h2 class="text-4xl font-bold mb-6">Creating a Dictionary</h2>
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                # Dictionary Kosong<br>
+                data = {}<br>
+                <br>
+                # Dictionary Isi<br>
+                siswa = {<br>
+                &nbsp;&nbsp;"nama": "Budi",<br>
+                &nbsp;&nbsp;"umur": 17,<br>
+                &nbsp;&nbsp;"hobi": ["Game", "Tidur"]<br>
+                }
+            </div>
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">Aturan Main:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-lg">
+                    <li>Pakai kurung kurawal <code>{}</code>.</li>
+                    <li>Format: <code>"key": value</code>.</li>
+                    <li>Pemisah antar item pakai koma <code>,</code>.</li>
+                    <li>Value bisa berupa List juga lho!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 78: Accessing Data -->
+    <div class="slide bg-geo-1" data-note="Akses pakai Key, bukan Index.">
+        <h2 class="text-4xl font-bold mb-6">Accessing Data</h2>
+        <p class="text-xl mb-6">Kalau List pakai nomor urut, Dictionary pakai <strong>NAMA KUNCI</strong>.</p>
+
+        <div class="code-block text-xl">
+            siswa = {"nama": "Siti", "kelas": "10 IPA"}<br>
+            <br>
+            print(siswa["nama"]) # Output: Siti<br>
+            print(siswa["kelas"]) # Output: 10 IPA
+        </div>
+
+        <div class="mt-6 bg-red-100 p-4 border-2 border-red-500 inline-block">
+            <p class="font-bold">⚠️ KeyError: 'alamat'</p>
+            <p>Artinya: Kamu cari kunci yang gak ada di kamus.</p>
+        </div>
+    </div>
+
+    <!-- Slide 79: Modifying Dictionary -->
+    <div class="slide bg-white" data-note="Menambah, Mengubah, Menghapus data.">
+        <h2 class="text-4xl font-bold mb-6">Modifying Dictionary</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Tambah / Ubah</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    # Kalau key belum ada -> Nambah<br>
+                    siswa["alamat"] = "Jakarta"<br>
+                    <br>
+                    # Kalau key sudah ada -> Update<br>
+                    siswa["nama"] = "Siti Aminah"
+                </div>
+            </div>
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Hapus</h3>
+                <div class="code-block text-sm bg-white text-black border-black">
+                    # Hapus key tertentu<br>
+                    del siswa["kelas"]<br>
+                    <br>
+                    # Kosongkan semua<br>
+                    siswa.clear()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 80: Demo - Game Character Profile -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Profil Karakter Game.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: RPG Character</h3>
+            <p class="text-xl mb-6">Simpan status hero kita.</p>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                hero = {<br>
+                &nbsp;&nbsp;"name": "Arthur",<br>
+                &nbsp;&nbsp;"hp": 100,<br>
+                &nbsp;&nbsp;"mana": 50,<br>
+                &nbsp;&nbsp;"weapon": "Excalibur"<br>
+                }<br>
+                <br>
+                print(f"Hero: {hero['name']}")<br>
+                print(f"Senjata: {hero['weapon']}")<br>
+                <br>
+                # Kena damage<br>
+                hero["hp"] = hero["hp"] - 20<br>
+                print(f"Sisa HP: {hero['hp']}")
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 81: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Kamus Bahasa Gaul.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Kamus Bahasa Gaul</h2>
+        <p class="text-xl mb-8">Bikin translator bahasa gaul ke bahasa baku.</p>
+
+        <div class="grid-2">
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Buat dictionary <code>kamus = {}</code>.</li>
+                    <li>Isi dengan minimal 3 kata gaul (Misal: "Gaje": "Gak Jelas").</li>
+                    <li>Minta input user: "Masukkan kata gaul:".</li>
+                    <li>Print artinya.</li>
+                    <li>Bonus: Pakai <code>if key in kamus:</code> buat cek ada atau nggak.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Example:</h3>
+                <p>Input: "Mager"</p>
+                <p>Output: "Malas Gerak"</p>
+                <br>
+                <p>Input: "Gabut"</p>
+                <p>Output: "Gaji Buta / Gak Ada Kerjaan"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 82: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+        <p class="mt-8 text-xl">Jangan lupa handle kalau katanya gak ketemu!</p>
+    </div>
+
+    <!-- Slide 83: Showcase -->
+    <div class="slide bg-pink-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Kamus</h2>
+        <p class="text-2xl mb-8">Kata gaul apa yang paling aneh?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            🗣️</div>
+    </div>
+
+    <!-- Slide 84: Recap Meeting 6 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Dictionary</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>Dictionary</strong>: Kumpulan data dengan pasangan Key-Value.</li>
+                <li><strong>Key</strong>: Label unik (biasanya string).</li>
+                <li><strong>Value</strong>: Isinya (bisa apa aja).</li>
+                <li><strong>Akses</strong>: Pakai <code>dict["key"]</code>.</li>
+                <li><strong>JSON</strong>: Struktur data paling populer di dunia web mirip banget sama Dictionary.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 85: Ice Breaking Akhir -->
+    <div class="slide bg-yellow-400" data-note="Satu Kata Rasa.">
+        <h2 class="text-4xl font-bold mb-8">🧊 Ice Breaking: Satu Kata Rasa</h2>
+        <div class="text-center">
+            <p class="text-xl mb-4">Gimana perasaan kalian belajar Dictionary?</p>
+            <p class="text-2xl font-bold">Tulis SATU KATA di chat box.</p>
+            <p class="mt-4 italic">Contoh: "Pusing", "Seru", "Lapar", "Mantap"</p>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 86: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser File Handling.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: Persistence</h2>
+        <p class="text-xl mb-8">Selama ini kalau Colab ditutup, data hilang kan?</p>
+        <p class="text-xl">Minggu depan kita belajar cara <strong>SIMPAN DATA PERMANEN</strong>.</p>
+        <div class="text-center">
+            <div class="text-9xl">💾</div>
+            <p class="mt-4 font-mono">open("data.txt", "w")</p>
+        </div>
+    </div>
+
+    <!-- MEETING 7: Persistence (File Handling) -->
+
+    <!-- Slide 87: Cover Meeting 7 -->
+    <div class="slide bg-geo-3 title-slide" id="meet7" data-note="Mulai pertemuan 7. Fokus ke File Handling.">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-white transform rotate-45 border-2 border-black"></div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Persistence</h1>
+        <h2
+            class="text-2xl mt-4 bg-black text-white px-4 py-2 border-2 border-white inline-block shadow-[4px_4px_0px_white]">
+            Meeting 7: File Handling</h2>
+        <p class="mt-8 text-xl text-white">Saving Data Forever</p>
+    </div>
+
+    <!-- Slide 88: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Analogi Save Game. RAM vs Hard Disk.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">RAM vs Storage</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Selama ini, kalau Colab kita tutup, variabel hilang semua kan?</p>
+                <p class="text-lg">Itu karena data cuma disimpan di <strong>RAM</strong> (Ingatan Jangka Pendek).
+                </p>
+                <p class="text-lg mt-4">Biar abadi, kita harus tulis ke <strong>FILE</strong> (Hard Disk / Ingatan
+                    Jangka Panjang).</p>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Pesan Rahasia</h3>
+                <p class="text-xl">Ketik satu rahasia kecil di chat room pribadi ke saya.</p>
+                <p class="text-sm mt-2">Saya akan "Save" rahasia itu (Screenshot/Catat).</p>
+                <p class="mt-4 italic">"Data yang tidak disimpan adalah data yang hilang."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 89: The Concept - Open, Write, Close -->
+    <div class="slide bg-geo-1" data-note="Alur kerja file: Buka -> Tulis/Baca -> Tutup.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">The Workflow</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-4 border-2 border-black w-32 text-center font-bold">
+                    OPEN<br>(Buka File)
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-yellow-400 p-4 border-2 border-black w-32 text-center font-bold">
+                    WRITE / READ<br>(Tulis / Baca)
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-32 text-center font-bold">
+                    CLOSE<br>(Tutup File)
+                </div>
+            </div>
+            <div class="mt-8 bg-red-100 p-4 border-2 border-red-500">
+                <p class="font-bold">⚠️ PENTING:</p>
+                <p>Kalau lupa CLOSE, file bisa rusak atau data gak tersimpan!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 90: Writing to File -->
+    <div class="slide bg-white" data-note="Mode 'w' (Write). Hati-hati menimpa file lama.">
+        <h2 class="text-4xl font-bold mb-6">Writing to File</h2>
+        <div class="grid-2">
+            <div class="code-block text-xl">
+                # Cara Aman (with open)<br>
+                # Otomatis close sendiri<br>
+                <br>
+                with open("catatan.txt", "w") as file:<br>
+                &nbsp;&nbsp;file.write("Halo, ini file pertamaku!")<br>
+                &nbsp;&nbsp;file.write("\nBelajar Python seru.")
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-2xl mb-4">Bedah Kode:</h3>
+                <ul class="list-disc pl-6 space-y-2 text-lg">
+                    <li><code>"catatan.txt"</code>: Nama file.</li>
+                    <li><code>"w"</code>: Mode WRITE (Tulis). Kalau file belum ada, dibuatkan. Kalau sudah ada,
+                        <strong>DITIMPA (Hapus lama)</strong>.
+                    </li>
+                    <li><code>\n</code>: Enter (Garis baru).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 91: Reading from File -->
+    <div class="slide bg-blue-100" data-note="Mode 'r' (Read). Membaca isi file.">
+        <h2 class="text-4xl font-bold mb-6">Reading from File</h2>
+        <p class="text-xl mb-6">Gimana cara baca file yang sudah kita buat?</p>
+
+        <div class="code-block text-xl">
+            with open("catatan.txt", "r") as file:<br>
+            &nbsp;&nbsp;isi = file.read()<br>
+            &nbsp;&nbsp;print(isi)
+        </div>
+
+        <div class="mt-6 bg-white p-4 border-2 border-black inline-block">
+            <p>Output:</p>
+            <p class="font-mono">Halo, ini file pertamaku!</p>
+            <p class="font-mono">Belajar Python seru.</p>
+        </div>
+    </div>
+
+    <!-- Slide 92: Appending (Menambah) -->
+    <div class="slide bg-white" data-note="Mode 'a' (Append). Menambah di akhir tanpa menghapus.">
+        <h2 class="text-4xl font-bold mb-6">Appending (Nambah Data)</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Mode "w" (Write)</h3>
+                <p>Jahat. Dia hapus semua isi lama, ganti yang baru.</p>
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Mode "a" (Append)</h3>
+                <p>Baik. Dia nambahin tulisan di paling bawah.</p>
+                <div class="code-block text-sm mt-2 bg-white text-black border-black">
+                    with open("catatan.txt", "a") as file:<br>
+                    &nbsp;&nbsp;file.write("\nIni baris tambahan.")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 93: Demo - Digital Diary -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Diary Digital.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: Digital Diary</h3>
+            <p class="text-xl mb-6">Aplikasi curhat yang aman.</p>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                curhat = input("Tulis curhatanmu: ")<br>
+                <br>
+                with open("diary.txt", "a") as buku:<br>
+                &nbsp;&nbsp;buku.write(curhat + "\n")<br>
+                <br>
+                print("Curhatan tersimpan!")<br>
+                <br>
+                # Cek isi file di folder Colab (sebelah kiri)
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 94: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Pencatat Skor Game.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Score Board</h2>
+        <p class="text-xl mb-8">Bikin sistem pencatat skor yang gak hilang walau game di-restart.</p>
+
+        <div class="grid-2">
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Minta input <strong>Nama</strong> dan <strong>Skor</strong>.</li>
+                    <li>Simpan ke file <code>skor.txt</code> pakai mode <strong>Append ("a")</strong>.</li>
+                    <li>Format simpan: <code>Nama: Skor</code>.</li>
+                    <li>Setelah simpan, baca file-nya dan print semua skor yang pernah ada.</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Example File Content:</h3>
+                <p>Budi: 100</p>
+                <p>Siti: 250</p>
+                <p>Joko: 50</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 95: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 20 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">20:00</div>
+        <p class="mt-8 text-xl">Cek folder di kiri layar Colab buat liat filenya!</p>
+    </div>
+
+    <!-- Slide 96: Showcase -->
+    <div class="slide bg-pink-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Score Board</h2>
+        <p class="text-2xl mb-8">Coba refresh Colab-nya, datanya masih ada gak?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            📈</div>
+    </div>
+
+    <!-- Slide 97: Recap Meeting 7 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: File Handling</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>Persistence</strong>: Menyimpan data biar abadi.</li>
+                <li><strong>Open()</strong>: Buka file.</li>
+                <li><strong>"w"</strong>: Write (Tulis baru/Timpa).</li>
+                <li><strong>"r"</strong>: Read (Baca).</li>
+                <li><strong>"a"</strong>: Append (Nambah).</li>
+                <li><strong>With Open...</strong>: Cara aman biar gak lupa close.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 98: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Mini Project.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: MID EXAM PROJECT</h2>
+        <p class="text-xl mb-8">Siapkan mental. Kita bakal gabungin SEMUA yang udah dipelajari.</p>
+        <p class="text-xl">Variabel + If + Loop + Function + List + Dictionary + File.</p>
+        <div class="text-center">
+            <div class="text-9xl">🎮</div>
+            <p class="mt-4 font-bold">QUIZ APP WITH HIGHSCORE</p>
+        </div>
+    </div>
+
+    <!-- MEETING 8: Mini Project -->
+
+    <!-- Slide 99: Cover Meeting 8 -->
+    <div class="slide bg-geo-2 title-slide" id="meet8" data-note="Mulai pertemuan 8. Mini Project Quiz.">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-white rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-pink-500 transform rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Mid-Term Project</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 8: Quiz App</h2>
+        <p class="mt-8 text-xl text-white">Put Everything Together</p>
+    </div>
+
+    <!-- Slide 100: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Ujian tapi santai. Bentuknya Project.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">The Challenge</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Hari ini gak ada materi baru.</p>
+                <p class="text-lg">Hari ini adalah pembuktian. Apakah kalian sudah menguasai:</p>
+                <ul class="list-disc pl-6 mt-2 text-lg font-bold">
+                    <li>Variables & Input</li>
+                    <li>If-Else Logic</li>
+                    <li>Loops</li>
+                    <li>Functions</li>
+                    <li>List / Dictionary</li>
+                    <li>File Handling</li>
+                </ul>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Kuis Cepat</h3>
+                <p class="text-xl">3 Pertanyaan Logika Cepat.</p>
+                <p class="mt-4">1. Apa output <code>print(10 == "10")</code>?</p>
+                <p class="mt-2">2. List mulai dari index berapa?</p>
+                <p class="mt-2">3. Apa fungsi buat nambah data ke List?</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 101: Project Brief -->
+    <div class="slide bg-geo-3" data-note="Jelaskan alur project Quiz Master.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">Project: Python Quiz Master
+        </h2>
+        <div class="flex flex-col items-center gap-4 w-full max-w-4xl">
+            <div class="flex gap-4 w-full justify-center">
+                <div class="bg-white p-4 border-2 border-black w-1/4 text-center font-bold">
+                    STEP 1<br>Siapkan Soal<br>(List/Dict)
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-1/4 text-center font-bold">
+                    STEP 2<br>Tanya User<br>(Loop & Input)
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-1/4 text-center font-bold">
+                    STEP 3<br>Cek Jawaban<br>(If-Else)
+                </div>
+                <div class="text-4xl">➡️</div>
+                <div class="bg-white p-4 border-2 border-black w-1/4 text-center font-bold">
+                    STEP 4<br>Simpan Skor<br>(File Handling)
+                </div>
+            </div>
+            <div class="mt-8 bg-yellow-400 p-6 border-2 border-black w-full text-center">
+                <h3 class="text-2xl font-bold">GOAL: Bikin Game Kuis yang bisa nyimpen Highscore!</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 102: Step 1 - Data Structure -->
+    <div class="slide bg-white" data-note="Panduan Step 1. Struktur Data Soal.">
+        <h2 class="text-4xl font-bold mb-6">Step 1: The Questions</h2>
+        <p class="text-xl mb-6">Simpan soal dan jawaban kalian. Bisa pakai Dictionary di dalam List.</p>
+
+        <div class="code-block text-xl">
+            bank_soal = [<br>
+            &nbsp;&nbsp;{"tanya": "Ibukota Indonesia?", "jawab": "jakarta"},<br>
+            &nbsp;&nbsp;{"tanya": "2 + 2 berapa?", "jawab": "4"},<br>
+            &nbsp;&nbsp;{"tanya": "Siapa presiden pertama?", "jawab": "soekarno"}<br>
+            ]
+        </div>
+        <p class="mt-4">Tips: Jawabannya huruf kecil semua biar gampang dicek.</p>
+    </div>
+
+    <!-- Slide 103: Step 2 & 3 - The Game Loop -->
+    <div class="slide bg-blue-100" data-note="Panduan Step 2 & 3. Loop dan Logika.">
+        <h2 class="text-4xl font-bold mb-6">Step 2 & 3: The Game Loop</h2>
+        <div class="code-block text-lg">
+            skor = 0<br>
+            <br>
+            for item in bank_soal:<br>
+            &nbsp;&nbsp;print(item["tanya"])<br>
+            &nbsp;&nbsp;jawaban = input("Jawab: ").lower() # Ubah ke huruf kecil<br>
+            <br>
+            &nbsp;&nbsp;if jawaban == item["jawab"]:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Benar! +10 Poin")<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;skor = skor + 10<br>
+            &nbsp;&nbsp;else:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;print("Salah!")<br>
+            <br>
+            print(f"Skor Akhir: {skor}")
+        </div>
+    </div>
+
+    <!-- Slide 104: Step 4 - Save Highscore -->
+    <div class="slide bg-white" data-note="Panduan Step 4. Simpan ke File.">
+        <h2 class="text-4xl font-bold mb-6">Step 4: Save Highscore</h2>
+        <p class="text-xl mb-6">Jangan biarkan skornya hilang!</p>
+
+        <div class="code-block text-xl">
+            nama = input("Masukkan Nama: ")<br>
+            <br>
+            with open("highscore.txt", "a") as file:<br>
+            &nbsp;&nbsp;file.write(f"{nama} - {skor}\n")<br>
+            <br>
+            print("Skor tersimpan!")
+        </div>
+    </div>
+
+    <!-- Slide 105: Coding Time (Long) -->
+    <div class="slide bg-geo-2" data-note="Set timer 50 menit.">
+        <h2 class="text-5xl font-bold mb-8">Mission Start!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">50:00</div>
+        <p class="mt-8 text-xl">Minimal 5 Soal. Topik Bebas (Game, Film, Sejarah).</p>
+    </div>
+
+    <!-- Slide 106: Showcase -->
+    <div class="slide bg-green-100" data-note="Showcase Project.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Time</h2>
+        <p class="text-2xl mb-8">Siapa yang mau menantang teman sekelas menjawab kuisnya?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            🎮</div>
+    </div>
+
+    <!-- Slide 107: Phase 2 Completion -->
+    <div class="slide bg-yellow-400" data-note="Selamat! Fase 2 selesai.">
+        <h2 class="text-6xl font-bold mb-4">🎉 LEVEL UP!</h2>
+        <p class="text-2xl mb-8">Kalian sudah menyelesaikan FASE 2: DATA STRUCTURES.</p>
+        <div class="grid grid-cols-3 gap-4 max-w-3xl mx-auto mt-8">
+            <div class="bg-white p-4 border-2 border-black font-bold">List ✅</div>
+            <div class="bg-white p-4 border-2 border-black font-bold">Dictionary ✅</div>
+            <div class="bg-white p-4 border-2 border-black font-bold">File Handling ✅</div>
+        </div>
+        <p class="mt-12 text-xl">Next Phase: REAL WORLD APPS (Financial Tracker, Chatbot)</p>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 108: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Financial Tracker.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: Money Management</h2>
+        <p class="text-xl mb-8">Kita bakal bikin aplikasi pengatur keuangan.</p>
+        <div class="text-center">
+            <div class="text-9xl">💰</div>
+            <p class="mt-4 font-mono">saldo = pemasukan - pengeluaran</p>
+        </div>
+    </div>
+
+    <!-- MEETING 9: Financial Tracker -->
+
+    <!-- Slide 109: Cover Meeting 9 -->
+    <div class="slide bg-geo-1 title-slide" id="meet9"
+        data-note="Mulai pertemuan 9. Fokus ke Real World App: Keuangan.">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-green-500 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500 transform rotate-45 border-2 border-black">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center">Financial Tracker</h1>
+        <h2 class="text-2xl mt-4 bg-yellow-400 px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 9: Money Management</h2>
+        <p class="mt-8 text-xl">Coding for Life</p>
+    </div>
+
+    <!-- Slide 110: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Pentingnya atur duit.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">Where Did My Money Go?</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Pernah gak sih, baru dikasih uang jajan, eh tiba-tiba habis?</p>
+                <p class="text-lg">Kita bakal bikin aplikasi buat melacak kemana perginya uang kita. Biar gak boros!
+                </p>
+                <p class="text-lg mt-4 font-bold">Fitur:</p>
+                <ul class="list-disc pl-6">
+                    <li>Catat Pemasukan</li>
+                    <li>Catat Pengeluaran</li>
+                    <li>Hitung Sisa Saldo</li>
+                </ul>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Tebak Harga</h3>
+                <p class="text-xl">Saya tunjukkan barang (Sepatu Jordan / PS5).</p>
+                <p class="text-sm mt-2">Kalian tebak harganya di chat.</p>
+                <p class="mt-4 italic">Yang paling mendekati menang!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 111: The Logic - Sum() -->
+    <div class="slide bg-geo-3" data-note="Konsep Sum. Menjumlahkan isi List.">
+        <h2 class="text-4xl font-bold mb-8 text-white bg-black inline-block px-4 py-2">The Math Logic</h2>
+        <div class="flex flex-col items-center gap-4">
+            <div class="bg-white p-6 border-2 border-black max-w-2xl text-center">
+                <p class="text-2xl">Saldo = Total Pemasukan - Total Pengeluaran</p>
+            </div>
+            <div class="mt-8 w-full max-w-2xl">
+                <div class="code-block text-xl">
+                    jajan = [5000, 10000, 2000]<br>
+                    <br>
+                    # Cara Manual (Ribet)<br>
+                    total = jajan[0] + jajan[1] + jajan[2]<br>
+                    <br>
+                    # Cara Python (Cepat)<br>
+                    total = sum(jajan)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 112: CRUD Concept -->
+    <div class="slide bg-white" data-note="Konsep CRUD sederhana. Create, Read.">
+        <h2 class="text-4xl font-bold mb-6">CRUD: Create & Read</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Create (Input)</h3>
+                <p>User memasukkan data uang.</p>
+                <div class="code-block text-sm mt-2 bg-white text-black border-black">
+                    uang = int(input("Nominal: "))<br>
+                    pengeluaran.append(uang)
+                </div>
+            </div>
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Read (Output)</h3>
+                <p>Program menampilkan total.</p>
+                <div class="code-block text-sm mt-2 bg-white text-black border-black">
+                    print(f"Total: {sum(pengeluaran)}")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 113: Demo - Simple Tracker -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Tracker Sederhana.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: Jajan Tracker</h3>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                pengeluaran = []<br>
+                <br>
+                while True:<br>
+                &nbsp;&nbsp;print(f"Total Pengeluaran: {sum(pengeluaran)}")<br>
+                &nbsp;&nbsp;beli = input("Beli apa? (ketik 'stop' udahan): ")<br>
+                &nbsp;&nbsp;if beli == "stop": break<br>
+                <br>
+                &nbsp;&nbsp;harga = int(input("Harganya? "))<br>
+                &nbsp;&nbsp;pengeluaran.append(harga)<br>
+                &nbsp;&nbsp;print("Tercatat!")
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 114: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Dompet Pintar.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: Dompet Pintar</h2>
+        <p class="text-xl mb-8">Upgrade tracker tadi jadi lebih pintar.</p>
+
+        <div class="grid-2">
+            <div class="bg-pink-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Instruksi:</h3>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li>Buat list <code>pemasukan = []</code> dan <code>pengeluaran = []</code>.</li>
+                    <li>Minta input user mau catat apa (Masuk/Keluar).</li>
+                    <li>Hitung <strong>Sisa Saldo</strong> (Total Masuk - Total Keluar).</li>
+                    <li><strong>Fitur Alarm</strong>: JIKA Saldo < 50.000, print "Woy hemat!" .</li>
+                </ol>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Logic Hint:</h3>
+                <p>saldo = sum(pemasukan) - sum(pengeluaran)</p>
+                <br>
+                <p>if saldo < 50000:</p>
+                        <p>&nbsp;&nbsp;print("⚠️ WARNING: KANKER (Kantong Kering)")</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 115: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 30 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">30:00</div>
+        <p class="mt-8 text-xl">Hati-hati konversi string ke int!</p>
+    </div>
+
+    <!-- Slide 116: Showcase -->
+    <div class="slide bg-green-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Dompet</h2>
+        <p class="text-2xl mb-8">Siapa yang saldonya minus?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            💸</div>
+    </div>
+
+    <!-- Slide 117: Recap Meeting 9 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Financial Logic</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>Sum()</strong>: Menjumlahkan list angka dengan cepat.</li>
+                <li><strong>Type Casting</strong>: <code>int(input())</code> wajib buat angka.</li>
+                <li><strong>Logic</strong>: Saldo = Masuk - Keluar.</li>
+                <li><strong>Validation</strong>: Cek saldo buat kasih peringatan.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 118: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Chatbot.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: AI Chatbot</h2>
+        <p class="text-xl mb-8">Kita bakal bikin teman ngobrol virtual.</p>
+        <div class="text-center">
+            <div class="text-9xl">🤖</div>
+            <p class="mt-4 font-mono">if "halo" in pesan: jawab("Hai!")</p>
+        </div>
+    </div>
+
+    <!-- MEETING 10: Simple Chatbot -->
+
+    <!-- Slide 119: Cover Meeting 10 -->
+    <div class="slide bg-geo-2 title-slide" id="meet10"
+        data-note="Mulai pertemuan 10. Fokus ke String Manipulation & Logic.">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-white rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-pink-500 transform rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Simple Chatbot</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 10: AI Friend</h2>
+        <p class="mt-8 text-xl text-white">If This Then That</p>
+    </div>
+
+    <!-- Slide 120: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Chatbot itu apa? Siri, Google Assistant.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">Talking to Machines</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Pernah ngobrol sama Siri atau Google Assistant?</p>
+                <p class="text-lg">Mereka kelihatan pintar, padahal aslinya cuma sekumpulan <strong>IF-ELSE</strong>
+                    yang banyak banget.</p>
+                <p class="text-lg mt-4">Hari ini kita bakal bongkar rahasianya!</p>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Turing Test</h3>
+                <p class="text-xl">Saya akan chat sebagai "Bot". Kalian tebak, saya Bot atau Manusia?</p>
+                <p class="mt-4 italic">"Bot: Maaf saya tidak mengerti."</p>
+                <p class="mt-2 italic">"Manusia: Hah? Maksud lo?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 121: String Manipulation -->
+    <div class="slide bg-geo-3" data-note="Lower, In, Strip.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">Text Magic</h2>
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white p-4 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">.lower()</h3>
+                <p>Biar huruf besar/kecil dianggap sama.</p>
+                <div class="code-block text-xs mt-2">"Halo".lower() -> "halo"</div>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">in</h3>
+                <p>Cek kata kunci.</p>
+                <div class="code-block text-xs mt-2">"lapar" in "aku lapar banget" -> True</div>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">.strip()</h3>
+                <p>Hapus spasi gak penting.</p>
+                <div class="code-block text-xs mt-2">" hai ".strip() -> "hai"</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 122: The Logic - Keyword Matching -->
+    <div class="slide bg-white" data-note="Logika dasar chatbot.">
+        <h2 class="text-4xl font-bold mb-6">Keyword Matching</h2>
+        <p class="text-xl mb-6">Bot gak perlu ngerti grammar, cukup cari <strong>KATA KUNCI</strong>.</p>
+
+        <div class="code-block text-xl">
+            pesan = input("Kamu: ").lower()<br>
+            <br>
+            if "halo" in pesan or "hai" in pesan:<br>
+            &nbsp;&nbsp;print("Bot: Halo juga!")<br>
+            elif "kabar" in pesan:<br>
+            &nbsp;&nbsp;print("Bot: Saya sehat, saya kan robot.")<br>
+            else:<br>
+            &nbsp;&nbsp;print("Bot: Maaf, saya gak ngerti.")
+        </div>
+    </div>
+
+    <!-- Slide 123: Demo - Random Response -->
+    <div class="slide bg-yellow-400" data-note="Live Coding: Random Choice.">
+        <h2 class="text-6xl font-bold mb-4">👨‍💻 DEMO TIME</h2>
+        <div class="bg-white p-8 border-4 border-black shadow-[10px_10px_0px_black] inline-block max-w-2xl">
+            <h3 class="text-3xl font-bold mb-4">Project: Bot Galau</h3>
+            <p class="text-xl mb-6">Biar gak bosan, jawabannya di-random.</p>
+            <div class="text-left bg-gray-100 p-4 border-2 border-black font-mono text-sm">
+                import random<br>
+                <br>
+                sapaan = ["Hai!", "Halo bro", "Woi", "Apa kabs?"]<br>
+                <br>
+                pesan = input("Kamu: ")<br>
+                if "halo" in pesan:<br>
+                &nbsp;&nbsp;print(random.choice(sapaan))
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 124: Challenge Intro -->
+    <div class="slide bg-white" data-note="Jelaskan tantangan Customer Service Bot.">
+        <h2 class="text-4xl font-bold mb-6">🚀 Your Turn: CS Pizza Bot</h2>
+        <p class="text-xl mb-8">Bikin bot penerima pesanan Pizza otomatis.</p>
+
+        <div class="grid-2">
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Skenario:</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>User bilang "pesan" -> Bot tanya "Mau topping apa?".</li>
+                    <li>User bilang "harga" -> Bot jawab "Satu loyang 50rb".</li>
+                    <li>User bilang "batal" -> Bot jawab "Yah, sedih deh.".</li>
+                    <li>Selain itu -> Bot jawab "Maaf, kami cuma jual Pizza.".</li>
+                </ul>
+            </div>
+            <div class="bg-gray-800 text-white p-6 border-2 border-black font-mono">
+                <h3 class="font-bold text-green-400 mb-4">Tips:</h3>
+                <p>Pakai <code>while True</code> biar ngobrol terus.</p>
+                <p>Pakai <code>break</code> kalau user bilang "bye".</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 125: Coding Time -->
+    <div class="slide bg-geo-2" data-note="Set timer 30 menit.">
+        <h2 class="text-5xl font-bold mb-8">Coding Time!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">30:00</div>
+        <p class="mt-8 text-xl">Coba bikin botnya se-natural mungkin!</p>
+    </div>
+
+    <!-- Slide 126: Showcase -->
+    <div class="slide bg-pink-100" data-note="Showcase hasil codingan siswa.">
+        <h2 class="text-5xl font-bold mb-8">🌟 Showcase Bot</h2>
+        <p class="text-2xl mb-8">Siapa yang bot-nya paling pinter (atau paling lucu)?</p>
+        <div
+            class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full">
+            🤖</div>
+    </div>
+
+    <!-- Slide 127: Recap Meeting 10 -->
+    <div class="slide bg-white" data-note="Review materi hari ini.">
+        <h2 class="text-4xl font-bold mb-6">Recap: Chatbot Logic</h2>
+        <div class="content-box">
+            <ul class="list-disc pl-6 space-y-4 text-lg">
+                <li><strong>String Method</strong>: <code>.lower()</code>, <code>.strip()</code>.</li>
+                <li><strong>Membership Op</strong>: <code>in</code> buat cari kata kunci.</li>
+                <li><strong>Random</strong>: Biar jawaban variatif.</li>
+                <li><strong>Infinite Loop</strong>: Biar bot standby terus.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 128: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Final Project.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: THE FINAL SPRINT</h2>
+        <p class="text-xl mb-8">Minggu depan kita mulai garap <strong>PROYEK AKHIR</strong>.</p>
+        <p class="text-xl">Bebas pilih: Game, Aplikasi Kasir, atau Bot Canggih.</p>
+        <div class="text-center">
+            <div class="text-9xl">🏁</div>
+            <p class="mt-4 font-bold">START YOUR ENGINE</p>
+        </div>
+    </div>
+
+    <!-- MEETING 11: Final Project Sprint -->
+
+    <!-- Slide 129: Cover Meeting 11 -->
+    <div class="slide bg-geo-3 title-slide" id="meet11" data-note="Mulai pertemuan 11. Fokus ke Final Project.">
+        <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full border-2 border-black"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-white transform rotate-45 border-2 border-black"></div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Final Sprint</h1>
+        <h2
+            class="text-2xl mt-4 bg-black text-white px-4 py-2 border-2 border-white inline-block shadow-[4px_4px_0px_white]">
+            Meeting 11: Project Creation</h2>
+        <p class="mt-8 text-xl text-white">Build Your Masterpiece</p>
+    </div>
+
+    <!-- Slide 130: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Motivasi Project Akhir.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">The Final Boss</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Ini adalah puncak dari perjalanan kita selama 11 minggu.</p>
+                <p class="text-lg">Kalian bebas berkreasi membuat aplikasi Python apa saja.</p>
+                <p class="text-lg mt-4 font-bold">Syarat:</p>
+                <ul class="list-disc pl-6">
+                    <li>Minimal 50 baris kode.</li>
+                    <li>Harus ada Input, Loop, dan If-Else.</li>
+                    <li>Harus berguna atau menghibur.</li>
+                </ul>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform -rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Idea Pitching</h3>
+                <p class="text-xl">Dalam 1 menit, tulis ide project kalian di chat.</p>
+                <p class="mt-4 italic">Contoh: "Aplikasi Kasir Warteg", "Game Tebak Angka", "Bot Ramalan Cuaca".</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 131: Project Ideas -->
+    <div class="slide bg-geo-1" data-note="Ide-ide project.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">Choose Your Path</h2>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="bg-white p-6 border-2 border-black hover:bg-yellow-100 transition-colors">
+                <div class="text-4xl mb-4">🎮</div>
+                <h3 class="font-bold text-2xl mb-2">The Game Dev</h3>
+                <p>Bikin game text-based adventure, tebak-tebakan, atau RPG sederhana.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black hover:bg-green-100 transition-colors">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="font-bold text-2xl mb-2">The Analyst</h3>
+                <p>Aplikasi pengolah data, kasir toko, atau pencatat nilai siswa.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black hover:bg-blue-100 transition-colors">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="font-bold text-2xl mb-2">The AI Engineer</h3>
+                <p>Chatbot pintar, generator password, atau konverter satuan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 132: Planning Phase -->
+    <div class="slide bg-white" data-note="Pentingnya perencanaan. Flowchart/Pseudocode.">
+        <h2 class="text-4xl font-bold mb-6">Plan Before You Code</h2>
+        <p class="text-xl mb-6">Jangan langsung ngetik! Coret-coret dulu di kertas.</p>
+
+        <div class="grid-2">
+            <div class="bg-pink-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Checklist Perencanaan:</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Goal:</strong> Aplikasi ini buat apa?</li>
+                    <li><strong>Input:</strong> User harus masukin apa?</li>
+                    <li><strong>Process:</strong> Apa yang dihitung/dicek?</li>
+                    <li><strong>Output:</strong> Apa yang ditampilkan?</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-6 border-2 border-black font-mono text-sm">
+                <h3 class="font-bold mb-4">Contoh Plan (Kasir):</h3>
+                <p>1. Mulai</p>
+                <p>2. Tampilkan menu makanan</p>
+                <p>3. Loop: Tanya pesanan user</p>
+                <p>4. Hitung total harga</p>
+                <p>5. Print struk pembayaran</p>
+                <p>6. Selesai</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 133: Coding Sprint -->
+    <div class="slide bg-geo-2" data-note="Set timer 60 menit (Full Session).">
+        <h2 class="text-5xl font-bold mb-8">Coding Sprint!</h2>
+        <div class="text-9xl font-bold font-mono bg-black p-8 border-4 border-white inline-block">60:00</div>
+        <p class="mt-8 text-xl">Fokus. Jangan nyerah kalau error. Tanya mentor!</p>
+    </div>
+
+    <!-- Slide 134: Troubleshooting Tips -->
+    <div class="slide bg-white" data-note="Tips debugging.">
+        <h2 class="text-4xl font-bold mb-6">Stuck? Don't Panic!</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-red-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Baca Error-nya</h3>
+                <p>Python itu jujur. Dia kasih tau baris berapa yang salah.</p>
+            </div>
+            <div class="bg-blue-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Print Debugging</h3>
+                <p>Tambahkan <code>print(variabel)</code> di tengah kode buat cek isinya.</p>
+            </div>
+            <div class="bg-green-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Google / ChatGPT</h3>
+                <p>Copy pesan error-nya, paste di Google. Solusinya pasti ada.</p>
+            </div>
+            <div class="bg-yellow-100 p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-2">Tanya Teman</h3>
+                <p>Kadang mata orang lain lebih jeli liat typo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 135: Progress Check -->
+    <div class="slide bg-yellow-400" data-note="Cek progress siswa.">
+        <h2 class="text-5xl font-bold mb-8">⏱️ Time's Up for Today!</h2>
+        <p class="text-2xl mb-8">Seberapa jauh progress kalian?</p>
+        <div class="flex justify-center gap-4">
+            <div class="bg-white p-4 border-2 border-black">25% (Baru Ide)</div>
+            <div class="bg-white p-4 border-2 border-black">50% (Setengah Jalan)</div>
+            <div class="bg-white p-4 border-2 border-black">90% (Tinggal Poles)</div>
+        </div>
+        <p class="mt-8 text-xl">Lanjutkan di rumah! Minggu depan kita <strong>SHOWCASE</strong>.</p>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 136: Next Meeting Teaser -->
+    <div class="slide bg-black text-white" data-note="Teaser Showcase Day.">
+        <h2 class="text-4xl font-bold mb-6">Next Week: THE GRAND SHOWCASE</h2>
+        <p class="text-xl mb-8">Siapkan presentasi terbaik kalian.</p>
+        <p class="text-xl">Kita akan lihat siapa yang layak jadi <strong>PYTHON MASTER</strong>.</p>
+        <div class="text-center">
+            <div class="text-9xl">🏆</div>
+            <p class="mt-4 font-bold">DEMO DAY</p>
+        </div>
+    </div>
+
+    <!-- MEETING 12: Showcase Day -->
+
+    <!-- Slide 137: Cover Meeting 12 -->
+    <div class="slide bg-geo-2 title-slide" id="meet12" data-note="Mulai pertemuan 12. Hari Presentasi.">
+        <div class="absolute top-10 right-10 w-20 h-20 bg-white rounded-full border-2 border-black"></div>
+        <div
+            class="absolute bottom-20 left-20 w-32 h-32 bg-green-500 transform rotate-12 border-2 border-black shape-triangle">
+        </div>
+
+        <h1 class="text-6xl font-bold text-center text-white">Demo Day</h1>
+        <h2
+            class="text-2xl mt-4 bg-white text-black px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
+            Meeting 12: The Showcase</h2>
+        <p class="mt-8 text-xl text-white">Show Your Code to the World</p>
+    </div>
+
+    <!-- Slide 138: Intro / Ice Breaking -->
+    <div class="slide bg-white" data-note="Sambutan Demo Day.">
+        <h2 class="text-4xl font-bold mb-6 text-blue-700">Welcome to the Stage</h2>
+        <div class="grid-2 items-center">
+            <div>
+                <p class="text-2xl mb-4">Hari ini bukan tentang benar atau salah.</p>
+                <p class="text-lg">Hari ini tentang <strong>BERANI MENCOBA</strong> dan <strong>BERBAGI
+                        IDE</strong>.</p>
+                <p class="text-lg mt-4">Kalian sudah belajar dari "Hello World" sampai bikin aplikasi utuh. Be
+                    proud!</p>
+            </div>
+            <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] transform rotate-2">
+                <h3 class="text-2xl font-bold mb-4">🧊 Ice Breaking: Tech Check</h3>
+                <p class="text-xl">Sebelum mulai, pastikan:</p>
+                <ul class="list-disc pl-6 mt-2">
+                    <li>Laptop nyala & charger siap.</li>
+                    <li>Kode sudah di-run & tidak error.</li>
+                    <li>Tarik napas dalam-dalam.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 139: Presentation Rules -->
+    <div class="slide bg-geo-3" data-note="Aturan presentasi.">
+        <h2 class="text-4xl font-bold mb-8 text-black bg-white inline-block px-4 py-2">The Rules</h2>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="bg-white p-6 border-2 border-black text-center">
+                <div class="text-6xl mb-4">⏱️</div>
+                <h3 class="font-bold text-2xl mb-2">3 Minutes</h3>
+                <p>Waktu presentasi per orang.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black text-center">
+                <div class="text-6xl mb-4">🎤</div>
+                <h3 class="font-bold text-2xl mb-2">Demo First</h3>
+                <p>Tunjukkan aplikasinya jalan dulu, baru jelaskan kodenya.</p>
+            </div>
+            <div class="bg-white p-6 border-2 border-black text-center">
+                <div class="text-6xl mb-4">👏</div>
+                <h3 class="font-bold text-2xl mb-2">Appreciate</h3>
+                <p>Tepuk tangan buat setiap presenter!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 140: Showcase Session -->
+    <div class="slide bg-white" data-note="Sesi Presentasi.">
+        <h2 class="text-4xl font-bold mb-6">It's Show Time!</h2>
+        <div class="flex flex-col items-center justify-center h-full">
+            <div class="text-9xl mb-8">🚀</div>
+            <p class="text-2xl font-bold">Panggil nama peserta satu per satu.</p>
+            <p class="text-xl mt-4 text-gray-500">(Gunakan slide ini sebagai background saat siswa presentasi)</p>
+        </div>
+    </div>
+
+    <!-- Slide 141: Feedback Session -->
+    <div class="slide bg-blue-100" data-note="Sesi Feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Loop</h2>
+        <p class="text-xl mb-6">Apa yang bisa ditingkatkan?</p>
+
+        <div class="grid-2">
+            <div class="bg-white p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Positive Vibes:</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>"Idenya kreatif banget!"</li>
+                    <li>"Desainnya rapi."</li>
+                    <li>"Logikanya kompleks tapi jalan mulus."</li>
+                </ul>
+            </div>
+            <div class="bg-white p-6 border-2 border-black">
+                <h3 class="font-bold text-xl mb-4">Constructive Input:</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>"Mungkin bisa ditambah fitur save?"</li>
+                    <li>"Coba handle kalau user salah input."</li>
+                    <li>"Warna teksnya bisa lebih kontras."</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 142: Course Recap -->
+    <div class="slide bg-geo-1" data-note="Recap perjalanan 12 pertemuan.">
+        <h2 class="text-4xl font-bold mb-8 text-white bg-black inline-block px-4 py-2">Our Journey</h2>
+        <div class="grid grid-cols-4 gap-4 text-center">
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">🌱</div>
+                <p class="font-bold mt-2">Variables</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">🔀</div>
+                <p class="font-bold mt-2">If-Else</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">🔄</div>
+                <p class="font-bold mt-2">Loops</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">📦</div>
+                <p class="font-bold mt-2">Functions</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">📝</div>
+                <p class="font-bold mt-2">Lists</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">📖</div>
+                <p class="font-bold mt-2">Dictionary</p>
+            </div>
+            <div class="bg-white p-4 border-2 border-black">
+                <div class="text-4xl">💾</div>
+                <p class="font-bold mt-2">Files</p>
+            </div>
+            <div class="bg-yellow-400 p-4 border-2 border-black">
+                <div class="text-4xl">🚀</div>
+                <p class="font-bold mt-2">YOU!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 143: Closing & Certificate -->
+    <div class="slide bg-pink-100" data-note="Penutupan.">
+        <div class="text-center">
+            <h2 class="text-6xl font-bold mb-8">CONGRATULATIONS!</h2>
+            <p class="text-2xl mb-8">You have completed the Python Fundamentals Course.</p>
+            <div
+                class="h-40 w-40 mx-auto bg-white border-2 border-black flex items-center justify-center text-6xl rounded-full shadow-[8px_8px_0px_black]">
+                🎓</div>
+            <p class="mt-8 text-xl">"This is not the end. It's just the beginning of your coding journey."</p>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide bg-white" data-note="Minta siswa isi feedback.">
+        <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
+        <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                    alt="QR Code Feedback" class="w-48 h-48">
+            </div>
+            <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                bit.ly/feedback_benihbaik
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 144: Thank You -->
+    <div class="slide bg-black text-white" data-note="Terima kasih.">
+        <div class="flex flex-col items-center justify-center h-full">
+            <h1 class="text-8xl font-bold text-yellow-400">THANK YOU</h1>
+            <p class="mt-8 text-2xl">Keep Coding, Keep Creating.</p>
+            <div class="mt-12 flex gap-4">
+                <div class="w-16 h-16 bg-blue-500 rounded-full"></div>
+                <div class="w-16 h-16 bg-green-500 rounded-full"></div>
+                <div class="w-16 h-16 bg-pink-500 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+        <button class="btn" onclick="prevSlide()">Previous</button>
+        <select id="meetingSelect" onchange="jumpToMeeting()" class="btn meeting-select" aria-label="Jump to Meeting">
+            <option value="" disabled selected>Jump to Meeting...</option>
+            <option value="meet1">Meeting 1: Hello World</option>
+            <option value="meet2">Meeting 2: Decision Logic</option>
+            <option value="meet3">Meeting 3: Loops</option>
+            <option value="meet4">Meeting 4: Functions</option>
+            <option value="meet5">Meeting 5: Lists</option>
+            <option value="meet6">Meeting 6: Dictionary</option>
+            <option value="meet7">Meeting 7: File Handling</option>
+            <option value="meet8">Meeting 8: Mini Project</option>
+            <option value="meet9">Meeting 9: Financial Tracker</option>
+            <option value="meet10">Meeting 10: Chatbot</option>
+            <option value="meet11">Meeting 11: Final Project</option>
+            <option value="meet12">Meeting 12: Showcase</option>
+        </select>
+        <button class="btn" onclick="nextSlide()">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const slideNumber = document.getElementById('slideNumber');
+        const noteContent = document.getElementById('noteContent');
+
+        function showSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+
+            slides[currentSlide].classList.remove('active');
+            slides[index].classList.add('active');
+            currentSlide = index;
+
+            // Update Progress
+            const progress = ((index + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            slideNumber.innerText = `${index + 1} / ${slides.length}`;
+
+            // Update Notes
+            const note = slides[index].getAttribute('data-note');
+            noteContent.innerText = note ? note : "No notes for this slide.";
+
+            // Auto-hide Jump to Meeting Dropdown
+            const meetingSelect = document.getElementById('meetingSelect');
+            if (slides[index].classList.contains('title-slide')) {
+                meetingSelect.style.display = 'inline-block';
+            } else {
+                meetingSelect.style.display = 'none';
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function jumpToMeeting() {
+            const select = document.getElementById('meetingSelect');
+            const meetingId = select.value;
+            if (meetingId) {
+                const targetSlide = document.getElementById(meetingId);
+                if (targetSlide) {
+                    // Find index of targetSlide
+                    const allSlides = Array.from(document.querySelectorAll('.slide'));
+                    const index = allSlides.indexOf(targetSlide);
+                    if (index !== -1) {
+                        showSlide(index);
+                    }
+                }
+                // Reset select to default
+                select.value = "";
+            }
+        }
+
+        function toggleNotes() {
+            document.getElementById('teacherNotes').classList.toggle('open');
+        }
+
+        // Timer Logic
+        let timerInterval;
+        function startTimer() {
+            let timeLeft = 15 * 60; // 15 minutes
+            const timerDisplay = document.getElementById('timer');
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.innerText = "TIME'S UP!";
+                    // Play sound or alert
+                }
+                timeLeft--;
+            }, 1000);
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+
+</html>
