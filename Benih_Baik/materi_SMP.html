@@ -16,9 +16,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#4A00E0',
-                        secondary: '#8E2DE2',
-                        accent: '#00F260',
+                        primary: '#00A651',
+                        secondary: '#4CC417',
+                        accent: '#FDB913',
                         dark: '#2D3436',
                         light: '#F5F7FA'
                     },
@@ -68,11 +68,13 @@
         .slide {
             display: none;
             height: 100vh;
-            width: 100vw;
+            width: 100%;
             position: relative;
-            padding: 2rem;
+            /* Balanced padding for vertical centering */
+            padding: 80px 2rem 120px 2rem;
             box-sizing: border-box;
             overflow-y: auto;
+            overflow-x: hidden;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -109,7 +111,7 @@
             left: -10%;
             width: 500px;
             height: 500px;
-            background: #4A00E0;
+            background: #00A651;
             border-radius: 50%;
         }
 
@@ -118,7 +120,7 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: #8E2DE2;
+            background: #4CC417;
             border-radius: 50%;
             animation-delay: -5s;
         }
@@ -182,13 +184,13 @@
         }
 
         .input-field:focus {
-            border-color: #4A00E0;
+            border-color: #00A651;
             outline: none;
-            box-shadow: 0 0 0 4px rgba(74, 0, 224, 0.1);
+            box-shadow: 0 0 0 4px rgba(0, 166, 81, 0.1);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
+            background: linear-gradient(135deg, #00A651 0%, #4CC417 100%);
             color: white;
             padding: 1rem 2rem;
             border-radius: 12px;
@@ -202,7 +204,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(74, 0, 224, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 166, 81, 0.3);
         }
 
         /* Navigation */
@@ -228,30 +230,31 @@
             justify-content: center;
             font-size: 1.2rem;
             transition: all 0.2s;
-            color: #4A00E0;
+            color: #00A651;
         }
 
         .nav-btn:hover {
             transform: scale(1.1);
-            background: #4A00E0;
+            background: #00A651;
             color: white;
         }
 
         .slide-indicator {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             font-family: 'Outfit', sans-serif;
             font-weight: 800;
             font-size: 1.5rem;
-            color: #4A00E0;
+            color: #00A651;
             z-index: 100;
         }
 
         /* Meeting Menu */
         .meeting-menu-btn {
             position: fixed;
-            top: 30px;
+            bottom: 30px;
             left: 30px;
             background: white;
             padding: 0.8rem 1.5rem;
@@ -259,7 +262,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             font-weight: 600;
-            color: #4A00E0;
+            color: #00A651;
             z-index: 100;
             transition: all 0.2s;
             display: flex;
@@ -274,7 +277,7 @@
 
         .meeting-dropdown {
             position: fixed;
-            top: 90px;
+            bottom: 90px;
             left: 30px;
             background: white;
             border-radius: 16px;
@@ -289,13 +292,13 @@
 
         .meeting-dropdown.show {
             display: block;
-            animation: fadeInDown 0.3s ease;
+            animation: fadeInUp 0.3s ease;
         }
 
-        @keyframes fadeInDown {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(10px);
             }
 
             to {
@@ -318,11 +321,11 @@
 
         .meeting-item:hover {
             background: #F5F7FA;
-            color: #4A00E0;
+            color: #00A651;
         }
 
         .meeting-item.active {
-            background: #4A00E0;
+            background: #00A651;
             color: white;
         }
 
@@ -338,7 +341,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
+            background: linear-gradient(135deg, #00A651 0%, #4CC417 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -355,7 +358,7 @@
 
         .tag-blue {
             background: #E0E7FF;
-            color: #4A00E0;
+            color: #00A651;
         }
 
         .tag-pink {
@@ -412,6 +415,17 @@
         .block-events {
             background: #FFBF00;
         }
+
+        .logo-benihbaik {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            z-index: 1000;
+            height: auto;
+            object-fit: contain;
+            /* filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2)); Removed shadow */
+        }
     </style>
 </head>
 
@@ -422,13 +436,27 @@
     <div class="bg-shape shape-2"></div>
     <div class="bg-shape shape-3"></div>
 
+    <!-- Timeout Overlay -->
+    <div id="timeoutOverlay"
+        class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="glass-card p-12 text-center max-w-2xl animate-bounce">
+            <div class="text-8xl mb-6">⏰</div>
+            <h2 class="text-5xl font-bold text-red-500 mb-4">Waktu Habis!</h2>
+            <p class="text-2xl text-gray-700 mb-8">Jangan sedih, kita lanjut belajar materi yuk! 🚀</p>
+            <button onclick="closeTimeoutOverlay()"
+                class="btn-primary text-2xl px-12 py-4 shadow-xl hover:scale-110 transition">
+                Lanjut Materi ➡️
+            </button>
+        </div>
+    </div>
+
     <!-- Welcome Overlay -->
     <div id="welcomeOverlay">
         <div class="overlay-content">
             <div class="mb-8">
-                <div
-                    class="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg">
-                    <span class="text-4xl">🐱</span>
+                <div class="w-32 h-32 mx-auto flex items-center justify-center mb-4">
+                    <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png"
+                        alt="Benih Baik Logo" class="w-full h-full object-contain">
                 </div>
                 <h1 class="text-4xl font-bold mb-2 text-dark">Selamat Datang!</h1>
                 <p class="text-gray-500">Scratch Programming Class (SMP)</p>
@@ -515,6 +543,9 @@
         </div>
     </div>
 
+    <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" alt="Benih Baik"
+        class="logo-benihbaik">
+
     <!-- Navigation Controls -->
     <button class="meeting-menu-btn" onclick="toggleMenu()">
         <span>☰</span> Daftar Pertemuan
@@ -555,11 +586,11 @@
     <div class="slide active" id="meet1-1">
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-blue mb-4">PERTEMUAN 1</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Selamat Datang di<br>Dunia Koding!</h1>
-            <p class="text-2xl text-gray-600 mb-8">Pelatihan Koding Siswa/i SMP</p>
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Selamat Datang di<br>Dunia Digital!</h1>
+            <p class="text-2xl text-gray-600 mb-8">Kita akan Belajar tentang Koding! 🚀✨</p>
             <div class="flex justify-center gap-4">
                 <span class="text-4xl animate-bounce">🐱</span>
-                <span class="text-4xl animate-bounce delay-100">✨</span>
+                <span class="text-4xl animate-bounce delay-100">💻</span>
             </div>
         </div>
     </div>
@@ -569,20 +600,47 @@
         <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Kita Hari Ini!</h2>
         <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
             <div class="glass-card p-6 text-center hover:scale-105 transition">
-                <div class="text-5xl mb-4">👋</div>
-                <p class="text-xl font-bold">Perkenalan & Pemanasan</p>
+                <div class="text-5xl mb-4">🪞</div>
+                <p class="text-xl font-bold">Cermin Digital</p>
             </div>
             <div class="glass-card p-6 text-center hover:scale-105 transition">
-                <div class="text-5xl mb-4">📝</div>
-                <p class="text-xl font-bold">Pre-test Singkat</p>
+                <div class="text-5xl mb-4">🖥️</div>
+                <p class="text-xl font-bold">Tur Studio Scratch</p>
             </div>
             <div class="glass-card p-6 text-center hover:scale-105 transition">
-                <div class="text-5xl mb-4">💻</div>
-                <p class="text-xl font-bold">Mengenal Scratch</p>
+                <div class="text-5xl mb-4">⌨️</div>
+                <p class="text-xl font-bold">Kode Gerak & Suara</p>
             </div>
             <div class="glass-card p-6 text-center hover:scale-105 transition">
-                <div class="text-5xl mb-4">🎨</div>
-                <p class="text-xl font-bold">Kreasi Pertama</p>
+                <div class="text-5xl mb-4">🎤</div>
+                <p class="text-xl font-bold">Tebak Suara</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 1.2b: Pre-Test -->
+    <div class="slide" id="meet1-pretest">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Pre-Test: Scratch Programming</h2>
+            <p class="text-xl mb-8">Kerjakan dengan jujur ya! Waktu 10 Menit.</p>
+
+            <div class="flex justify-center gap-12 items-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bit.ly/pre-smp-benihbaik"
+                        alt="QR Code Pre-test" class="w-64 h-64">
+                    <p class="mt-4 text-xl font-bold text-gray-800">Scan Me!</p>
+                    <a href="https://bit.ly/pre-smp-benihbaik" target="_blank"
+                        class="text-lg text-blue-600 hover:underline">bit.ly/pre-smp-benihbaik</a>
+                </div>
+
+                <div class="glass-card p-8 w-80 border-2 border-primary/20">
+                    <div class="text-6xl font-bold mb-6 font-mono text-primary" id="preTestTimer">10:00</div>
+                    <div class="flex gap-4 justify-center">
+                        <button onclick="startPreTestTimer()" class="btn-primary">START</button>
+                        <button onclick="resetPreTestTimer()"
+                            class="bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 transition shadow-lg hover:-translate-y-1">RESET</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -590,257 +648,434 @@
     <!-- Slide 1.3: Ice Breaking -->
     <div class="slide" id="meet1-3">
         <div class="glass-card p-10 max-w-5xl w-full text-center">
-            <h1 class="text-5xl font-bold mb-6 text-primary">Pemanasan: Resep Rahasia! 🍜</h1>
-            <p class="text-2xl mb-8">Sebutkan 3 langkah terpenting untuk membuat mi instan terenak versimu!</p>
+            <h1 class="text-5xl font-bold mb-6 text-primary">Ice Breaking: Cermin Digital 🪞</h1>
+            <p class="text-2xl mb-8">Tirukan gerakan Kakak Guru secepat mungkin!</p>
             <div class="flex justify-center gap-8">
                 <div class="bg-white/50 p-6 rounded-xl">
-                    <div class="text-4xl mb-2">🎤</div>
-                    <p>Jawab Langsung</p>
-                </div>
-                <div class="bg-white/50 p-6 rounded-xl">
-                    <div class="text-4xl mb-2">💬</div>
-                    <p>Tulis di Chat</p>
+                    <div class="text-6xl mb-4">🗿</div>
+                    <p class="text-xl font-bold">Jangan Telat!</p>
+                    <p>Yang telat harus joget sedikit! 💃</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 1.4: Algoritma -->
+    <!-- Slide 1.4: Materi Inti - Intro Concept -->
     <div class="slide" id="meet1-4">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Itu Namanya... <span class="gradient-text">Algoritma!</span></h2>
-            <p class="text-xl leading-relaxed">
-                Urutan langkah-langkah yang baru saja kalian tulis itu adalah sebuah <strong>ALGORITMA</strong>.
-                <br><br>
-                Algoritma adalah seperti resep: urutan perintah yang jelas untuk menyelesaikan suatu tugas.
-            </p>
+            <h2 class="text-4xl font-bold mb-6">Apa itu <span class="gradient-text">Koding?</span></h2>
+            <p class="text-xl mb-8">Koding adalah cara kita memberi perintah ke komputer.</p>
+            <div class="bg-blue-50 p-6 rounded-xl inline-block text-left">
+                <p class="text-lg mb-4">Kita akan belajar <strong>Block Coding</strong>:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Seperti menyusun Lego 🧱</li>
+                    <li>Warna-warni dan seru 🎨</li>
+                    <li>Tidak perlu ketik kode rumit ⌨️</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 1.5: Pre-test -->
+    <!-- Slide 1.5: Project Preview -->
     <div class="slide" id="meet1-5">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Cek Ombak Dulu: Pre-test</h2>
-            <p class="text-xl mb-8">Yuk, kerjakan beberapa soal logika singkat. Santai saja!</p>
-            <div class="flex flex-col items-center gap-6">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/pretest_smp_dms"
-                    alt="QR Code" class="rounded-xl shadow-lg">
-                <div class="bg-white/50 p-4 rounded-xl">
-                    <p class="font-mono text-xl">bit.ly/pretest_smp_dms</p>
-                </div>
-                <div class="text-6xl font-bold text-primary font-mono">10:00</div>
+            <h2 class="text-4xl font-bold mb-6">Misi Hari Ini!</h2>
+            <p class="text-xl mb-8">Kita akan membuat proyek seperti ini:</p>
+            <div class="flex justify-center">
+                <iframe src="https://scratch.mit.edu/projects/1248927344/embed" allowtransparency="true" width="485"
+                    height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Slide 1.6: Koding itu Apa -->
+    <!-- Slide 1.6: Materi Inti - Interface -->
     <div class="slide" id="meet1-6">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-5xl font-bold mb-8 gradient-text">Menurut Kalian...<br>Koding itu Apa Sih?</h1>
-            <div class="text-8xl animate-pulse">🤔 💬</div>
-        </div>
-    </div>
-
-    <!-- Slide 1.7: Penjelasan Koding -->
-    <div class="slide" id="meet1-7">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Koding itu... <span class="gradient-text">Memberi Perintah!</span></h2>
-            <p class="text-xl mb-8">Koding itu seperti kita memberi perintah pada komputer. Komputer itu pintar, tapi
-                dia tidak akan melakukan apa-apa kalau tidak kita suruh.</p>
-            <img src="https://camo.githubusercontent.com/5046cb083418fd1922b7f5990e594c3bb06f5d87e5516cd8839ae0aa48b3aec4/68747470733a2f2f696d616765732e73717561726573706163652d63646e2e636f6d2f636f6e74656e742f76312f3537363966633430316236333162616231616464623261622f313534313538303631313632342d5445363451474b524a4738535741495553374e532f6b6531375a77644742546f6464493870446d34386b506f73776c7a6a53564d4d2d53784f703743563539425a772d7a505067646e346a557756634a45315a7657515578776b6d794578676c4e714770304976544a5a616d574c49327a76595748384b332d735f3479737a63703272795449304871544f6161556f68724938504936465879386339505774426c7141566c555335697a7064634958445a71445976707252715a32395077306f2f636f64696e672d667265616b2e676966"
-                alt="Coding GIF" class="rounded-xl mx-auto max-h-[300px]">
-        </div>
-    </div>
-
-    <!-- Slide 1.8: Hubungan -->
-    <div class="slide" id="meet1-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Hubungannya dengan Koding?</h2>
-            <p class="text-xl leading-relaxed">
-                <strong>Koding</strong> adalah cara kita "berbicara" dengan komputer. Kita memberikan
-                <strong>Algoritma</strong> (resep) yang kita buat agar komputer bisa melakukan apa yang kita mau!
-            </p>
-        </div>
-    </div>
-
-    <!-- Slide 1.9: Contoh Nyata -->
-    <div class="slide" id="meet1-9">
-        <h2 class="text-4xl font-bold mb-8 text-center">Koding Ada di Mana-mana!</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6 text-center">
-                <h4 class="text-xl font-bold">🎮 Game di HP</h4>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <h4 class="text-xl font-bold">📺 Video YouTube</h4>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <h4 class="text-xl font-bold">🚦 Lampu Lalu Lintas</h4>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <h4 class="text-xl font-bold">🤖 Robot Pabrik</h4>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 1.10: Manfaat -->
-    <div class="slide" id="meet1-10">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-5xl font-bold mb-6 gradient-text">Kenapa Belajar Koding?</h1>
-            <p class="text-2xl leading-relaxed">
-                Biar kita jadi <strong>pemecah masalah</strong> yang hebat, lebih <strong>kreatif</strong>, dan siap
-                jadi <strong>pencipta teknologi</strong> di masa depan!
-            </p>
-        </div>
-    </div>
-
-    <!-- Slide 1.11: Masuk Scratch -->
-    <div class="slide" id="meet1-11">
-        <h2 class="text-4xl font-bold mb-8 text-center">Ayo Masuk ke <span class="gradient-text">Scratch!</span></h2>
-        <div class="glass-card p-8 max-w-5xl w-full flex items-center gap-8">
-            <div class="flex-1 text-left">
-                <ol class="list-decimal pl-6 space-y-4 text-xl">
-                    <li>Buka Google, ketik <strong>"scratch"</strong>.</li>
-                    <li>Klik <strong>"Sign in"</strong> di pojok kanan atas.</li>
-                    <li>Masukkan <strong>username</strong> & <strong>password</strong> dari Kakak Guru!</li>
-                </ol>
-            </div>
-            <div class="flex-1">
-                <img src="https://i.imgur.com/MJfCQcJ.gif" alt="Login Scratch" class="rounded-xl shadow-lg w-full">
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 1.12: Intro Scratch -->
-    <div class="slide" id="meet1-12">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Alat Kita: <span class="gradient-text">Scratch!</span></h2>
-            <p class="text-xl mb-8">Scratch adalah cara seru memberi perintah ke komputer pakai balok warna-warni,
-                seperti main lego!</p>
-            <img src="https://2018media.idtech.com/2021-04/welcome-to-scratch.gif?450843d4cd" alt="Scratch Blocks"
-                class="rounded-xl mx-auto max-h-[300px]">
-        </div>
-    </div>
-
-    <!-- Slide 1.13: Tur Dunia -->
-    <div class="slide" id="meet1-13">
-        <h2 class="text-4xl font-bold mb-8 text-center">Tur Dunia Scratch!</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center">Tur Antarmuka Scratch</h2>
         <div class="glass-card p-4 max-w-5xl w-full">
             <img src="https://i0.wp.com/teachingforward.net/wp-content/uploads/2018/10/interface-overview.png?resize=620%2C379&ssl=1"
                 alt="Interface" class="rounded-xl w-full">
+            <div class="flex justify-center gap-4 mt-4">
+                <span class="tag tag-blue">Stage (Panggung)</span>
+                <span class="tag tag-green">Sprite (Aktor)</span>
+                <span class="tag tag-pink">Code Area (Tempat Kode)</span>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 1.14: PBL 1 -->
+    <!-- Slide 1.7: Motion - Move -->
+    <div class="slide" id="meet1-7">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Kode 1: Move (Gerak)</h2>
+            <p class="text-xl mb-6">Perintah untuk maju ke depan.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://scratch.oneoffcoder.com/_images/00-move_10_steps.png" alt="Move Block" class="h-16">
+            </div>
+            <div class="flex justify-center">
+                <img src="https://images2.imgbox.com/12/fe/Bsk3hnmL_o.gif" alt="Animasi Move"
+                    class="rounded-xl shadow-md">
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 1.8: Motion - Go To -->
+    <div class="slide" id="meet1-8">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Kode 2: Go To (Pergi Ke)</h2>
+            <p class="text-xl mb-6">Teleportasi instan ke posisi tertentu!</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://d1ng1bucl7w66k.cloudfront.net/ghost-blog/2022/04/Screen-Shot-2022-04-19-at-9.48.59-AM.png"
+                    alt="Go To Block" class="h-36 rounded-lg shadow-sm">
+            </div>
+            <div class="flex justify-center mb-8">
+                <img src="" alt="" class="h-16 rounded-lg shadow-sm">
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 1.9: Motion - Glide -->
+    <div class="slide" id="meet1-9">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Kode 3: Glide (Meluncur)</h2>
+            <p class="text-xl mb-6">Bergerak halus ke posisi tertentu.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://scratch.oneoffcoder.com/_images/08-glide-1-sec-to-x-y.png" alt="Glide Block"
+                    class="h-16 rounded-lg shadow-sm">
+            </div>
+            <div class="flex justify-center mb-8">
+                <img src="" alt="" class="h-16 rounded-lg shadow-sm">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Slide 1.10: Intro: Misi Animasi Ayam Kabur -->
+    <div class="slide" id="meet1-10">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <span class="tag tag-purple mb-4">MISI BARU</span>
+            <h2 class="text-4xl font-bold mb-6">Misi: Animasi Ayam Kabur</h2>
+            <p class="text-xl mb-6">Kita akan membuat Ayam yang berlari dan meluncur!</p>
+            <div class="flex justify-center mb-8">
+                <div class="text-8xl animate-bounce">🐔💨</div>
+            </div>
+            <p class="text-lg text-gray-600">Siap untuk tantangan pertama?</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.11: Tutorial Step 1 -->
+    <div class="slide" id="meet1-11">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-green-500">Langkah 1: Siapkan Sprite</h2>
+            <p class="text-xl mb-6">Tarik Spritemu ke posisi awal di Panggung.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/drag-chick-sprite.gif" alt="Drag Sprite"
+                    class="h-64 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Lihat nilai X dan Y berubah di panel Sprite!</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.12: Tutorial Step 2 -->
+    <div class="slide" id="meet1-12">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Langkah 2: Mulai & Posisi</h2>
+            <p class="text-xl mb-6">Tambahkan blok "When this sprite clicked" dan "Go to x: y:".</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-motion-block-1024x483.jpg"
+                    alt="Add Event and Motion Blocks" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Blok "Go to" otomatis mengikuti posisi spritemu saat ini.</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.13: Tutorial Step 3 -->
+    <div class="slide" id="meet1-13">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-orange-500">Langkah 3: Tunggu Sebentar</h2>
+            <p class="text-xl mb-6">Tambahkan blok "Wait 1 seconds" dari menu Control.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-wait-block-1024x486.jpg"
+                    alt="Add Wait Block" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Beri jeda sebelum bergerak lagi.</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.14: Tutorial Step 4 -->
     <div class="slide" id="meet1-14">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 1: Pilih Jagoanmu!</h2>
-            <p class="text-xl mb-6">Hapus sprite kucing, lalu klik <strong>'Choose a Sprite'</strong>.</p>
-            <img src="https://jakemiller.net/wp-content/uploads/2019/10/Scratch-Choose-a-Sprite.gif" alt="Choose Sprite"
-                class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Langkah 4: Meluncur!</h2>
+            <p class="text-xl mb-6">Pindahkan Sprite ke tujuan akhir, lalu tambah blok "Glide".</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-glide-block-1024x478.jpg"
+                    alt="Add Glide Block" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Blok Glide akan otomatis terisi koordinat tujuan baru.</p>
         </div>
     </div>
 
-    <!-- Slide 1.15: PBL 1.5 -->
+    <!-- Slide 1.15: Tutorial Step 5 -->
     <div class="slide" id="meet1-15">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Atau... Gambar Sendiri!</h2>
-            <p class="text-xl mb-6">Pilih ikon <strong>kuas (Paint)</strong> untuk menggambar karaktermu.</p>
-            <img src="https://i.imgur.com/3Id337n.gif" alt="Paint Sprite" class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 5: Uji Coba</h2>
+            <p class="text-xl mb-6">Klik Spritemu dan lihat hasilnya!</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/full-code-run.gif" alt="Test Code"
+                    class="h-64 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Hore! Spritemu bisa bergerak sendiri!</p>
         </div>
     </div>
 
-    <!-- Slide 1.16: PBL 1.75 -->
+    <!-- Slide 1.16: Motion - Turn -->
     <div class="slide" id="meet1-16">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Level Up: Unggah dari Internet!</h2>
-            <p class="text-xl mb-6">Cari gambar .PNG (tanpa background) dan gunakan <strong>'Upload Sprite'</strong>.
-            </p>
-            <img src="https://i.imgur.com/pXrIeXo.gif" alt="Upload Sprite" class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Kode 4: Turn (Putar)</h2>
+            <p class="text-xl mb-6">Memutar karakter searah/berlawanan jarum jam.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://scratch.oneoffcoder.com/_images/01-turn-right-15-degrees.png" alt="Turn Block"
+                    class="h-16 rounded-lg shadow-sm">
+            </div>
+            <div class="flex justify-center mb-8">
+                <img src="" alt="" class="h-16 rounded-lg shadow-sm">
+            </div>
         </div>
     </div>
 
-    <!-- Slide 1.17: Challenge -->
+    <!-- Slide 1.17: Motion - Point in Direction -->
     <div class="slide" id="meet1-17">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">CHALLENGE</span>
-            <h2 class="text-4xl font-bold mb-6">Jagoan Bergerak!</h2>
-            <p class="text-xl mb-6">Unggah GIF dan gunakan blok <strong>Next Costume</strong>.</p>
-            <img src="https://i.imgur.com/sWDV42r.gif" alt="Upload GIF" class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-blue-500">Kode 5: Point in Direction (Arah)</h2>
+            <p class="text-xl mb-6">Menghadap ke arah tertentu (90=Kanan, -90=Kiri).</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://scratch.oneoffcoder.com/_images/09-point-in-direction-90.png"
+                    alt="Point in Direction Block" class="h-16 rounded-lg shadow-sm">
+            </div>
+            <div class="flex justify-center mb-8">
+                <img src="" alt="" class="h-16 rounded-lg shadow-sm">
+            </div>
         </div>
     </div>
 
-    <!-- Slide 1.18: PBL 2 -->
+    <!-- Slide 1.18: Materi Inti - Looks -->
     <div class="slide" id="meet1-18">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 2: Pilih Lokasi!</h2>
-            <p class="text-xl mb-6">Klik <strong>'Choose a Backdrop'</strong> untuk memilih latar.</p>
-            <img src="https://www.robotique.tech/wp-content/uploads/2022/09/choose_background.png" alt="Choose Backdrop"
-                class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Kode 6: Tampilan (Looks)</h2>
+            <p class="text-xl mb-6">Biar lebih seru, Kucing bisa bicara dan bergaya!</p>
+            <div class="flex flex-col items-center gap-4 mb-8">
+                <img src="https://scratch.oneoffcoder.com/_images/10-say-halo-for-2-seconds.png" alt="Say Block"
+                    class="h-16 rounded-lg shadow-sm">
+                <span class="scratch-block block-looks text-xl p-4">Say [Halo!] for (2) seconds</span>
+                <span class="scratch-block block-looks text-xl p-4">Next Costume</span>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 1.19: PBL 3 -->
+    <!-- Slide 1.19: Intro: Misi Percakapan Sederhana -->
     <div class="slide" id="meet1-19">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 3: Buat Dia Bergerak!</h2>
-            <p class="text-xl mb-6">Gabungkan <span class="scratch-block block-events">When 🚩 Clicked</span> dan <span
-                    class="scratch-block block-motion">Move 10 Steps</span>.</p>
-            <img src="https://images.squarespace-cdn.com/content/v1/5b70f5020dbda38777f77d8e/1621878312788-7MXQLHBWHZ1136DK1JCQ/scratch.gif"
-                alt="Move Block" class="rounded-xl mx-auto max-h-[300px]">
+            <span class="tag tag-purple mb-4">MISI BARU</span>
+            <h2 class="text-4xl font-bold mb-6">Misi: Percakapan Sederhana</h2>
+            <p class="text-xl mb-6">Kita akan membuat Beruang yang bisa menyapa!</p>
+            <div class="flex justify-center mb-8">
+                <div class="text-8xl animate-bounce">🐻💬</div>
+            </div>
+            <p class="text-lg text-gray-600">Siap untuk tantangan kedua?</p>
         </div>
     </div>
 
-    <!-- Slide 1.20: PBL 4 -->
+    <!-- Slide 1.20: Tutorial Step 1 -->
     <div class="slide" id="meet1-20">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 4: Animasi Berjalan!</h2>
-            <p class="text-xl mb-6">Gunakan <span class="scratch-block block-control">Forever</span> dan <span
-                    class="scratch-block block-looks">Next Costume</span>.</p>
-            <img src="https://i.imgur.com/PMqnz0w.gif" alt="Animation" class="rounded-xl mx-auto max-h-[300px]">
+            <h2 class="text-4xl font-bold mb-6 text-green-500">Langkah 1: Siapkan Aktor</h2>
+            <p class="text-xl mb-6">Pilih Sprite (Aktor) dan Backdrop (Latar) yang kamu suka.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-bear-sprite.jpg"
+                    alt="Add Sprite and Backdrop" class="h-64 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Contoh: Beruang di Hutan.</p>
         </div>
     </div>
 
-    <!-- Slide 1.21: Refleksi -->
+    <!-- Slide 1.21: Tutorial Step 2 -->
     <div class="slide" id="meet1-21">
-        <h2 class="text-4xl font-bold mb-8 text-center">Apa yang Kita Pelajari?</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Algoritma</h4>
-                <p>Urutan langkah (Resep).</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-yellow-500">Langkah 2: Mulai Kode</h2>
+            <p class="text-xl mb-6">Tarik blok "When Green Flag Clicked" dari menu Events.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-events-flag-1024x539.jpg"
+                    alt="Add Event Block" class="h-52 rounded-lg shadow-md">
             </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Koding</h4>
-                <p>Memberi perintah ke komputer.</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Scratch</h4>
-                <p>Area bermain kita.</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Kreasi</h4>
-                <p>Sprite & Backdrop custom.</p>
-            </div>
+            <p class="text-lg text-gray-600">Setiap kode harus dimulai dengan blok Event!</p>
         </div>
     </div>
 
-    <!-- Slide 1.22: Feedback -->
+    <!-- Slide 1.22: Tutorial Step 3 -->
     <div class="slide" id="meet1-22">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
-            <p class="text-xl mb-6">Bagaimana kelas hari ini?</p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_class_dms"
-                alt="Feedback QR" class="rounded-xl shadow-lg mx-auto">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 3: Katakan Halo</h2>
+            <p class="text-xl mb-6">Tarik blok "Say Hello for 2 seconds" dari menu Looks.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/scratch-say-hello-1024x500.jpg"
+                    alt="Add Say Block" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Tempelkan di bawah blok Event.</p>
         </div>
     </div>
 
-    <!-- Slide 1.23: Penutup -->
+    <!-- Slide 1.23: Tutorial Step 4 -->
     <div class="slide" id="meet1-23">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">LEVEL 1 SELESAI! 🏆</h1>
-            <p class="text-2xl mb-8">Selamat, Programmer Cilik!</p>
-            <p class="text-xl text-gray-600">Sampai jumpa minggu depan!</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 4: Ubah Teks</h2>
+            <p class="text-xl mb-6">Klik teks "Hello" dan ganti dengan kata-katamu sendiri!</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/hello-friends-block-1024x496.jpg"
+                    alt="Customize Text" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Kamu juga bisa ubah durasi waktunya.</p>
         </div>
     </div>
+
+    <!-- Slide 1.24: Tutorial Step 5 -->
+    <div class="slide" id="meet1-24">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 5: Tambah Percakapan</h2>
+            <p class="text-xl mb-6">Tambahkan blok "Say" lagi untuk membuat cerita.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/say-looks-block-1024x501.jpg"
+                    alt="Add More Speech" class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Sprite akan bicara berurutan!</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.25: Intro: Misi Animasi Kostum -->
+    <div class="slide" id="meet1-25">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <span class="tag tag-purple mb-4">MISI BARU</span>
+            <h2 class="text-4xl font-bold mb-6">Misi: Animasi Kostum</h2>
+            <p class="text-xl mb-6">Kita akan membuat Naga yang bisa menyemburkan api!</p>
+            <div class="flex justify-center mb-8">
+                <div class="text-8xl animate-bounce">🐲🔥</div>
+            </div>
+            <p class="text-lg text-gray-600">Siap untuk tantangan berikutnya?</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.26: Tutorial Step 1 -->
+    <div class="slide" id="meet1-26">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-green-500">Langkah 1: Pilih Aktor</h2>
+            <p class="text-xl mb-6">Pilih Sprite yang punya banyak kostum (contoh: Dragon).</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/dragon-gif-1024x562.gif" alt="Choose Sprite"
+                    class="h-64 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Cek tab "Costumes" untuk melihat gayanya.</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.27: Tutorial Step 2 -->
+    <div class="slide" id="meet1-27">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-yellow-500">Langkah 2: Mulai Kode</h2>
+            <p class="text-xl mb-6">Tarik blok "When this sprite clicked" dari menu Events.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/dragon5-1024x524.jpg" alt="Start Code"
+                    class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Kita akan buat dia berubah saat diklik!</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.28: Tutorial Step 3 -->
+    <div class="slide" id="meet1-28">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 3: Ganti Kostum</h2>
+            <p class="text-xl mb-6">Tarik blok "Switch costume to..." dan pilih kostum api.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/deragon6-1024x523.jpg" alt="Switch Costume"
+                    class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Naga siap menyemburkan api!</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.29: Tutorial Step 4 -->
+    <div class="slide" id="meet1-29">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-orange-500">Langkah 4: Tunggu Sebentar</h2>
+            <p class="text-xl mb-6">Tambahkan blok "Wait 1 seconds" (ubah jadi 0.3 detik).</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/dragon7-1024x521-1.jpg" alt="Wait Block"
+                    class="h-52 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Biar gerakannya terlihat lebih nyata.</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.30: Tutorial Step 5 -->
+    <div class="slide" id="meet1-30">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-purple-500">Langkah 5: Kembali Semula</h2>
+            <p class="text-xl mb-6">Ganti kostum lagi ke awal setelah menunggu.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://pinnguaq.com/wp-content/uploads/2020/06/dragon-costume-2-1024x526-1.jpg"
+                    alt="Switch Back" class="h-96 rounded-lg shadow-md">
+            </div>
+            <p class="text-lg text-gray-600">Klik Naganya dan lihat dia beraksi!</p>
+        </div>
+    </div>
+
+    <!-- Slide 1.31: Review -->
+    <div class="slide" id="meet1-31">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Show Time! 🌟</h2>
+            <p class="text-xl mb-8">Siapa yang berani maju ke depan kamera dan tunjukkan hasilnya?</p>
+            <div class="text-8xl animate-pulse">🙋‍♂️🙋‍♀️</div>
+        </div>
+    </div>
+
+    <!-- Slide 1.32: Ice Breaking Akhir -->
+    <div class="slide" id="meet1-32">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Tebak Suara! 👂</h2>
+            <p class="text-xl mb-6">Kakak akan matikan kamera (atau tutup mulut).</p>
+            <p class="text-2xl font-bold text-primary">Dengarkan baik-baik dan tebak suara apa itu!</p>
+            <div class="mt-8 text-6xl">❓🔊</div>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet1-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 1.33: Penutup -->
+    <div class="slide" id="meet1-33">
+        <div class="glass-card p-12 text-center max-w-4xl w-full">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">LEVEL 1 SELESAI! 🏆</h1>
+            <p class="text-2xl mb-8">Kalian sudah resmi jadi Santri Koding Pemula!</p>
+            <p class="text-xl text-gray-600">Sampai jumpa minggu depan para santri!</p>
+        </div>
+    </div>
+
+
 
     <!-- MEETING 2: Sequence & Coordinates -->
 
@@ -1149,12 +1384,22 @@
         </div>
     </div>
 
-    <!-- Slide 2.21: Feedback -->
-    <div class="slide" id="meet2-21">
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet2-feedback">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_class_dms"
-                alt="Feedback QR" class="rounded-xl shadow-lg mx-auto">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1480,12 +1725,22 @@
         </div>
     </div>
 
-    <!-- Slide 3.22: Feedback -->
-    <div class="slide" id="meet3-22">
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet3-feedback">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_class_dms"
-                alt="Feedback QR" class="rounded-xl shadow-lg mx-auto">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1540,7 +1795,7 @@
             <h2 class="text-4xl font-bold mb-6 text-orange-500">Konsep: VARIABEL</h2>
             <p class="text-xl mb-6">Variabel itu seperti <strong>"Kotak Ajaib"</strong> untuk menyimpan data.</p>
             <img src="https://projects-static.raspberrypi.org/projects/generic-scratch3-add-variable/fe41b1befc5554cb94b3065355de11bbc1f29984/en/images/data-blocks.png"
-                alt="Variable" class="h-48 mx-auto rounded-lg shadow-md">
+                alt="Variable" class="h-52 mx-auto rounded-lg shadow-md">
         </div>
     </div>
 
@@ -1847,12 +2102,22 @@
         </div>
     </div>
 
-    <!-- Slide 4.28: Feedback -->
-    <div class="slide" id="meet4-28">
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet4-feedback">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_class_dms"
-                alt="Feedback QR" class="rounded-xl shadow-lg mx-auto">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1919,6 +2184,24 @@
                     <p><strong>Atas:</strong> Change Y by 10</p>
                     <p><strong>Bawah:</strong> Change Y by -10</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet5-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
             </div>
         </div>
     </div>
@@ -2136,7 +2419,7 @@
             <p class="text-xl mb-6">Jangan lupa SHARE project-mu dulu!</p>
             <div class="bg-white p-4 rounded-xl inline-block">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/kumpul_tugas_dms"
-                    alt="QR Code" class="w-48 h-48">
+                    alt="QR Code" class="w-48 h-52">
                 <p class="mt-2 font-mono text-lg">bit.ly/kumpul_tugas_dms</p>
             </div>
         </div>
@@ -2356,6 +2639,24 @@
                     <p class="font-bold">Platformer</p>
                     <p class="text-sm">Petualangan Mario-style.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet10-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
             </div>
         </div>
     </div>
@@ -2658,6 +2959,24 @@
         </div>
     </div>
 
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet6-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Slide 6.24: Penutup -->
     <div class="slide" id="meet6-24">
         <div class="glass-card p-12 text-center max-w-4xl w-full">
@@ -2705,6 +3024,24 @@
             <span class="tag tag-green">MISI KETUJUH</span>
             <h2 class="text-4xl font-bold mb-6">Hindari Batu! 🪨</h2>
             <p class="text-xl mb-8">Lanjutkan game Apel. Tambahkan Batu yang jatuh. Kalau kena Batu, GAME OVER.</p>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet7-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
         </div>
     </div>
 
@@ -3063,6 +3400,24 @@
         </div>
     </div>
 
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet11-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Slide 11.21: Closing -->
     <div class="slide" id="meet11-21">
         <div class="glass-card p-12 text-center max-w-4xl w-full">
@@ -3359,6 +3714,24 @@
         <div class="glass-card p-12 text-center max-w-4xl w-full">
             <h1 class="text-5xl font-bold mb-8 gradient-text">"Coding is a Superpower."</h1>
             <p class="text-2xl text-gray-600">Gunakan kekuatanmu untuk membuat dunia lebih baik.</p>
+        </div>
+    </div>
+
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet12-old-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
         </div>
     </div>
 
@@ -3723,6 +4096,24 @@
         </div>
     </div>
 
+    <!-- Feedback Slide -->
+    <div class="slide" id="meet8-feedback">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+            <div class="flex flex-col items-center gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                        alt="QR Code Feedback" class="w-48 h-48">
+                </div>
+                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                    bit.ly/feedback_benihbaik
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Slide 8.25: Penutup -->
     <div class="slide" id="meet8-25">
         <div class="glass-card p-12 text-center max-w-4xl w-full">
@@ -4083,6 +4474,24 @@
                 </div>
             </div>
 
+            <!-- Feedback Slide -->
+            <div class="slide" id="meet9-feedback">
+                <div class="glass-card p-10 max-w-4xl w-full text-center">
+                    <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+                    <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="bg-white p-4 rounded-xl shadow-lg">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                                alt="QR Code Feedback" class="w-48 h-48">
+                        </div>
+                        <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                            class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                            bit.ly/feedback_benihbaik
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Slide 9.24: Penutup -->
             <div class="slide" id="meet9-24">
                 <div class="glass-card p-12 text-center max-w-4xl w-full">
@@ -4184,6 +4593,24 @@
                         <li>Ceritakan <strong>Bagian Tersulit</strong> saat membuatnya.</li>
                         <li><strong>Demo</strong> mainkan sebentar!</li>
                     </ol>
+                </div>
+            </div>
+
+            <!-- Slide 12.3: Feedback -->
+            <div class="slide" id="meet12-3-feedback">
+                <div class="glass-card p-10 max-w-4xl w-full text-center">
+                    <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+                    <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="bg-white p-4 rounded-xl shadow-lg">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
+                                alt="QR Code Feedback" class="w-48 h-48">
+                        </div>
+                        <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
+                            class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
+                            bit.ly/feedback_benihbaik
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -4305,6 +4732,54 @@
                 });
 
                 init();
+
+                // Pre-Test Timer Logic
+                let preTestInterval;
+
+                function updateTimerDisplay(timeLeft) {
+                    const timerDisplay = document.getElementById('preTestTimer');
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    timerDisplay.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+
+                function startPreTestTimer() {
+                    let timeLeft = 10 * 60; // 10 minutes
+                    // let timeLeft = 5; // Debugging
+
+                    // Clear any existing timer to prevent double speed
+                    clearInterval(preTestInterval);
+
+                    // Immediate update
+                    updateTimerDisplay(timeLeft);
+
+                    preTestInterval = setInterval(() => {
+                        timeLeft--;
+                        updateTimerDisplay(timeLeft);
+
+                        if (timeLeft <= 0) {
+                            clearInterval(preTestInterval);
+                            document.getElementById('preTestTimer').innerText = "0:00";
+                            showTimeoutOverlay();
+                        }
+                    }, 1000);
+                }
+
+                function resetPreTestTimer() {
+                    clearInterval(preTestInterval);
+                    document.getElementById('preTestTimer').innerText = "10:00";
+                }
+
+                function showTimeoutOverlay() {
+                    const overlay = document.getElementById('timeoutOverlay');
+                    overlay.classList.remove('hidden');
+                }
+
+                function closeTimeoutOverlay() {
+                    const overlay = document.getElementById('timeoutOverlay');
+                    overlay.classList.add('hidden');
+                    nextSlide(); // Optional: Auto advance
+                }
 
             </script>
 </body>
