@@ -233,20 +233,17 @@
         }
 
         /* Custom Utilities for Inline Styles */
-        .logo-ruangguru {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            z-index: 1000;
-        }
+
 
         .logo-benihbaik {
             position: fixed;
             top: 20px;
-            left: 100px;
+            left: 20px;
             width: 120px;
             z-index: 1000;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
         }
 
         .meeting-select {
@@ -255,9 +252,197 @@
             cursor: pointer;
         }
     </style>
+    <style>
+        /* Welcome Overlay Styles - Creative Studio Theme */
+        #welcomeOverlay {
+            position: fixed;
+            inset: 0;
+            background-color: var(--color-cream);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease-in-out;
+            color: var(--color-black);
+            font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(var(--color-black) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .logo-spin {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+
+        @keyframes bounce-slow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .delay-500ms {
+            animation-delay: 0.5s;
+        }
+
+        .overlay-card {
+            background: white;
+            border: 4px solid var(--color-black);
+            box-shadow: 12px 12px 0px var(--color-black);
+            padding: 3rem;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .overlay-input {
+            width: 100%;
+            padding: 1rem;
+            border: 3px solid var(--color-black);
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            color: var(--color-black);
+        }
+
+        .overlay-input:focus {
+            outline: none;
+            background: #f0f0f0;
+            box-shadow: 4px 4px 0px var(--color-yellow);
+        }
+
+        .overlay-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-blue);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 3px solid var(--color-black);
+            box-shadow: 6px 6px 0px var(--color-black);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .overlay-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px var(--color-black);
+            background: var(--color-green);
+        }
+
+        .overlay-btn:active {
+            transform: translate(0, 0);
+            box-shadow: 0px 0px 0px var(--color-black);
+        }
+
+        .meeting-grid-btn {
+            background: white;
+            border: 3px solid var(--color-black);
+            box-shadow: 6px 6px 0px var(--color-black);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .meeting-grid-btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px var(--color-black);
+            background: var(--color-yellow);
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay">
+        <div class="overlay-card fade-in">
+            <!-- Logo with Bounce Animation -->
+            <div class="relative w-48 h-48 mx-auto mb-8">
+                <div class="absolute inset-0 bg-yellow-400 rounded-full blur-xl opacity-50"></div>
+                <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" alt="Benih Baik Logo"
+                    class="w-full h-full object-contain logo-spin relative z-10">
+            </div>
+
+            <!-- Initial Loading / Welcome Text -->
+            <div id="welcomeMessage" class="space-y-4 fade-in delay-500ms text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-black mb-2"
+                    style="font-family: 'Playfair Display', serif;">
+                    Selamat Datang!
+                </h1>
+                <p class="text-xl text-gray-600 font-bold">di Kelas Python Fundamentals (SMA)</p>
+            </div>
+
+            <!-- Teacher Input Section -->
+            <div id="teacherInputSection" class="hidden fade-in mt-8 w-full">
+                <label for="teacherName" class="block text-lg font-bold mb-2 text-left">Nama Kakak Pengajar</label>
+                <input type="text" id="teacherName" class="overlay-input" placeholder="Masukkan nama kakak...">
+                <button onclick="saveTeacherName()" class="overlay-btn">
+                    Lanjut 🚀
+                </button>
+            </div>
+
+            <!-- Welcome Back Section -->
+            <div id="welcomeBackSection" class="hidden fade-in mt-8 text-center">
+                <p class="text-2xl mb-6">Halo, Kak <span id="displayTeacherName"
+                        class="text-blue-600 font-bold bg-yellow-200 px-2 border-2 border-black"></span>! 👋</p>
+                <button onclick="showMeetingSelection()" class="overlay-btn">
+                    Pilih Pertemuan ➡️
+                </button>
+                <button onclick="resetTeacher()"
+                    class="block mx-auto mt-4 text-sm text-gray-500 hover:text-black underline font-bold">
+                    Bukan saya? Ganti nama
+                </button>
+            </div>
+
+            <!-- Meeting Selection Section -->
+            <div id="meetingSelectionSection" class="hidden fade-in mt-8 w-full">
+                <h2 class="text-2xl font-bold mb-6 text-center" style="font-family: 'Playfair Display', serif;">Pilih
+                    Pertemuan Hari Ini 📅</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[40vh] overflow-y-auto p-2" id="meetingGrid">
+                    <!-- Buttons will be generated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeout Overlay -->
+    <div id="timeoutOverlay" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80">
+        <div
+            class="bg-yellow-400 p-12 text-center max-w-2xl border-4 border-black shadow-[16px_16px_0px_white] transform rotate-2">
+            <div class="text-8xl mb-6 animate-pulse">⚠️</div>
+            <h2 class="text-6xl font-black text-black mb-4 uppercase">WAKTU HABIS!</h2>
+            <p class="text-3xl font-bold text-black mb-8 bg-white inline-block px-4 py-2 border-2 border-black">Lanjut
+                Materi Yuk! ⏩</p>
+            <br>
+            <button onclick="closeTimeoutOverlay()"
+                class="bg-red-600 text-white text-4xl font-black px-12 py-6 border-4 border-black shadow-[8px_8px_0px_black] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                GAS! 🚀
+            </button>
+        </div>
+    </div>
 
     <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" alt="Benih Baik"
         class="logo-benihbaik">
@@ -285,6 +470,34 @@
         <h2 class="text-2xl mt-4 bg-yellow-400 px-4 py-2 border-2 border-black inline-block shadow-[4px_4px_0px_black]">
             Meeting 1: Hello World & The Variables</h2>
         <p class="mt-8 text-xl">Modul Ajar SMA - Hybrid Learning</p>
+    </div>
+
+    <!-- Slide 1.5: Pre-Test -->
+    <div class="slide bg-white" data-note="Pre-test time! 10 minutes.">
+        <div class="text-center">
+            <h2 class="text-5xl font-bold mb-6 text-blue-700">Pre-Test: Python Fundamentals</h2>
+            <p class="text-2xl mb-8">Kerjakan dengan jujur ya! Waktu 10 Menit.</p>
+
+            <div class="flex justify-center gap-12 items-center">
+                <div class="bg-white p-4 border-2 border-black shadow-[8px_8px_0px_black]">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://bit.ly/pre-smk-benihbaik"
+                        alt="QR Code Pre-test" class="w-64 h-64">
+                    <p class="mt-4 text-xl font-bold">Scan Me!</p>
+                    <a href="https://bit.ly/pre-smk-benihbaik" target="_blank"
+                        class="text-lg text-blue-600 underline">bit.ly/pre-smk-benihbaik</a>
+                </div>
+
+                <div class="bg-yellow-100 p-8 border-2 border-black shadow-[8px_8px_0px_black] w-80">
+                    <div class="text-6xl font-bold mb-6 font-mono" id="preTestTimer">10:00</div>
+                    <div class="flex gap-4 justify-center">
+                        <button onclick="startPreTestTimer()"
+                            class="bg-green-500 text-white px-6 py-3 border-2 border-black font-bold hover:bg-green-600 transition">START</button>
+                        <button onclick="resetPreTestTimer()"
+                            class="bg-red-500 text-white px-6 py-3 border-2 border-black font-bold hover:bg-red-600 transition">RESET</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Slide 2: Intro / Ice Breaking -->
@@ -622,6 +835,7 @@
         <p class="mt-8 text-xl font-bold">Tulis jawaban yang benar di Chat Box!</p>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -629,10 +843,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -699,7 +913,7 @@
             <div class="bg-white p-4 border-2 border-black rounded-lg w-64 text-center font-bold">START</div>
             <div class="text-4xl">⬇️</div>
             <div
-                class="bg-yellow-400 p-4 border-2 border-black transform rotate-45 w-48 h-48 flex items-center justify-center">
+                class="bg-yellow-400 p-4 border-2 border-black transform rotate-45 w-24 h-24 flex items-center justify-center">
                 <div class="transform -rotate-45 text-center font-bold">
                     Hujan?
                 </div>
@@ -931,6 +1145,7 @@
         <p class="mt-8 text-xl font-bold">Yuk lanjutin di kolom chat!</p>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -938,10 +1153,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -1200,6 +1415,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -1207,10 +1423,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -1275,7 +1491,7 @@
                 <div class="bg-white p-4 border-2 border-black w-32 text-center">Input (Bahan)</div>
                 <div class="text-4xl">➡️</div>
                 <div
-                    class="bg-yellow-400 p-8 border-2 border-black w-48 h-48 flex items-center justify-center rounded-full shadow-[8px_8px_0px_black]">
+                    class="bg-yellow-400 p-8 border-2 border-black w-24 h-24 flex items-center justify-center rounded-full shadow-[8px_8px_0px_black]">
                     <div class="text-center font-bold">
                         MESIN<br>(Function)
                     </div>
@@ -1450,6 +1666,7 @@
         <p class="mt-12 text-xl">Next Phase: DATA STRUCTURES (List, Dictionary, Files)</p>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -1457,10 +1674,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -1707,6 +1924,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -1714,10 +1932,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -1964,6 +2182,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -1971,10 +2190,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -2185,6 +2404,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -2192,10 +2412,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -2360,6 +2580,7 @@
         <p class="mt-12 text-xl">Next Phase: REAL WORLD APPS (Financial Tracker, Chatbot)</p>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -2367,10 +2588,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -2542,6 +2763,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -2549,10 +2771,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -2713,6 +2935,7 @@
         </div>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -2720,10 +2943,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -2867,6 +3090,7 @@
         <p class="mt-8 text-xl">Lanjutkan di rumah! Minggu depan kita <strong>SHOWCASE</strong>.</p>
     </div>
 
+
     <!-- Feedback Slide -->
     <div class="slide bg-white" data-note="Minta siswa isi feedback.">
         <h2 class="text-4xl font-bold mb-6">Feedback Time!</h2>
@@ -2874,10 +3098,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -3048,10 +3272,10 @@
         <div class="flex flex-col items-center gap-6">
             <div class="bg-white p-4 border-4 border-black shadow-[8px_8px_0px_black]">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                    alt="QR Code Feedback" class="w-48 h-48">
+                    alt="QR Code Feedback" class="w-24 h-24">
             </div>
             <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                class="text-2xl font-bold text-blue-600 hover:underline bg-yellow-200 px-4 py-2 border-2 border-black">
+                class="text-lg font-bold text-blue-600 hover:underline bg-yellow-200 px-2 py-1 border-2 border-black">
                 bit.ly/feedback_benihbaik
             </a>
         </div>
@@ -3092,6 +3316,101 @@
     </div>
 
     <script>
+        // --- Welcome Overlay Logic ---
+        function checkTeacherName() {
+            const teacher = localStorage.getItem("teacherName_SMA"); // Unique key for SMA
+            const teacherInputSection = document.getElementById('teacherInputSection');
+            const welcomeBackSection = document.getElementById('welcomeBackSection');
+            const displayTeacherName = document.getElementById('displayTeacherName');
+
+            if (teacher && teacher !== "") {
+                teacherInputSection.classList.add('hidden');
+                welcomeBackSection.classList.remove('hidden');
+                displayTeacherName.innerText = teacher;
+            } else {
+                teacherInputSection.classList.remove('hidden');
+                welcomeBackSection.classList.add('hidden');
+            }
+        }
+
+        function saveTeacherName() {
+            const nameInput = document.getElementById('teacherName').value;
+            if (nameInput.trim() !== "") {
+                localStorage.setItem("teacherName_SMA", nameInput);
+                showMeetingSelection();
+            } else {
+                alert("Mohon masukkan nama kakak pengajar dulu ya! 😊");
+            }
+        }
+
+        function resetTeacher() {
+            localStorage.removeItem("teacherName_SMA");
+            document.getElementById('teacherName').value = "";
+            checkTeacherName();
+        }
+
+        function showMeetingSelection() {
+            document.getElementById('teacherInputSection').classList.add('hidden');
+            document.getElementById('welcomeBackSection').classList.add('hidden');
+            document.getElementById('welcomeMessage').classList.add('hidden');
+
+            const selectionSection = document.getElementById('meetingSelectionSection');
+            selectionSection.classList.remove('hidden');
+
+            const container = document.getElementById('meetingGrid');
+            container.innerHTML = '';
+
+            // Generate buttons from existing Select Options
+            const selectOptions = document.querySelectorAll('#meetingSelect option');
+
+            selectOptions.forEach(option => {
+                if (option.value === "") return; // Skip default option
+
+                const btn = document.createElement('button');
+                const meetingId = option.value;
+                const meetingLabel = option.text; // e.g., "Meeting 1: Hello World"
+
+                // Extract Meeting Number and Title
+                // Format: "Meeting X: Title"
+                const parts = meetingLabel.split(':');
+                const mainTitle = parts[0].trim(); // "Meeting 1"
+                const subTitle = parts.length > 1 ? parts[1].trim() : "";
+
+                btn.className = `meeting-grid-btn`;
+
+                btn.innerHTML = `
+                    <span class="text-xl font-bold">${mainTitle}</span>
+                    <span class="text-xs text-center text-gray-600">${subTitle}</span>
+                `;
+
+                btn.onclick = () => selectMeeting(meetingId);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectMeeting(meetingId) {
+            // Hide Overlay
+            const overlay = document.getElementById('welcomeOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000);
+
+            // Jump to Meeting
+            const targetSlide = document.getElementById(meetingId);
+            if (targetSlide) {
+                const allSlides = Array.from(document.querySelectorAll('.slide'));
+                const index = allSlides.indexOf(targetSlide);
+                if (index !== -1) {
+                    showSlide(index);
+                }
+            }
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', checkTeacherName);
+
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const progressBar = document.getElementById('progressBar');
@@ -3173,6 +3492,51 @@
                 }
                 timeLeft--;
             }, 1000);
+        }
+
+        // Pre-Test Timer Logic
+        let preTestInterval;
+
+        function updateTimerDisplay(timeLeft) {
+            const timerDisplay = document.getElementById('preTestTimer');
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function startPreTestTimer() {
+            let timeLeft = 10 * 60; // 10 minutes
+            // let timeLeft = 5; // Debugging
+
+            clearInterval(preTestInterval);
+            updateTimerDisplay(timeLeft);
+
+            preTestInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timeLeft);
+
+                if (timeLeft <= 0) {
+                    clearInterval(preTestInterval);
+                    document.getElementById('preTestTimer').innerText = "0:00";
+                    showTimeoutOverlay();
+                }
+            }, 1000);
+        }
+
+        function resetPreTestTimer() {
+            clearInterval(preTestInterval);
+            document.getElementById('preTestTimer').innerText = "10:00";
+        }
+
+        function showTimeoutOverlay() {
+            const overlay = document.getElementById('timeoutOverlay');
+            overlay.classList.remove('hidden');
+        }
+
+        function closeTimeoutOverlay() {
+            const overlay = document.getElementById('timeoutOverlay');
+            overlay.classList.add('hidden');
+            nextSlide(); // Optional: Auto advance
         }
 
         // Keyboard Navigation
