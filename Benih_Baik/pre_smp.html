@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Test Scratch Programming (SMP)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A651',
+                        secondary: '#4CC417',
+                        accent: '#FDB913',
+                        dark: '#2D3436',
+                        light: '#F5F7FA'
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2D3436;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00A651 0%, #4CC417 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 166, 81, 0.2);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            background: #ccc;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px solid #eee;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-field:focus {
+            border-color: #00A651;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 166, 81, 0.1);
+        }
+
+        /* Radio Button Styling */
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-label:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"]:checked+.option-content {
+            color: #00A651;
+            font-weight: bold;
+        }
+
+        input[type="radio"]:checked+div {
+            border-color: #00A651;
+            background: #E8F5E9;
+        }
+
+        /* Selected state for the label container */
+        .option-label:has(input[type="radio"]:checked) {
+            border-color: #00A651;
+            background: #E8F5E9;
+            box-shadow: 0 4px 12px rgba(0, 166, 81, 0.1);
+        }
+
+        /* Background Shapes */
+        .bg-shape {
+            position: fixed;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: #00A651;
+            border-radius: 50%;
+        }
+
+        .shape-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: #4CC417;
+            border-radius: 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <!-- Logos -->
+    <div class="fixed top-5 left-5 z-50 flex gap-4">
+        <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" class="h-10 md:h-12">
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-3xl mx-auto mt-16 mb-10 relative">
+
+        <!-- HEADER -->
+        <div class="glass-card p-8 mb-8 text-center">
+            <h1 class="text-4xl font-bold text-primary mb-2">Pre-Test: Scratch Programming</h1>
+            <p class="text-xl text-gray-600">Jenjang SMP</p>
+        </div>
+
+        <!-- SECTION 1: LOGIN -->
+        <div id="section-login" class="glass-card p-8">
+            <h2 class="text-2xl font-bold mb-6 border-b pb-4">Identitas Diri</h2>
+
+            <div class="mb-6">
+                <label class="block text-lg font-bold mb-2">Pilih Nama Kamu</label>
+
+                <div id="loading-indicator" class="text-gray-500 animate-pulse flex items-center gap-2 mb-4">
+                    <svg class="animate-spin h-5 w-5 text-primary" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    Mencari data siswa SMP...
+                </div>
+
+                <div id="error-display"
+                    class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"></div>
+
+                <select id="select-nama" class="input-field hidden">
+                    <option value="" disabled selected>-- Pilih Nama --</option>
+                </select>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="fetchNames()" id="btn-retry"
+                    class="hidden w-1/3 bg-gray-500 text-white p-4 rounded-xl font-bold hover:bg-gray-600 transition">Coba
+                    Lagi</button>
+                <button onclick="startQuiz()" id="btn-start" class="btn-primary text-xl" disabled>MULAI UJIAN</button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: QUIZ -->
+        <form id="quizForm" class="hidden space-y-8">
+            <!-- Sticky Header -->
+            <div
+                class="glass-card p-4 flex justify-between items-center sticky top-4 z-40 bg-white/80 backdrop-blur-md">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Peserta:</span>
+                    <div id="display-nama" class="text-lg font-bold text-primary truncate">...</div>
+                </div>
+                <button type="button" onclick="resetIdentity()"
+                    class="text-sm text-red-500 hover:text-red-700 font-semibold">Ganti Nama</button>
+            </div>
+
+            <div id="questions-container" class="space-y-6">
+                <!-- Questions will be injected here -->
+            </div>
+
+            <div class="glass-card p-8 text-center">
+                <button type="submit" id="submitBtn" class="btn-primary text-xl py-4">KIRIM JAWABAN</button>
+            </div>
+        </form>
+
+        <!-- SECTION 3: SUCCESS -->
+        <div id="successMessage" class="hidden glass-card p-12 text-center">
+            <div class="text-6xl mb-6">🎉</div>
+            <h2 class="text-3xl font-bold text-primary mb-4">Jawaban Terkirim!</h2>
+            <p class="text-xl text-gray-600 mb-8">Terima kasih sudah mengerjakan Pre-Test.</p>
+            <p class="text-lg">Silakan lapor ke kakak pengajar ya!</p>
+            <div class="mt-8 p-4 bg-green-100 rounded-xl inline-block">
+                <p class="font-bold text-green-800">Semangat Belajarnya! 🚀</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- CONFIG ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7V_UfNUA6wkDPVNvfbOjeOXBGRUgEMVtw8GDEOVQbpczLwp2ADFH5Yefyb_epc_-B/exec';
+
+        // --- DATA SOAL ---
+        const questions = [
+            {
+                q: "Area utama tempat karakter (Sprite) bergerak dan berinteraksi dalam tampilan proyek Scratch disebut...",
+                o: ['Backdrop', 'Script Area', 'Stage (Panggung)'],
+                a: 'C'
+            },
+            {
+                q: "Untuk membuat sebuah karakter kucing berjalan ke kanan sejauh 10 langkah di Scratch, blok perintah manakah yang paling tepat digunakan?",
+                o: [
+                    '<img src="https://scratch.oneoffcoder.com/_images/01-turn-right-15-degrees.png" alt="turn right" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/00-move_10_steps.png" alt="move 10 steps" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/05-go-to-x-y.png" alt="go to xy" class="h-10 inline">'
+                ],
+                a: 'B'
+            },
+            {
+                q: 'Jika Anda ingin sebuah karakter mengucapkan "Halo!" selama 2 detik, blok perintah manakah yang akan Anda pilih dari kategori Looks?',
+                o: [
+                    '<img src="https://scratch.oneoffcoder.com/_images/01-say-hello-for-2-seconds.png" alt="say hello" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/03-think-hmm-for-2-seconds.png" alt="think hmm" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/05-switch-costume-to-costume1.png" alt="switch costume" class="h-10 inline">'
+                ],
+                a: 'A'
+            },
+            {
+                q: "Perintah yang berfungsi sebagai pemicu untuk memulai seluruh rangkaian program saat bendera hijau diklik adalah...",
+                o: [
+                    '<img src="https://scratch.oneoffcoder.com/_images/06-when-sprite-clicked.png" alt="when sprite clicked" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/07-when-backdrop-switches.png" alt="when backdrop switches" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/00-when-green-flag-clicked.png" alt="when green flag clicked" class="h-10 inline">'
+                ],
+                a: 'C'
+            },
+            {
+                q: "Untuk membuat sebuah aksi (misalnya, musik) berulang terus-menerus tanpa henti, blok kontrol yang paling efisien untuk digunakan adalah...",
+                o: [
+                    '<img src="https://scratch.oneoffcoder.com/_images/01-repeat.png" alt="repeat" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/02-forever.png" alt="forever" class="h-10 inline">',
+                    '<img src="https://scratch.oneoffcoder.com/_images/00-wait.png" alt="wait" class="h-10 inline">'
+                ],
+                a: 'B'
+            },
+            {
+                q: 'Blok perintah <img src="https://scratch.oneoffcoder.com/_images/03-if.png" alt="if then block" class="h-8 inline align-middle"> digunakan untuk...',
+                o: [
+                    'Menjalankan sebuah aksi hanya jika sebuah kondisi tertentu terpenuhi.',
+                    'Mengulang sebuah aksi sebanyak jumlah yang ditentukan.',
+                    'Memberhentikan semua skrip yang sedang berjalan.'
+                ],
+                a: 'A'
+            },
+            {
+                q: "Seorang guru membuat kuis di Scratch. Setiap kali siswa menjawab benar, skornya bertambah 5. Untuk menyimpan nilai skor yang bisa berubah-ubah ini, fitur yang paling tepat digunakan adalah...",
+                o: ['Broadcast', 'Variable', 'Custom Block'],
+                a: 'B'
+            },
+            {
+                q: "Blok dari kategori manakah yang digunakan untuk mendeteksi apakah mouse sedang ditekan atau sebuah karakter menyentuh karakter lain?",
+                o: ['Motion', 'Sensing', 'Sound'],
+                a: 'B'
+            },
+            {
+                q: "Dalam merancang sebuah kuis pilihan ganda di Scratch, logika apa yang paling mendasar untuk memeriksa jawaban siswa?",
+                o: [
+                    'Jika jawaban siswa = kunci jawaban, maka skor bertambah.',
+                    'Selalu tambahkan skor setiap kali siswa menjawab.',
+                    'Ulangi pertanyaan sebanyak 10 kali.'
+                ],
+                a: 'A'
+            },
+            {
+                q: "Menurutmu, apa itu 'Coding' atau 'Pemrograman'?",
+                o: [
+                    'Cara berbicara dengan komputer untuk memberinya perintah.',
+                    'Cara memperbaiki komputer yang rusak.',
+                    'Cara bermain game di internet.'
+                ],
+                a: 'A'
+            }
+        ];
+
+        // --- LOGIC ---
+
+        // Render Questions
+        const container = document.getElementById('questions-container');
+        questions.forEach((item, index) => {
+            const qNum = index + 1;
+            const html = `
+                <div class="glass-card p-6">
+                    <p class="font-bold text-lg mb-4 text-dark">${qNum}. ${item.q}</p>
+                    <div class="space-y-3">
+                        ${item.o.map((opt, i) => {
+                const val = String.fromCharCode(65 + i); // A, B, C
+                return `
+                            <label class="option-label group">
+                                <input type="radio" name="q${qNum}" value="${val}" class="hidden peer">
+                                <div class="w-8 h-8 rounded-full border-2 border-gray-300 flex items-center justify-center mr-4 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all">
+                                    ${val}
+                                </div>
+                                <span class="option-content text-lg group-hover:text-primary transition-colors">${opt}</span>
+                            </label>
+                            `;
+            }).join('')}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+
+        // Fetch Names
+        function fetchNames() {
+            const select = document.getElementById('select-nama');
+            const loading = document.getElementById('loading-indicator');
+            const errorDisplay = document.getElementById('error-display');
+            const btnRetry = document.getElementById('btn-retry');
+
+            loading.classList.remove('hidden');
+            select.classList.add('hidden');
+            errorDisplay.classList.add('hidden');
+            btnRetry.classList.add('hidden');
+
+            console.log("Fetching names from:", SCRIPT_URL + '?action=getSmpParticipants');
+
+            fetch(SCRIPT_URL + '?action=getSmpParticipants')
+                .then(response => response.json())
+                .then(response => {
+                    console.log("Response:", response);
+                    if (response.status === 'success') {
+                        populateSelect(response.data);
+                    } else {
+                        showError(response.message || "Gagal memuat data");
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch Error:", error);
+                    showError("Gagal koneksi: " + error.message);
+                });
+        }
+
+        function populateSelect(names) {
+            const select = document.getElementById('select-nama');
+            const loading = document.getElementById('loading-indicator');
+            const btnStart = document.getElementById('btn-start');
+
+            loading.classList.add('hidden');
+            select.innerHTML = '<option value="" disabled selected>-- Pilih Nama --</option>';
+
+            if (!names || names.length === 0) {
+                select.innerHTML = '<option disabled>Data kosong</option>';
+                select.classList.remove('hidden');
+                return;
+            }
+
+            names.forEach(name => {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.innerText = name;
+                select.appendChild(opt);
+            });
+
+            select.classList.remove('hidden');
+
+            // Enable start button only when name is selected
+            select.addEventListener('change', function () {
+                if (this.value) {
+                    btnStart.disabled = false;
+                }
+            });
+        }
+
+        function showError(msg) {
+            const loading = document.getElementById('loading-indicator');
+            const errorDisplay = document.getElementById('error-display');
+            const btnRetry = document.getElementById('btn-retry');
+
+            loading.classList.add('hidden');
+            errorDisplay.innerText = msg;
+            errorDisplay.classList.remove('hidden');
+            btnRetry.classList.remove('hidden');
+        }
+
+        function startQuiz() {
+            const nama = document.getElementById('select-nama').value;
+            if (!nama) return;
+
+            localStorage.setItem('peserta_smp', nama);
+            document.getElementById('display-nama').innerText = nama;
+
+            document.getElementById('section-login').classList.add('hidden');
+            document.getElementById('quizForm').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function resetIdentity() {
+            if (confirm("Ganti nama peserta? Jawaban akan hilang.")) {
+                localStorage.removeItem('peserta_smp');
+                location.reload();
+            }
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('peserta_smp');
+            if (savedName) {
+                // Auto-login if session exists
+                document.getElementById('display-nama').innerText = savedName;
+                document.getElementById('select-nama').innerHTML = `<option value="${savedName}" selected>${savedName}</option>`; // Hack for form submission
+                document.getElementById('section-login').classList.add('hidden');
+                document.getElementById('quizForm').classList.remove('hidden');
+            } else {
+                fetchNames();
+            }
+        });
+
+        // Form Submission
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            btn.disabled = true;
+            btn.innerText = "MENGIRIM...";
+
+            // Calculate Score
+            let score = 0;
+            const formData = new FormData(this);
+            const data = {};
+
+            // Get Name (either from select or localstorage if reloaded)
+            data.nama_peserta = localStorage.getItem('peserta_smp');
+
+            questions.forEach((q, i) => {
+                const key = `q${i + 1}`;
+                const answer = formData.get(key);
+                data[key] = answer;
+
+                if (answer === q.a) {
+                    score += 10; // 10 points per question
+                }
+            });
+
+            data.score = score;
+            data.action = 'submitQuizSmp'; // Tell GAS what to do if using a single endpoint
+
+            console.log("Submitting:", data);
+
+            // Use fetch with text/plain to avoid CORS preflight issues with simple requests
+            // or if the server supports it, JSON. 
+            // For GAS Web Apps, often text/plain is safer for CORS if not strictly configured.
+            // Converting to JSON string manually.
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+                // Note: Content-Type header is intentionally omitted to let the browser detect or default
+                // to text/plain to avoid CORS preflight complex checks which GAS might not handle well 
+                // without specific setup. But standard practice is to try sending it.
+                // However, the safest way for GAS is often 'no-cors' mode or simple POST.
+                // Let's try standard POST. If user has 'doPost(e)' it will receive the body.
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 'success') {
+                        showSuccess();
+                        localStorage.removeItem('peserta_smp'); // Clear session after success
+                    } else {
+                        alert("Gagal menyimpan: " + (response.message || "Unknown error"));
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    }
+                })
+                .catch(error => {
+                    console.error("Submission Error:", error);
+                    alert("Error server: " + error.message);
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                });
+        });
+
+        function showSuccess() {
+            document.getElementById('quizForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+    </script>
+</body>
+
+</html>
