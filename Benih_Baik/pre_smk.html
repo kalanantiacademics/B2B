@@ -352,39 +352,22 @@ for i in range(3):
     </div>
 
     <script>
-        // MOCK DATA UTILS (AGAR TIDAK ERROR DI PREVIEW)
-        if (typeof google === 'undefined') {
-            console.warn("Running in local/preview mode. Using mock google.script.run.");
-            window.google = {
-                script: {
-                    run: {
-                        withSuccessHandler: function (success) {
-                            return {
-                                withFailureHandler: function (failure) {
-                                    return {
-                                        getSmaParticipants: function () {
-                                            console.log("Mock: Fetching participants...");
-                                            setTimeout(() => {
-                                                success({
-                                                    status: 'success',
-                                                    data: ["Ahmad (Test)", "Budi (Test)", "Citra (Test) - PREVIEW ONLY"]
-                                                });
-                                            }, 1000);
-                                        },
-                                        submitQuiz: function (data) {
-                                            console.log("Mock: Submitting data...", data);
-                                            setTimeout(() => {
-                                                success({ status: 'success' });
-                                            }, 1500);
-                                        }
-                                    };
-                                }
-                            };
-                        }
-                    }
-                }
-            };
-        }
+        // CONFIG
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMHEKDQnBOOeyLq0ow8-cc7erEf-ctBJSFaSAnzkWSCtaOv8cmeRhILBXmly3-5IkinQ/exec';
+
+        // Answer Keys
+        const CORRECT_ANSWERS = {
+            q1: 'print',
+            q2: 'x = 5',
+            q3: 'String',
+            q4: 'String',
+            q5: 'Benar',
+            q6: '0, 1, 2, 3, 4',
+            q7: 'buah[1]',
+            q8: 'Dictionary',
+            q9: 'Boolean',
+            q10: '3 kali'
+        };
 
         // --- MAIN LOGIC ---
         document.addEventListener('DOMContentLoaded', function () {
@@ -405,32 +388,36 @@ for i in range(3):
             select.classList.add('hidden');
             retryBtn.classList.add('hidden');
 
-            google.script.run
-                .withSuccessHandler(function (response) {
+            fetch(SCRIPT_URL + '?action=getSmkParticipants')
+                .then(response => response.json())
+                .then(response => {
                     loading.classList.add('hidden');
-                    if (response.status === 'error') {
-                        errorBox.innerText = response.message;
-                        errorBox.classList.remove('hidden');
-                        retryBtn.classList.remove('hidden');
-                    } else {
+                    if (response.status === 'success') {
                         select.classList.remove('hidden');
                         select.innerHTML = '<option value="" disabled selected>-- Pilih Nama --</option>';
-                        response.data.forEach(name => {
-                            const opt = document.createElement('option');
-                            opt.value = name;
-                            opt.innerText = name;
-                            select.appendChild(opt);
-                        });
-                        select.addEventListener('change', function () { if (this.value) document.getElementById('btn-start').disabled = false; });
+                        if (response.data && response.data.length > 0) {
+                            response.data.forEach(name => {
+                                const opt = document.createElement('option');
+                                opt.value = name;
+                                opt.innerText = name;
+                                select.appendChild(opt);
+                            });
+                            select.addEventListener('change', function () { if (this.value) document.getElementById('btn-start').disabled = false; });
+                        } else {
+                            errorBox.innerText = "Data siswa SMK kosong.";
+                            errorBox.classList.remove('hidden');
+                        }
+                    } else {
+                        throw new Error(response.message || 'Gagal memuat');
                     }
                 })
-                .withFailureHandler(function (err) {
+                .catch(err => {
+                    console.error(err);
                     loading.classList.add('hidden');
-                    errorBox.innerText = "Gagal koneksi: " + err;
+                    errorBox.innerText = "Gagal koneksi: " + err.message;
                     errorBox.classList.remove('hidden');
                     retryBtn.classList.remove('hidden');
-                })
-                .getSmkParticipants();
+                });
         }
 
         function startQuiz() {
@@ -461,19 +448,6 @@ for i in range(3):
             }
         }
 
-        const CORRECT_ANSWERS = {
-            q1: 'print',
-            q2: 'x = 5',
-            q3: 'String',
-            q4: 'String',
-            q5: 'Benar',
-            q6: '0, 1, 2, 3, 4',
-            q7: 'buah[1]',
-            q8: 'Dictionary',
-            q9: 'Boolean',
-            q10: '3 kali'
-        };
-
         document.getElementById('quizForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('btn-submit');
@@ -481,7 +455,10 @@ for i in range(3):
             btn.innerText = "MENGIRIM...";
             btn.disabled = true;
 
-            const formData = { nama_peserta: localStorage.getItem('smk_user_name') };
+            const formData = {
+                nama_peserta: localStorage.getItem('smk_user_name'),
+                action: 'submitQuizSmk'
+            };
             let score = 0;
 
             for (let i = 1; i <= 10; i++) {
@@ -491,27 +468,35 @@ for i in range(3):
 
                 // Calculate score
                 if (answer === CORRECT_ANSWERS['q' + i]) {
-                    score++;
+                    score += 10; // Pre-test score = 100 max
                 }
             }
 
             formData.score = score;
 
-            google.script.run
-                .withSuccessHandler(function (res) {
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(res => {
                     if (res.status === 'success') {
                         localStorage.clear();
                         document.getElementById('quizForm').classList.add('hidden');
                         document.getElementById('section-success').classList.remove('hidden');
-                        document.getElementById('success-name-display').innerText = "Terima kasih, " + formData.nama_peserta + ". Nilai kamu: " + score + "/10";
+                        document.getElementById('success-name-display').innerText = "Terima kasih, " + formData.nama_peserta + ". Nilai kamu: " + score + "/100";
                     } else {
                         alert("Gagal: " + res.message);
                         btn.disabled = false;
                         btn.innerText = originalText;
                     }
                 })
-                .withFailureHandler(function (err) { alert("Error: " + err); btn.disabled = false; btn.innerText = originalText; })
-                .submitQuiz(formData);
+                .catch(err => {
+                    console.error(err);
+                    alert("Error: " + err.message);
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                });
         });
     </script>
 </body>
