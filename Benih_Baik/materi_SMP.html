@@ -3299,360 +3299,1487 @@
         </div>
     </div>
 
-    <!-- MEETING 4: Health System & Variables -->
+    <!-- MEETING 4: Conditionals -->
 
     <!-- Slide 4.1: Cover -->
     <div class="slide" id="meet4-1">
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-purple mb-4">PERTEMUAN 4</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Sistem Nyawa (Health)</h1>
-            <p class="text-2xl text-gray-600 mb-8">Membuat Game Menjadi Menantang!</p>
-            <img src="https://img.itch.zone/aW1hZ2UvMTA1MTMxNi82MDEzMTY3LmdpZg==/original/4p0zQy.gif" alt="Health Bar"
-                class="h-24 mx-auto">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Jika Maka (Conditionals)</h1>
+            <p class="text-2xl text-gray-600 mb-8">Belajar Logika Komputer! 🧠</p>
+            <div class="text-8xl animate-bounce">🤔 ➡️ 💡</div>
         </div>
     </div>
 
-    <!-- Slide 4.2: Misi Hari Ini -->
+    <!-- Slide 4.2: Ice Breaking - Bos Berkata -->
     <div class="slide" id="meet4-2">
-        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Hari Ini</h2>
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/clans/29603119/a3bd0a18b184356be5c4b2039abaf1fdc5939987.gif"
-                alt="Zombie Attack" class="rounded-xl shadow-lg mx-auto mb-8 max-h-[250px]">
-            <p class="text-2xl mb-4">Misi Utama: Membuat <span class="text-red-500 font-bold">NYAWA</span> (Health).</p>
-            <p class="text-xl text-gray-600">Jika Player menyentuh Zombie, nyawa berkurang!</p>
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Bos Berkata 🗣️</h2>
+            <p class="text-xl mb-8">Kita main <strong>Simon Says</strong> versi Koding!</p>
+            <div class="bg-yellow-50 p-8 rounded-xl text-left inline-block space-y-4">
+                <p class="text-2xl">1. Jika Kakak bilang <strong>"Bos Berkata..."</strong> -> LAKUKAN! ✅</p>
+                <p class="text-2xl text-red-500">2. Jika TIDAK ada "Bos Berkata" -> DIAM! ❌</p>
+            </div>
+            <p class="mt-8 text-xl font-bold">"Dengarkan baik-baik ya!"</p>
         </div>
     </div>
 
-    <!-- Slide 4.3: Review -->
-    <div class="slide" id="meet4-3">
+    <!-- Slide 4.3.1: Skrip Awal -->
+    <div class="slide" id="meet4-3-1">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Review: Hapus Klon</h2>
-            <p class="text-xl mb-6">Masih ingat fungsi blok ini?</p>
+            <h2 class="text-3xl font-bold mb-6">1. Mulai dengan Skrip Suara</h2>
+            <p class="text-xl mb-6">Kita mulai dengan skrip sederhana: Kucing bersuara saat spasi ditekan.</p>
             <div class="flex justify-center mb-8">
-                <span class="scratch-block block-control text-2xl p-4">Delete this clone</span>
-            </div>
-            <p class="text-xl bg-green-100 p-6 rounded-xl">Wajib dipakai saat Peluru kena Zombie atau Zombie kalah!</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.4: Konsep Variabel -->
-    <div class="slide" id="meet4-4">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-orange-500">Konsep: VARIABEL</h2>
-            <p class="text-xl mb-6">Variabel itu seperti <strong>"Kotak Ajaib"</strong> untuk menyimpan data.</p>
-            <img src="https://projects-static.raspberrypi.org/projects/generic-scratch3-add-variable/fe41b1befc5554cb94b3065355de11bbc1f29984/en/images/data-blocks.png"
-                alt="Variable" class="h-52 mx-auto rounded-lg shadow-md">
-        </div>
-    </div>
-
-    <!-- Slide 4.5: Variabel Bukan Cuma Skor -->
-    <div class="slide" id="meet4-5">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-8">Variabel Bukan Cuma Skor!</h2>
-            <div class="flex justify-center gap-12 text-center">
-                <div>
-                    <div class="text-6xl mb-4">💰</div>
-                    <p class="font-bold text-xl">Koin</p>
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="187.65" height="82.35000000000001" viewBox="0 0 187.65 82.35000000000001"
+                        class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-events"
+                                        d="M 0 16 c 25,-22 71,-22 96,0 L 245 16 a 4 4 0 0 1 4 4 L 249 60 a 4 4 0 0 1 -4 4 L 48 64 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 64 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 33)">when</text>
+                                    <g transform="translate(56 24)">
+                                        <rect rx="4" ry="4" x="0" y="0" width="87" height="32"
+                                            class="sb3-events sb3-input sb3-input-dropdown"></rect><text
+                                            class="sb3-label sb3-literal-dropdown" x="0" y="13"
+                                            transform="translate(11 9)">space</text>
+                                        <image
+                                            href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                            x="0" y="0" width="13" height="14" transform="translate(63 9)"></image>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(151 33)">key</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(182 33)">pressed</text>
+                                </g>
+                                <g transform="translate(2 65)">
+                                    <path class="sb3-sound"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 270 0
+      a 4 4 0 0 1 4 4 L 274 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">play</text><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(44 17)">sound</text>
+                                    <g transform="translate(98 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="87" height="32"
+                                            class="sb3-sound sb3-input sb3-input-number-dropdown sb3-sound-alt"></rect>
+                                        <text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                            transform="translate(11 9)">Meow</text>
+                                        <image
+                                            href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                            x="0" y="0" width="13" height="14" transform="translate(63 9)"></image>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(193 17)">until</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(229 17)">done</text>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                 </div>
-                <div>
-                    <div class="text-6xl mb-4">🔫</div>
-                    <p class="font-bold text-xl">Peluru</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.3.2: Blok IF -->
+    <div class="slide" id="meet4-3-2">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">2. Blok 'IF' (Jika)</h2>
+            <p class="text-xl mb-6">Di menu <strong>Control</strong>, ada blok <strong>"if ... then"</strong>.</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="110.7" height="76.95" viewBox="0 0 110.7 76.95"
+                        class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 156 0
+      a 4 4 0 0 1 4 4 L 160 44 a 4 4 0 0 1 -4 4 L 64 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 48 a 4 4 0 0 0 -4 4 L 16 68
+      a 4 4 0 0 0 4 4
+      L 28 72 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 156 72
+      a 4 4 0 0 1 4 4 L 160 100 a 4 4 0 0 1 -4 4 L 48 104 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 104 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">if</text>
+                                    <g transform="translate(48 8)">
+                                        <path d="M 16 0 L 32 0 48 16 L 48 16 32 32 L 16 32 0 16 L 0 16 16 0 Z"
+                                            class="sb3-input sb3-input-boolean sb3-control-dark"></path>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(104 17)">then</text>
+                                    <g transform="translate(16 47)"></g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                 </div>
-                <div>
-                    <div class="text-6xl mb-4">❤️</div>
-                    <p class="font-bold text-xl">Nyawa</p>
+            </div>
+            <p class="text-lg">Perhatikan lubang berbentuk <strong>Segienam</strong> di atasnya. Tempat untuk menaruh
+                syarat.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.3.3: Logika Boolean -->
+    <div class="slide" id="meet4-3-3">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">3. Apa itu Segienam?</h2>
+            <p class="text-xl mb-6">Bentuk segienam ini disebut <strong>Ekspresi Boolean</strong>.</p>
+            <div class="grid grid-cols-2 gap-6 text-left">
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-xl mb-2">Artinya?</h3>
+                    <p>Pertanyaan yang jawabannya hanya 2:</p>
+                    <ul class="list-disc pl-5 mt-2 font-bold text-green-600">
+                        <li>YES (Benar) / TRUE</li>
+                        <li>NO (Salah) / FALSE</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-xl mb-2">Contoh di Scratch</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Apakah menyentuh mouse? (Sensing)</li>
+                        <li>Apakah menyentuh warna merah?</li>
+                        <li>Apakah tombol ditekan?</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 4.6: Blok Fokus -->
-    <div class="slide" id="meet4-6">
+    <!-- Slide 4.3.4: Menggabungkan Blok -->
+    <div class="slide" id="meet4-3-4">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-orange-500">Blok Fokus: Variabel</h2>
-            <div class="flex flex-col gap-4 items-center">
-                <img src="https://projects-static.raspberrypi.org/projects/generic-scratch3-high-score/db0ca6fb49df717f349a31fe84d48028419f0a64/en/images/make-variable-annotated.png"
-                    alt="Make Variable" class="h-24">
-                <span class="scratch-block block-variable">Set [my variable] to (0)</span>
-                <span class="scratch-block block-variable">Change [my variable] by (1)</span>
+            <h2 class="text-3xl font-bold mb-6">4. Gabungkan Blok Sensing</h2>
+            <p class="text-xl mb-6">Kita ambil blok <strong>"touching mouse-pointer?"</strong> dari menu Sensing dan
+                masukkan ke IF.</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-110 transform origin-center">
+                    <svg version="1.1" width="255.82500000000002" height="136.35000000000002"
+                        viewBox="0 0 255.82500000000002 136.35000000000002" class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 371 0
+      a 4 4 0 0 1 4 4 L 375 44 a 4 4 0 0 1 -4 4 L 64 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 48 a 4 4 0 0 0 -4 4 L 16 92
+      a 4 4 0 0 0 4 4
+      L 28 96 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 371 96
+      a 4 4 0 0 1 4 4 L 375 124 a 4 4 0 0 1 -4 4 L 48 128 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 128 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">if</text>
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-sensing"
+                                            d="M 20 0 L 258 0 278 20 L 278 20 258 40 L 20 40 0 20 L 0 20 20 0 Z"></path>
+                                        <text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(20 13)">touching</text>
+                                        <g transform="translate(93 4)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="148" height="32"
+                                                class="sb3-sensing sb3-input sb3-input-number-dropdown sb3-sensing-alt">
+                                            </rect><text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                                transform="translate(11 9)">mouse pointer</text>
+                                            <image
+                                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                                x="0" y="0" width="13" height="14" transform="translate(124 9)"></image>
+                                        </g><text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(249 13)">?</text>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(334 17)">then</text>
+                                    <g transform="translate(16 47)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-sound"
+                                                d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 270 0
+      a 4 4 0 0 1 4 4 L 274 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">play</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(44 17)">sound</text>
+                                            <g transform="translate(98 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="87" height="32"
+                                                    class="sb3-sound sb3-input sb3-input-number-dropdown sb3-sound-alt">
+                                                </rect><text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                                    transform="translate(11 9)">Meow</text>
+                                                <image
+                                                    href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                                    x="0" y="0" width="13" height="14" transform="translate(63 9)">
+                                                </image>
+                                            </g><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(193 17)">until</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(229 17)">done</text>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-lg bg-yellow-100 p-4 rounded-xl inline-block">Sekarang kucing hanya bersuara
+                <strong>JIKA</strong> kita menyentuhnya dengan Mouse!
+            </p>
+        </div>
+    </div>
+
+        <!-- Slide 4.3.4 Demo: Contoh Hasil -->
+        <div class="slide" id="meet4-3-4-demo">
+            <div class="glass-card p-10 max-w-4xl w-full text-center flex flex-col items-center">
+                <h2 class="text-3xl font-bold mb-6">Contoh Hasil Koding</h2>
+                <p class="text-xl mb-6">Seperti ini cara kerjanya:</p>
+                <div class="border-4 border-orange-400 rounded-xl overflow-hidden shadow-lg">
+                    <iframe src="https://scratch.mit.edu/projects/507453025/embed" allowtransparency="true" width="485"
+                        height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 4.7: Tantangan Mini -->
-    <div class="slide" id="meet4-7">
+    <!-- Slide 4.3.5: Interaksi Sprite Lain -->
+    <div class="slide" id="meet4-3-5">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-orange mb-4">TANTANGAN MINI</span>
-            <h2 class="text-4xl font-bold mb-6">Buat Variabel 'Nyawa'</h2>
-            <ol class="text-left text-xl space-y-4 inline-block bg-white p-8 rounded-xl shadow-sm">
-                <li>1. Klik kategori <strong>Variables</strong> (Oranye).</li>
-                <li>2. Klik <strong>"Make a Variable"</strong>.</li>
-                <li>3. Beri nama: <strong>Nyawa</strong>.</li>
-                <li>4. Pilih "For all sprites".</li>
-                <li>5. Klik OK.</li>
-            </ol>
+            <h2 class="text-3xl font-bold mb-6">5. Interaksi Antar Sprite</h2>
+            <p class="text-xl mb-6">Kita juga bisa cek sentuhan dengan sprite lain (misal: Balon).</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-110 transform origin-center">
+                    <svg version="1.1" width="221.4" height="136.35000000000002" viewBox="0 0 221.4 136.35000000000002"
+                        class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-events"
+                                        d="M 0 16 c 25,-22 71,-22 96,0 L 245 16 a 4 4 0 0 1 4 4 L 249 60 a 4 4 0 0 1 -4 4 L 48 64 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 64 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 33)">when</text>
+                                    <g transform="translate(56 24)">
+                                        <rect rx="4" ry="4" x="0" y="0" width="87" height="32"
+                                            class="sb3-events sb3-input sb3-input-dropdown"></rect><text
+                                            class="sb3-label sb3-literal-dropdown" x="0" y="13"
+                                            transform="translate(11 9)">space</text>
+                                        <image
+                                            href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                            x="0" y="0" width="13" height="14" transform="translate(63 9)"></image>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(151 33)">key</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(182 33)">pressed</text>
+                                </g>
+                                <g transform="translate(2 65)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 320 0
+      a 4 4 0 0 1 4 4 L 324 44 a 4 4 0 0 1 -4 4 L 64 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 48 a 4 4 0 0 0 -4 4 L 16 92
+      a 4 4 0 0 0 4 4
+      L 28 96 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 320 96
+      a 4 4 0 0 1 4 4 L 324 124 a 4 4 0 0 1 -4 4 L 48 128 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 128 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">if</text>
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-sensing"
+                                            d="M 20 0 L 207 0 227 20 L 227 20 207 40 L 20 40 0 20 L 0 20 20 0 Z"></path>
+                                        <text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(20 13)">touching</text>
+                                        <g transform="translate(93 4)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="97" height="32"
+                                                class="sb3-sensing sb3-input sb3-input-number-dropdown sb3-sensing-alt">
+                                            </rect><text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                                transform="translate(11 9)">Ballon1</text>
+                                            <image
+                                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                                x="0" y="0" width="13" height="14" transform="translate(73 9)"></image>
+                                        </g><text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(198 13)">?</text>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(283 17)">then</text>
+                                    <g transform="translate(16 47)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-sound"
+                                                d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 270 0
+      a 4 4 0 0 1 4 4 L 274 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">play</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(44 17)">sound</text>
+                                            <g transform="translate(98 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="87" height="32"
+                                                    class="sb3-sound sb3-input sb3-input-number-dropdown sb3-sound-alt">
+                                                </rect><text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                                    transform="translate(11 9)">Meow</text>
+                                                <image
+                                                    href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+                                                    x="0" y="0" width="13" height="14" transform="translate(63 9)">
+                                                </image>
+                                            </g><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(193 17)">until</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(229 17)">done</text>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-lg">Kucing akan bersuara JIKA <strong>Balon</strong> menyentuhnya. (Ingat <strong>When I
+                    Start as Clone</strong> jika pakai klon).</p>
         </div>
     </div>
 
-    <!-- Slide 4.8: Misi 1 Inisialisasi -->
-    <div class="slide" id="meet4-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 1: Inisialisasi</h2>
-            <p class="text-xl mb-6">"Inisialisasi" = <strong>Pengaturan Awal</strong>.</p>
-            <p class="text-2xl font-bold text-purple-600">Saat game mulai, Nyawa harus penuh (misal: 3).</p>
+    <!-- Slide 4.3.6: Hasil / Demo -->
+    <div class="slide" id="meet4-3-6">
+        <div class="glass-card p-10 max-w-4xl w-full text-center flex flex-col items-center">
+            <h2 class="text-3xl font-bold mb-6">Hasilnya Seperti Ini!</h2>
+            <p class="text-xl mb-6">Coba mainkan project di bawah ini:</p>
+            <div class="border-4 border-orange-400 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://scratch.mit.edu/projects/507454098/embed" allowtransparency="true" width="485"
+                    height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 4.9: Langkah 1 Set Nyawa -->
+
+
+    <!-- Slide 4.6.1: Intro Sensor Warna -->
+    <div class="slide" id="meet4-6-1">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Satu Lagi: Sensor Warna 🎨</h2>
+            <p class="text-xl mb-6">Selain menyentuh benda, kita bisa cek <strong>WARNA</strong>.</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="168.75" height="42.75" viewBox="0 0 168.75 42.75"
+                        class="scratchblocks-style-scratch3">
+                        <defs>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-sensing"
+                                        d="M 20 0 L 226 0 246 20 L 246 20 226 40 L 20 40 0 20 L 0 20 20 0 Z"></path>
+                                    <text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(20 13)">touching</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(90 13)">color</text>
+                                    <g transform="translate(135 4)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="75" height="32"
+                                            class=" sb3-input sb3-input-color" fill="#ff0000"></rect>
+                                    </g><text class="sb3-label sb3-" x="0" y="13" transform="translate(218 13)">?</text>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-lg">"Apakah Sprite menyentuh warna tertentu?"</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.1b: Demo Sensor Warna -->
+    <div class="slide" id="meet4-6-1-demo">
+        <div class="glass-card p-10 max-w-4xl w-full text-center flex flex-col items-center">
+            <h2 class="text-3xl font-bold mb-6">Demo: Cat and Trees</h2>
+            <p class="text-xl mb-6">Coba perhatikan bagaimana Kucing bereaksi terhadap warna pohon:</p>
+            <div class="border-4 border-orange-400 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://scratch.mit.edu/projects/507454297/embed" allowtransparency="true" width="485"
+                    height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.2: Konteks Project -->
+    <div class="slide" id="meet4-6-2">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Misi: Kucing & Pohon</h2>
+            <p class="text-xl mb-6">Kita akan pakai Backdrop <strong>"Winter"</strong>.</p>
+            <p class="text-lg mb-8">Tujuannya: Kucing berjalan mencari pohon Hijau.</p>
+            <a href="https://scratch.mit.edu/projects/507454297/" target="_blank"
+                class="bg-orange-500 text-white px-6 py-3 rounded-full font-bold hover:bg-orange-600 transition">Buka
+                Project: Cat and Trees</a>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.3: Script Utama -->
+    <div class="slide" id="meet4-6-3">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Susun Skrip Ini</h2>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-110 transform origin-center">
+                    <svg version="1.1" width="236.25000000000003" height="168.75"
+                        viewBox="0 0 236.25000000000003 168.75" class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-events"
+                                        d="M 0 16 c 25,-22 71,-22 96,0 L 280 16 a 4 4 0 0 1 4 4 L 284 60 a 4 4 0 0 1 -4 4 L 48 64 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 64 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 33)">when</text>
+                                    <g transform="translate(56 24)">
+                                        <rect rx="4" ry="4" x="0" y="0" width="122" height="32"
+                                            class="sb3-events sb3-input sb3-input-dropdown"></rect><text
+                                            class="sb3-label sb3-literal-dropdown" x="0" y="13"
+                                            transform="translate(11 9)">right arrow</text>
+                                        <use href="#sb3-dropdownArrow" transform="translate(98 13)"></use>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(186 33)">key</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(217 33)">pressed</text>
+                                </g>
+                                <g transform="translate(2 65)">
+                                    <path class="sb3-motion"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 152 0
+      a 4 4 0 0 1 4 4 L 156 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">change</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(68 17)">x</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(82 17)">by</text>
+                                    <g transform="translate(108 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                            class="sb3-motion sb3-input sb3-input-number"></rect><text
+                                            class="sb3-label sb3-literal-number" x="0" y="13"
+                                            transform="translate(11 9)">10</text>
+                                    </g>
+                                </g>
+                                <g transform="translate(2 113)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 305 0
+      a 4 4 0 0 1 4 4 L 309 44 a 4 4 0 0 1 -4 4 L 64 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 48 a 4 4 0 0 0 -4 4 L 16 92
+      a 4 4 0 0 0 4 4
+      L 28 96 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 305 96
+      a 4 4 0 0 1 4 4 L 309 124 a 4 4 0 0 1 -4 4 L 48 128 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 128 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">if</text>
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-sensing"
+                                            d="M 20 0 L 192 0 212 20 L 212 20 192 40 L 20 40 0 20 L 0 20 20 0 Z"></path>
+                                        <text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(20 13)">touching</text><text class="sb3-label sb3-"
+                                            x="0" y="13" transform="translate(90 13)">color</text>
+                                        <g transform="translate(135 4)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                                class=" sb3-input sb3-input-color" fill="#165e0f"></rect>
+                                        </g><text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(183 13)">?</text>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(268 17)">then</text>
+                                    <g transform="translate(16 47)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-looks"
+                                                d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 327 0
+      a 4 4 0 0 1 4 4 L 331 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">say</text>
+                                            <g transform="translate(48 4)">
+                                                <rect class="sb3-variables" rx="20" ry="20" x="0" y="0" width="128"
+                                                    height="40"></rect><text class="sb3-label sb3-" x="0" y="13"
+                                                    transform="translate(12 13)">I</text><text class="sb3-label sb3-"
+                                                    x="0" y="13" transform="translate(21 13)">found</text><text
+                                                    class="sb3-label sb3-" x="0" y="13"
+                                                    transform="translate(69 13)">a</text><text class="sb3-label sb3-"
+                                                    x="0" y="13" transform="translate(83 13)">tree!</text>
+                                            </g><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(184 17)">for</text>
+                                            <g transform="translate(212 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                                    class="sb3-looks sb3-input sb3-input-number"></rect><text
+                                                    class="sb3-label sb3-literal-number" x="0" y="13"
+                                                    transform="translate(15.5 9)">2</text>
+                                            </g><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(260 17)">seconds</text>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.4: Klik Warna -->
+    <div class="slide" id="meet4-6-4">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 1: Klik Warnanya</h2>
+            <p class="text-xl mb-6">Klik kotak warna di dalam blok <code>touching color?</code></p>
+            <div class="flex justify-center mb-8">
+                <img src="https://cs50.harvard.edu/scratch/2021/notes/5/color_slider.png"
+                    class="rounded-xl shadow-lg border-4 border-white w-64">
+            </div>
+            <p class="text-lg">Kamu akan melihat 3 slider: <strong>Color, Saturation, Brightness</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.5: Masalah Manual -->
+    <div class="slide" id="meet4-6-5">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6 text-red-500">TAPI... Susah! 😫</h2>
+            <p class="text-xl mb-6">Mencoba meniru warna pohon dengan menggeser slider itu SANGAT SULIT.</p>
+            <p class="text-2xl font-bold">Kalau warnanya beda sedikit saja, kodenya TIDAK AKAN jalan!</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.6: Solusi Pipet -->
+    <div class="slide" id="meet4-6-6">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6 text-green-600">Solusinya: Pipet! 🖌️</h2>
+            <p class="text-xl mb-6">Di bagian bawah slider, ada ikon <strong>Pipet (Eyedropper)</strong>.</p>
+            <p class="text-lg">Alat ini bisa "menyedot" warna apapun yang ada di layar.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.7: Ambil Sampel -->
+    <div class="slide" id="meet4-6-7">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 2: Ambil Sampel</h2>
+            <p class="text-xl mb-6">Klik Pipet, lalu arahkan ke Pohon Hijau di Stage.</p>
+            <div class="flex justify-center mb-8">
+                <img src="https://cs50.harvard.edu/scratch/2021/notes/5/color_selector.png"
+                    class="rounded-xl shadow-lg border-4 border-white w-96">
+            </div>
+            <p class="text-lg">Klik mouse kamu saat lingkaran kaca pembesar ada di atas warna hijau pohon!</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.6.8: Penjelasan Akhir -->
+    <div class="slide" id="meet4-6-8">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Bagaimana Logikanya? 🧠</h2>
+            <div class="text-left space-y-4 text-xl">
+                <p>1. Kita tekan <strong>Panah Kanan</strong> -> Kucing Maju.</p>
+                <p>2. Setiap melangkah, Kucing bertanya: <em>"Apakah aku kena warna Hijau Pohon?"</em></p>
+                <p>3. Jika <strong>BELUM</strong> -> Tidak terjadi apa-apa.</p>
+                <p>4. Jika <strong>SUDAH</strong> (Kena Pohon) -> Kucing bilang <strong>"I found a tree!"</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.7.1: Project Recall -->
+    <div class="slide" id="meet4-7-1">
+        <div class="glass-card p-10 max-w-4xl w-full text-center flex flex-col items-center">
+            <h2 class="text-3xl font-bold mb-6">Ingat Project Balon? 🎈</h2>
+            <p class="text-xl mb-6">Minggu lalu kita buat balon yang membesar sampai meledak.</p>
+            <div class="border-4 border-purple-400 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://scratch.mit.edu/projects/507454552/embed" allowtransparency="true" width="485"
+                    height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.7.2: Logic Change -->
+    <div class="slide" id="meet4-7-2">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Ganti Logika! 🧠</h2>
+            <div class="text-left text-xl space-y-4 bg-white/50 p-6 rounded-xl">
+                <p><strong>Dulu:</strong> "Ulangi (Repeat) membesar SAMPAI ukuran 200."</p>
+                <hr class="border-gray-400 my-4">
+                <p><strong>Sekarang:</strong></p>
+                <ul class="list-disc pl-8">
+                    <li>Kita tekan Spasi -> Balon membesar terus.</li>
+                    <li>TAPI... Jika (IF) ukuran sudah 200, maka MELEDAK!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.7.3: Step 1 Growing -->
+    <div class="slide" id="meet4-7-3">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 1: Membesarkan Balon</h2>
+            <p class="text-xl mb-6">Setiap tombol Spasi ditekan, ukuran bertambah 10.</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="170.775" height="82.35000000000001"
+                        viewBox="0 0 170.775 82.35000000000001" class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-events"
+                                        d="M 0 16 c 25,-22 71,-22 96,0 L 245 16 a 4 4 0 0 1 4 4 L 249 60 a 4 4 0 0 1 -4 4 L 48 64 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 64 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 33)">when</text>
+                                    <g transform="translate(56 24)">
+                                        <rect rx="4" ry="4" x="0" y="0" width="87" height="32"
+                                            class="sb3-events sb3-input sb3-input-dropdown"></rect><text
+                                            class="sb3-label sb3-literal-dropdown" x="0" y="13"
+                                            transform="translate(11 9)">space</text>
+                                        <use href="#sb3-dropdownArrow" transform="translate(63 13)"></use>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(151 33)">key</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(182 33)">pressed</text>
+                                </g>
+                                <g transform="translate(2 65)">
+                                    <path class="sb3-looks"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 172 0
+      a 4 4 0 0 1 4 4 L 176 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 17)">change</text><text class="sb3-label sb3-" x="0"
+                                        y="13" transform="translate(68 17)">size</text><text class="sb3-label sb3-"
+                                        x="0" y="13" transform="translate(102 17)">by</text>
+                                    <g transform="translate(128 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                            class="sb3-looks sb3-input sb3-input-number"></rect><text
+                                            class="sb3-label sb3-literal-number" x="0" y="13"
+                                            transform="translate(11 9)">10</text>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.7.4: Step 2 Condition -->
+    <div class="slide" id="meet4-7-4">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 2: Menambahkan Syarat</h2>
+            <p class="text-xl mb-6">Kita ingin balon meledak KALAU ukurannya sudah 200.</p>
+            <p class="text-lg mb-4">Kita pakai Operator Matematika <code>=</code> (Sama Dengan).</p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="184.275" height="157.95000000000002"
+                        viewBox="0 0 184.275 157.95000000000002" class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 265 0
+      a 4 4 0 0 1 4 4 L 269 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 76
+      a 4 4 0 0 0 4 4
+      L 28 80 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 265 80
+      a 4 4 0 0 1 4 4 L 269 108 a 4 4 0 0 1 -4 4 L 48 112 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 112 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 21)">if</text>
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-operators"
+                                            d="M 24 0 L 148 0 172 24 L 172 24 148 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                        <g transform="translate(24 4)">
+                                            <rect class="sb3-looks" rx="20" ry="20" x="0" y="0" width="53" height="40">
+                                            </rect><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(12 13)">size</text>
+                                        </g><text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(85 17)">=</text>
+                                        <g transform="translate(103 8)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="49" height="32"
+                                                class="sb3-operators sb3-input sb3-input-number"></rect><text
+                                                class="sb3-label sb3-literal-number" x="0" y="13"
+                                                transform="translate(11 9)">200</text>
+                                        </g>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(228 21)">then</text>
+                                    <g transform="translate(16 55)"></g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-lg">Setiap kali spasi ditekan, komputer akan mengecek:<br><em>"Apakah ukuran balon ==
+                    200?"</em></p>
+        </div>
+    </div>
+
+    <!-- Slide 4.7.5: Step 3 Pop -->
+    <div class="slide" id="meet4-7-5">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 3: MELEDAR! 💥</h2>
+            <p class="text-xl mb-6">Jika ukurannya benar 200, maka kita sembunyikan balonnya dan bunyikan suara "Pop".
+            </p>
+            <div class="flex justify-center mb-8">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg version="1.1" width="187.65" height="206.55" viewBox="0 0 187.65 206.55"
+                        class="scratchblocks-style-scratch3">
+                        <defs>
+                            <g id="sb3-greenFlag">
+                                <path
+                                    d="M20.8 3.7c-.4-.2-.9-.1-1.2.2-2 1.6-4.8 1.6-6.8 0-2.3-1.9-5.6-2.3-8.3-1v-.4c0-.6-.5-1-1-1s-1 .4-1 1v18.8c0 .5.5 1 1 1h.1c.5 0 1-.5 1-1v-6.4c1-.7 2.1-1.2 3.4-1.3 1.2 0 2.4.4 3.4 1.2 2.9 2.3 7 2.3 9.8 0 .3-.2.4-.5.4-.9V4.7c0-.5-.3-.9-.8-1zm-.3 10.2C18 16 14.4 16 11.9 14c-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2l.1.1-.1 9.2z"
+                                    fill="#45993d"></path>
+                                <path
+                                    d="M20.6 4.8l-.1 9.1v.1c-2.5 2-6.1 2-8.6 0-1.1-.9-2.5-1.4-4-1.4-1.2.1-2.3.5-3.4 1.1V4c2.5-1.4 5.5-1.1 7.7.6 2.4 1.9 5.7 1.9 8.1 0h.2c0 .1.1.1.1.2z"
+                                    fill="#4cbf56"></path>
+                            </g>
+                            <polygon
+                                points="6.6,0.5 13.12,0.5 19.5,6.6 19.5,13.12 13.12,19.5 6.6,19.5 0.5,13.12 0.5,6.6 "
+                                fill="#ec5959" stroke="#b84848" stroke-linejoin="round" stroke-linecap="round"
+                                id="sb3-stopSign"></polygon>
+                            <path d="M0 0L4 4L0 8Z" fill="#111" id="sb3-addInput"></path>
+                            <path d="M4 0L4 8L0 4Z" fill="#111" id="sb3-delInput"></path>
+                            <g id="sb3-list">
+                                <rect x="0" y="0" width="15" height="18" fill="#fff"></rect>
+                                <rect x="1" y="1" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="7" width="13" height="4" fill="#ff920f"></rect>
+                                <rect x="1" y="13" width="13" height="4" fill="#ff920f"></rect>
+                            </g>
+                            <image id="sb3-dropdownArrow" width="13" height="14"
+                                href="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEzIDE0Ij48cGF0aCBkPSJNMTIuNzEgMi40NEEyLjQxIDIuNDEgMCAwIDEgMTIgNC4xNkw4LjA4IDguMDhhMi40NSAyLjQ1IDAgMCAxLTMuNDUgMEwuNzIgNC4xNkEyLjQyIDIuNDIgMCAwIDEgMCAyLjQ0IDIuNDggMi40OCAwIDAgMSAuNzEuNzFDMSAuNDcgMS40MyAwIDYuMzYgMHM1LjM5LjQ2IDUuNjQuNzFhMi40NCAyLjQ0IDAgMCAxIC43MSAxLjczeiIgZmlsbD0iIzIzMWYyMCIgb3BhY2l0eT0iLjEiLz48cGF0aCBkPSJNNi4zNiA3Ljc5YTEuNDMgMS40MyAwIDAgMS0xLS40MkwxLjQyIDMuNDVhMS40NCAxLjQ0IDAgMCAxIDAtMmMuNTYtLjU2IDkuMzEtLjU2IDkuODcgMGExLjQ0IDEuNDQgMCAwIDEgMCAyTDcuMzcgNy4zN2ExLjQzIDEuNDMgMCAwIDEtMS4wMS40MnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
+                            </image>
+                        </defs>
+                        <g style="transform: scale(0.675)">
+                            <g transform="translate(0 0)">
+                                <g transform="translate(2 1)">
+                                    <path class="sb3-control"
+                                        d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 265 0
+      a 4 4 0 0 1 4 4 L 269 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 148
+      a 4 4 0 0 0 4 4
+      L 28 152 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 265 152
+      a 4 4 0 0 1 4 4 L 269 180 a 4 4 0 0 1 -4 4 L 48 184 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 184 a 4 4 0 0 1 -4 -4 Z">
+                                    </path><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(8 21)">if</text>
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-operators"
+                                            d="M 24 0 L 148 0 172 24 L 172 24 148 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                        <g transform="translate(24 4)">
+                                            <rect class="sb3-looks" rx="20" ry="20" x="0" y="0" width="53" height="40">
+                                            </rect><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(12 13)">size</text>
+                                        </g><text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(85 17)">=</text>
+                                        <g transform="translate(103 8)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="49" height="32"
+                                                class="sb3-operators sb3-input sb3-input-number"></rect><text
+                                                class="sb3-label sb3-literal-number" x="0" y="13"
+                                                transform="translate(11 9)">200</text>
+                                        </g>
+                                    </g><text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(228 21)">then</text>
+                                    <g transform="translate(16 55)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-looks"
+                                                d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 60 0
+      a 4 4 0 0 1 4 4 L 64 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">hide</text>
+                                        </g>
+                                        <g transform="translate(0 49)">
+                                            <path class="sb3-sound"
+                                                d="M 0 4
+      A 4 4 0 0 1 4 0
+      H 12 c 2 0 3 1 4 2
+      l 4 4
+      c 1 1 2 2 4 2
+      h 12
+      c 2 0 3 -1 4 -2
+      l 4 -4
+      c 1 -1 2 -2 4 -2
+      L 255 0
+      a 4 4 0 0 1 4 4 L 259 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">play</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(44 17)">sound</text>
+                                            <g transform="translate(98 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="72" height="32"
+                                                    class="sb3-sound sb3-input sb3-input-number-dropdown sb3-sound-alt">
+                                                </rect><text class="sb3-label sb3-literal-number-dropdown" x="0" y="13"
+                                                    transform="translate(11 9)">Pop</text>
+                                                <use href="#sb3-dropdownArrow" transform="translate(48 13)"></use>
+                                            </g><text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(178 17)">until</text><text class="sb3-label sb3-"
+                                                x="0" y="13" transform="translate(214 17)">done</text>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.1: Selain "Sama Dengan" -->
+    <div class="slide" id="meet4-8-1">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Lebih Besar atau Lebih Kecil? 🤔</h2>
+            <p class="text-xl mb-6">Selain tanda sama dengan (<code>=</code>), komputer juga bisa mengecek:</p>
+            <div class="flex justify-center gap-8 mb-6 text-2xl">
+                <div class="bg-white/20 p-4 rounded-xl border border-white/30">
+                    <strong>&gt;</strong> (Lebih Besar)
+                </div>
+                <div class="bg-white/20 p-4 rounded-xl border border-white/30">
+                    <strong>&lt;</strong> (Lebih Kecil)
+                </div>
+            </div>
+            <p class="text-lg mb-6">Contohnya di project <strong>Bebek Pintar</strong> ini:</p>
+            <div class="flex justify-center">
+                <div class="border-4 border-yellow-400 rounded-xl overflow-hidden shadow-lg">
+                    <iframe src="https://scratch.mit.edu/projects/507454942/embed" allowtransparency="true" width="485"
+                        height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.2: Ask & Answer -->
+    <div class="slide" id="meet4-8-2">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 1: Bertanya 🗣️</h2>
+            <p class="text-xl mb-6">Kita akan minta Bebek bertanya sebuah angka kepada kita.</p>
+            <p class="text-lg mb-8">Jawaban kita akan disimpan otomatis di dalam variabel khusus bernama
+                <code>answer</code>.
+            </p>
+            <div class="flex justify-center">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg class="scratchblocks-style-scratch3" width="310" height="80" viewBox="0 0 310 80">
+                        <g transform="translate(2 1)">
+                            <path class="sb3-sensing"
+                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 209 0 a 4 4 0 0 1 4 4 L 213 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                            </path>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 17)">ask</text>
+                            <g transform="translate(48 8)">
+                                <rect rx="16" ry="16" x="0" y="0" width="85" height="32"
+                                    class="sb3-sensing sb3-input sb3-input-string"></rect>
+                                <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                    transform="translate(11 9)">Number:</text>
+                            </g>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(141 17)">and</text>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(174 17)">wait</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.3: Simple If -->
+    <div class="slide" id="meet4-8-3">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Langkah 2: Cek Positif (+)</h2>
+            <p class="text-xl mb-4">Angka Positif adalah angka yang <strong>lebih besar dari 0 (&gt; 0)</strong>.</p>
+            <p class="text-lg mb-8">Jika jawaban kita &gt; 0, Bebek akan bilang "Positive".</p>
+            <div class="flex justify-center">
+                <div class="scratchblocks scale-125 transform origin-center">
+                    <svg class="scratchblocks-style-scratch3" width="280" height="150" viewBox="0 0 280 150">
+                        <g transform="translate(0 0)">
+                            <path class="sb3-control"
+                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 100 a 4 4 0 0 0 4 4 L 28 104 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 104 a 4 4 0 0 1 4 4 L 284 132 a 4 4 0 0 1 -4 4 L 48 136 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 136 a 4 4 0 0 1 -4 -4 Z">
+                            </path>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 21)">if</text>
+                            <g transform="translate(48 4)">
+                                <path class="sb3-operators"
+                                    d="M 24 0 L 163 0 187 24 L 187 24 163 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                <g transform="translate(24 4)">
+                                    <rect class="sb3-sensing" rx="20" ry="20" x="0" y="0" width="77" height="40"></rect>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(12 13)">answer</text>
+                                </g>
+                                <text class="sb3-label sb3-" x="0" y="13" transform="translate(109 17)">&gt;</text>
+                                <g transform="translate(127 8)">
+                                    <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                        class="sb3-operators sb3-input sb3-input-number"></rect>
+                                    <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                        transform="translate(15.5 9)">0</text>
+                                </g>
+                            </g>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(243 21)">then</text>
+                            <g transform="translate(16 55)">
+                                <g transform="translate(0 1)">
+                                    <path class="sb3-looks"
+                                        d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 17)">say</text>
+                                    <g transform="translate(48 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="81" height="32"
+                                            class="sb3-looks sb3-input sb3-input-string"></rect>
+                                        <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                            transform="translate(11 9)">Positive</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(137 17)">for</text>
+                                    <g transform="translate(165 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                            class="sb3-looks sb3-input sb3-input-number"></rect>
+                                        <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                            transform="translate(15.5 9)">2</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(213 17)">seconds</text>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.4: Problem & Else Intro -->
+    <div class="slide" id="meet4-8-4">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Bagaimana Jika... BUKAN? 🛑</h2>
+            <p class="text-xl mb-6">Kalau kita masukkan angka <strong>-5</strong>... kodenya DIAM SAJA! 😶</p>
+            <p class="text-lg mb-6">Karena -5 TIDAK lebih besar dari 0.</p>
+            <div class="bg-blue-100/20 p-6 rounded-xl border border-blue-300/50 mb-6">
+                <p class="text-xl font-bold">Kita butuh blok JIKA TIDAK (ELSE)!</p>
+                <p class="text-sm mt-2">"Jika Benar lakukan A, Jika Salah lakukan B"</p>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://scratch.oneoffcoder.com/_images/04-if-else.png"
+                    class="w-72 opacity-100 hover:opacity-100 transition-opacity">
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.5: Using Else -->
+    <div class="slide" id="meet4-8-5">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6">Menggunakan Blok Else</h2>
+            <p class="text-xl mb-6">Jika jawaban <strong>BUKAN</strong> > 0, berarti itu angka Negatif (atau 0).</p>
+            <div class="flex justify-center">
+                <div class="scratchblocks scale-110 transform origin-center">
+                    <svg class="scratchblocks-style-scratch3" width="300" height="230" viewBox="0 0 300 230">
+                        <g transform="translate(0 0)">
+                            <!-- Top Part of If Element -->
+                            <path class="sb3-control"
+                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 100 a 4 4 0 0 0 4 4 L 28 104 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 104 a 4 4 0 0 1 4 4 L 284 132 a 4 4 0 0 1 -4 4 L 64 136 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 136 a 4 4 0 0 0 -4 4 L 16 180 a 4 4 0 0 0 4 4 L 28 184 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 184 a 4 4 0 0 1 4 4 L 284 212 a 4 4 0 0 1 -4 4 L 48 216 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 216 a 4 4 0 0 1 -4 -4 Z">
+                            </path>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 21)">if</text>
+
+                            <!-- Condition -->
+                            <g transform="translate(48 4)">
+                                <path class="sb3-operators"
+                                    d="M 24 0 L 163 0 187 24 L 187 24 163 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                <g transform="translate(24 4)">
+                                    <rect class="sb3-sensing" rx="20" ry="20" x="0" y="0" width="77" height="40"></rect>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(12 13)">answer</text>
+                                </g>
+                                <text class="sb3-label sb3-" x="0" y="13" transform="translate(109 17)">&gt;</text>
+                                <g transform="translate(127 8)">
+                                    <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                        class="sb3-operators sb3-input sb3-input-number"></rect>
+                                    <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                        transform="translate(15.5 9)">0</text>
+                                </g>
+                            </g>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(243 21)">then</text>
+
+                            <!-- If True Block -->
+                            <g transform="translate(16 55)">
+                                <g transform="translate(0 1)">
+                                    <path class="sb3-looks"
+                                        d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 17)">say</text>
+                                    <g transform="translate(48 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="81" height="32"
+                                            class="sb3-looks sb3-input sb3-input-string"></rect>
+                                        <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                            transform="translate(11 9)">Positive</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(137 17)">for</text>
+                                    <g transform="translate(165 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                            class="sb3-looks sb3-input sb3-input-number"></rect>
+                                        <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                            transform="translate(15.5 9)">2</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(213 17)">seconds</text>
+                                </g>
+                            </g>
+
+                            <!-- Else Label -->
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 113)">else</text>
+
+                            <!-- Else Block -->
+                            <g transform="translate(16 135)">
+                                <g transform="translate(0 1)">
+                                    <path class="sb3-looks"
+                                        d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 286 0 a 4 4 0 0 1 4 4 L 290 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 17)">say</text>
+                                    <g transform="translate(48 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="87" height="32"
+                                            class="sb3-looks sb3-input sb3-input-string"></rect>
+                                        <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                            transform="translate(11 9)">Negative</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(143 17)">for</text>
+                                    <g transform="translate(171 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                            class="sb3-looks sb3-input sb3-input-number"></rect>
+                                        <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                            transform="translate(15.5 9)">2</text>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13"
+                                        transform="translate(219 17)">seconds</text>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <p class="text-sm mt-4 text-gray-500">TAPI... ada bug! Kalau kita masukkan 0, dia bilang "Negative". Padahal
+                0 itu netral.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4.8.6: Fixing Zero -->
+    <div class="slide" id="meet4-8-6">
+        <div class="glass-card p-4 max-w-4xl w-full text-center">
+            <h2 class="text-2xl font-bold mb-4">Solusi: Logika Bertumpuk (Nested) 🥞</h2>
+            <p class="text-lg mb-4">Di dalam <code>else</code>, kita tanya LAGI: "Apakah &lt; 0?"</p>
+            <div class="flex justify-center">
+                <div class="scratchblocks scale-90 transform origin-center">
+                    <svg class="scratchblocks-style-scratch3" width="300" height="400" viewBox="0 0 300 400">
+                        <g transform="translate(0 0)">
+                            <!-- Main If -->
+                            <path class="sb3-control"
+                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 100 a 4 4 0 0 0 4 4 L 28 104 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 104 a 4 4 0 0 1 4 4 L 284 132 a 4 4 0 0 1 -4 4 L 64 136 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 136 a 4 4 0 0 0 -4 4 L 16 348 a 4 4 0 0 0 4 4 L 28 352 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 352 a 4 4 0 0 1 4 4 L 284 380 a 4 4 0 0 1 -4 4 L 48 384 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 384 a 4 4 0 0 1 -4 -4 Z">
+                            </path>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 21)">if</text>
+                            <!-- Top Condition > 0 -->
+                            <g transform="translate(48 4)">
+                                <path class="sb3-operators"
+                                    d="M 24 0 L 163 0 187 24 L 187 24 163 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                <g transform="translate(24 4)">
+                                    <rect class="sb3-sensing" rx="20" ry="20" x="0" y="0" width="77" height="40"></rect>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(12 13)">answer</text>
+                                </g>
+                                <text class="sb3-label sb3-" x="0" y="13" transform="translate(109 17)">&gt;</text>
+                                <g transform="translate(127 8)">
+                                    <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                        class="sb3-operators sb3-input sb3-input-number"></rect>
+                                    <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                        transform="translate(15.5 9)">0</text>
+                                </g>
+                            </g>
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(243 21)">then</text>
+
+                            <!-- Top Action Positive -->
+                            <g transform="translate(16 55)">
+                                <g transform="translate(0 1)">
+                                    <path class="sb3-looks"
+                                        d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                    </path>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 17)">say</text>
+                                    <g transform="translate(48 8)">
+                                        <rect rx="16" ry="16" x="0" y="0" width="81" height="32"
+                                            class="sb3-looks sb3-input sb3-input-string"></rect>
+                                        <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                            transform="translate(11 9)">Positive</text>
+                                    </g>
+                                </g>
+                            </g>
+
+                            <!-- Else -->
+                            <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 113)">else</text>
+
+                            <!-- Inner If -->
+                            <g transform="translate(16 135)">
+                                <g transform="translate(0 1)">
+                                    <path class="sb3-control"
+                                        d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 0 a 4 4 0 0 1 4 4 L 284 52 a 4 4 0 0 1 -4 4 L 64 56 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 56 a 4 4 0 0 0 -4 4 L 16 100 a 4 4 0 0 0 4 4 L 28 104 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 104 a 4 4 0 0 1 4 4 L 284 132 a 4 4 0 0 1 -4 4 L 64 136 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 20 136 a 4 4 0 0 0 -4 4 L 16 180 a 4 4 0 0 0 4 4 L 28 184 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 280 184 a 4 4 0 0 1 4 4 L 284 212 a 4 4 0 0 1 -4 4 L 48 216 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 216 a 4 4 0 0 1 -4 -4 Z">
+                                    </path>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 21)">if</text>
+
+                                    <!-- Inner Condition < 0 -->
+                                    <g transform="translate(48 4)">
+                                        <path class="sb3-operators"
+                                            d="M 24 0 L 163 0 187 24 L 187 24 163 48 L 24 48 0 24 L 0 24 24 0 Z"></path>
+                                        <g transform="translate(24 4)">
+                                            <rect class="sb3-sensing" rx="20" ry="20" x="0" y="0" width="77"
+                                                height="40"></rect>
+                                            <text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(12 13)">answer</text>
+                                        </g>
+                                        <text class="sb3-label sb3-" x="0" y="13"
+                                            transform="translate(109 17)">&lt;</text>
+                                        <g transform="translate(127 8)">
+                                            <rect rx="16" ry="16" x="0" y="0" width="40" height="32"
+                                                class="sb3-operators sb3-input sb3-input-number"></rect>
+                                            <text class="sb3-label sb3-literal-number" x="0" y="13"
+                                                transform="translate(15.5 9)">0</text>
+                                        </g>
+                                    </g>
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(243 21)">then</text>
+
+                                    <!-- Inner Action Negative -->
+                                    <g transform="translate(16 55)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-looks"
+                                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 286 0 a 4 4 0 0 1 4 4 L 290 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path>
+                                            <text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">say</text>
+                                            <g transform="translate(48 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="87" height="32"
+                                                    class="sb3-looks sb3-input sb3-input-string"></rect>
+                                                <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                                    transform="translate(11 9)">Negative</text>
+                                            </g>
+                                        </g>
+                                    </g>
+
+                                    <!-- Inner Else -->
+                                    <text class="sb3-label sb3-" x="0" y="13" transform="translate(8 113)">else</text>
+
+                                    <!-- Inner Else Action (Zero) -->
+                                    <g transform="translate(16 135)">
+                                        <g transform="translate(0 1)">
+                                            <path class="sb3-looks"
+                                                d="M 0 4 A 4 4 0 0 1 4 0 H 12 c 2 0 3 1 4 2 l 4 4 c 1 1 2 2 4 2 h 12 c 2 0 3 -1 4 -2 l 4 -4 c 1 -1 2 -2 4 -2 L 255 0 a 4 4 0 0 1 4 4 L 259 44 a 4 4 0 0 1 -4 4 L 48 48 c -2 0 -3 1 -4 2 l -4 4 c -1 1 -2 2 -4 2 h -12 c -2 0 -3 -1 -4 -2 l -4 -4 c -1 -1 -2 -2 -4 -2 L 4 48 a 4 4 0 0 1 -4 -4 Z">
+                                            </path>
+                                            <text class="sb3-label sb3-" x="0" y="13"
+                                                transform="translate(8 17)">say</text>
+                                            <g transform="translate(48 8)">
+                                                <rect rx="16" ry="16" x="0" y="0" width="56" height="32"
+                                                    class="sb3-looks sb3-input sb3-input-string"></rect>
+                                                <text class="sb3-label sb3-literal-string" x="0" y="13"
+                                                    transform="translate(11 9)">Zero</text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4.9: Knowledge Check (Show Your Work) -->
     <div class="slide" id="meet4-9">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 1: Set Nyawa Awal</h2>
-            <p class="text-xl mb-6">Di Sprite <strong>Player</strong>:</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When 🚩
-                        Clicked</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-variable">Set [Nyawa] to
-                        (3)</span></div>
-            </div>
+            <h2 class="text-4xl font-bold mb-6 text-purple-600">Knowledge Check! 🌟</h2>
+            <p class="text-xl mb-8">Siapa yang sudah berhasil membuat balonnya meledak?</p>
+            <div class="text-6xl mb-6">🙋‍♂️ 🙋‍♀️</div>
+            <p class="text-2xl font-bold mb-4">Ayo tunjukkan karyamu (Share Screen)!</p>
+            <p class="text-lg text-gray-500">(Kakak guru akan memilih 1-2 orang untuk demo)</p>
         </div>
     </div>
 
-    <!-- Slide 4.10: Set vs Change -->
+    <!-- Slide 4.10: Feedback -->
     <div class="slide" id="meet4-10">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Set vs Change?</h2>
-            <div class="grid grid-cols-2 gap-6 text-left">
-                <div class="bg-orange-50 p-6 rounded-xl">
-                    <h3 class="font-bold text-xl mb-2">SET to 3</h3>
-                    <p>Mengatur nilai jadi 3. (Reset)</p>
-                    <p class="text-sm text-gray-500 mt-2">Dipakai di AWAL game.</p>
-                </div>
-                <div class="bg-orange-50 p-6 rounded-xl">
-                    <h3 class="font-bold text-xl mb-2">CHANGE by -1</h3>
-                    <p>Mengurangi nilai sebesar 1.</p>
-                    <p class="text-sm text-gray-500 mt-2">Dipakai saat KENA ZOMBIE.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4.11: Misi 2 Deteksi -->
-    <div class="slide" id="meet4-11">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 2: Deteksi Tabrakan</h2>
-            <p class="text-xl mb-6">Bagaimana Player tahu kalau dia menabrak Zombie?</p>
-            <p class="text-2xl font-bold text-blue-500">Kita butuh SENSOR!</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.12: Sensor Touching -->
-    <div class="slide" id="meet4-12">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-blue-500">Sensor 'Touching'</h2>
-            <div class="flex justify-center mb-6">
-                <span class="scratch-block block-sensing text-xl p-4">touching [Zombie]?</span>
-            </div>
-            <p class="text-xl">Masukkan ke dalam blok <strong>IF</strong>.</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.13: Langkah 2 Cek Tabrakan -->
-    <div class="slide" id="meet4-13">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 2: Cek Tabrakan</h2>
-            <p class="text-xl mb-6">Di dalam loop <strong>Forever</strong> Player:</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If &lt;touching
-                        [Zombie]?&gt; then</span></div>
-                <div class="pl-8 border-l-2 border-gray-300 h-8"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4.14: Langkah 3 Kurangi Nyawa -->
-    <div class="slide" id="meet4-14">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 3: Kurangi Nyawa</h2>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If &lt;touching
-                        [Zombie]?&gt; then</span></div>
-                <div class="pl-8 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2"><span class="scratch-block block-variable">Change [Nyawa] by
-                            (-1)</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4.15: Tes Game -->
-    <div class="slide" id="meet4-15">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-green mb-4">TESTING</span>
-            <h2 class="text-4xl font-bold mb-6">Mari Kita Tes!</h2>
-            <p class="text-xl mb-6">Coba tabrak Zombie. Apa yang terjadi?</p>
-            <div class="bg-red-100 p-6 rounded-xl">
-                <p class="text-2xl font-bold text-red-600">Nyawa langsung habis drastis?! 😱</p>
-                <p class="text-lg mt-2">Dari 3 langsung jadi -100 dalam sedetik?</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4.16: Kenapa Cepat Habis? -->
-    <div class="slide" id="meet4-16">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Kenapa Cepat Habis?</h2>
-            <p class="text-xl mb-6">Karena komputer mengecek <strong>30-60 kali per detik</strong>!</p>
-            <p class="text-lg">Selama kamu nempel sama Zombie, nyawa dikurangi terus.</p>
-            <p class="text-2xl font-bold text-green-600 mt-4">Solusi: Efek Kebal (Invincibility)!</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.17: Misi 3 Efek Kebal -->
-    <div class="slide" id="meet4-17">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 3: Efek Kebal</h2>
-            <p class="text-xl mb-6">Buat karakter <strong>BERKEDIP</strong> setelah tertabrak.</p>
-            <img src="https://images2.imgbox.com/89/78/lWw0yO7U_o.png" alt="Blinking Effect"
-                class="rounded-xl shadow-lg mx-auto max-h-[200px]">
-        </div>
-    </div>
-
-    <!-- Slide 4.18: Langkah 4 Kode Berkedip -->
-    <div class="slide" id="meet4-18">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 4: Kode Berkedip</h2>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-variable">Change [Nyawa] by
-                        (-1)</span></div>
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">Repeat (5)</span>
-                </div>
-                <div class="pl-8 border-l-2 border-gray-300 flex flex-col gap-1">
-                    <div class="flex items-center gap-2"><span class="scratch-block block-looks">Hide</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-control">Wait (0.1)
-                            seconds</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-looks">Show</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-control">Wait (0.1)
-                            seconds</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4.19: Tes Lagi -->
-    <div class="slide" id="meet4-19">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-green mb-4">TESTING 2</span>
-            <h2 class="text-4xl font-bold mb-6">Tes Lagi!</h2>
-            <p class="text-xl mb-6">Sekarang nyawa berkurang 1 per 1, dan karakter berkedip.</p>
-            <p class="text-2xl font-bold text-green-600">Jauh Lebih Baik! ✅</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.20: Masalah Baru Zombie -->
-    <div class="slide" id="meet4-20">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Masalah Baru!</h2>
-            <p class="text-xl mb-6">Zombie-nya kok tidak hilang setelah menabrak kita?</p>
-            <p class="text-lg text-gray-600">Harusnya Zombie yang menabrak itu hancur/hilang.</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.21: Logika Di Mana? -->
-    <div class="slide" id="meet4-21">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Logikanya Di Mana?</h2>
-            <p class="text-xl mb-6">Siapa yang harus menghilang? Zombie.</p>
-            <p class="text-2xl font-bold text-purple-600">Jadi kodenya harus di ZOMBIE!</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.22: Jawaban Logika -->
-    <div class="slide" id="meet4-22">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Kode di Zombie</h2>
-            <p class="text-xl mb-6">Setiap Klon Zombie harus mengecek: "Apakah aku kena Player?"</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.23: Misi 4 Zombie Hilang -->
-    <div class="slide" id="meet4-23">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 4: Zombie Menghilang</h2>
-            <p class="text-xl mb-6">Pindah ke Sprite <strong>Zombie</strong>.</p>
-            <p class="text-lg">Cari skrip <code>When I start as a clone</code>.</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.24: Langkah 5 Kode Zombie -->
-    <div class="slide" id="meet4-24">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 5: Kode Zombie</h2>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If &lt;touching
-                        [Player]?&gt; then</span></div>
-                <div class="pl-8 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2"><span class="scratch-block block-control">Delete this
-                            clone</span></div>
-                </div>
-            </div>
-            <p class="mt-4 text-gray-500">Masukkan ini ke dalam loop Forever Zombie.</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.25: Tes Final -->
-    <div class="slide" id="meet4-25">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-purple mb-4">FINAL TEST</span>
-            <h2 class="text-4xl font-bold mb-6">Waktunya Main!</h2>
-            <ul class="text-left text-xl space-y-2 inline-block bg-white p-8 rounded-xl shadow-sm">
-                <li>✅ Nyawa awal 3.</li>
-                <li>✅ Kena Zombie -> Nyawa -1.</li>
-                <li>✅ Player Berkedip (Kebal).</li>
-                <li>✅ Zombie yang nabrak Hilang.</li>
-            </ul>
-            <p class="text-2xl font-bold text-green-600 mt-6">BERHASIL! 🎉</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.26: Bonus Visual Hearts -->
-    <div class="slide" id="meet4-26">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">BONUS CHALLENGE</span>
-            <h2 class="text-4xl font-bold mb-6">Visual Hearts ❤️❤️❤️</h2>
-            <p class="text-xl mb-6">Bosan dengan angka? Buat 3 Sprite Hati!</p>
-            <p class="text-lg text-gray-600">Gunakan <strong>Broadcast</strong> untuk menghilangkan hati satu per satu
-                saat nyawa berkurang.</p>
-        </div>
-    </div>
-
-    <!-- Slide 4.27: Refleksi -->
-    <div class="slide" id="meet4-27">
-        <h2 class="text-4xl font-bold mb-8 text-center">Apa yang Kita Pelajari?</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Variabel</h4>
-                <p>Menyimpan data Nyawa.</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Sensing</h4>
-                <p>Deteksi tabrakan (Touching).</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Logika Game</h4>
-                <p>Cooldown (Invincibility).</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Interaksi</h4>
-                <p>Player vs Musuh.</p>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Feedback Slide -->
-    <div class="slide" id="meet4-feedback">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
+            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time! 📝</h2>
             <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
             <div class="flex flex-col items-center gap-6">
                 <div class="bg-white p-4 rounded-xl shadow-lg">
@@ -3667,12 +4794,19 @@
         </div>
     </div>
 
-    <!-- Slide 4.29: Penutup -->
-    <div class="slide" id="meet4-29">
+    <!-- Slide 4.11: Wrap Up -->
+    <div class="slide" id="meet4-11">
         <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">LEVEL 4 SELESAI! ❤️‍🩹</h1>
-            <p class="text-2xl mb-8">Game Kita Punya NYAWA!</p>
-            <p class="text-xl text-gray-600">Minggu depan: Game Over & Skor!</p>
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Misi Selesai! 🌟</h1>
+            <p class="text-2xl mb-8">Hari ini kita belajar:</p>
+            <div class="flex justify-center gap-4 text-left text-lg">
+                <ul class="list-disc space-y-2">
+                    <li>✅ Logika Jika-Maka (Conditionals)</li>
+                    <li>✅ Sensor Sentuh (Sensing)</li>
+                    <li>✅ Interaksi Mouse</li>
+                </ul>
+            </div>
+            <p class="text-xl mt-8 text-gray-600">Sampai jumpa minggu depan!</p>
         </div>
     </div>
 
