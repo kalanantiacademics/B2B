@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post-Test Python Fundamentals (SMK)</title>
+    <title>Pre-Test Python Fundamentals (SMK)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
@@ -113,14 +113,13 @@
 
     <!-- Logos -->
     <div class="fixed top-5 left-5 z-50 flex gap-4">
-        <img src="https://cdn-web-2.ruangguru.com/landing-pages/assets/e7d93748-818d-462d-be57-7db1e479cd62.png"
-            class="h-10 md:h-12">
+        <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" class="h-10 md:h-12">
     </div>
 
     <!-- MAIN CARD -->
     <div class="neo-card w-full max-w-3xl p-0 overflow-hidden mt-12 mb-10 relative">
         <div class="bg-blue-600 p-6 text-white border-b-2 border-black">
-            <h1 class="text-3xl md:text-4xl font-bold">Post-Test: Python (SMK)</h1>
+            <h1 class="text-3xl md:text-4xl font-bold">Pre-Test: Python (SMK)</h1>
             <p class="mt-2 text-sm md:text-lg opacity-90 italic font-serif">"Kerjakan dengan jujur."</p>
         </div>
 
@@ -151,7 +150,7 @@
                 </div>
 
                 <div class="flex gap-2">
-                    <button onclick="fetchParticipants()" id="btn-retry"
+                    <button onclick="fetchNames()" id="btn-retry"
                         class="hidden w-1/3 neo-btn py-3 bg-gray-500 hover:bg-gray-600">Coba Lagi</button>
                     <button onclick="startQuiz()" id="btn-start" class="w-full neo-btn py-3 text-xl" disabled>MULAI
                         UJIAN</button>
@@ -353,11 +352,116 @@ for i in range(3):
     </div>
 
     <script>
-        // CONFIG
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMHEKDQnBOOeyLq0ow8-cc7erEf-ctBJSFaSAnzkWSCtaOv8cmeRhILBXmly3-5IkinQ/exec';
+        // MOCK DATA UTILS (AGAR TIDAK ERROR DI PREVIEW)
+        if (typeof google === 'undefined') {
+            console.warn("Running in local/preview mode. Using mock google.script.run.");
+            window.google = {
+                script: {
+                    run: {
+                        withSuccessHandler: function (success) {
+                            return {
+                                withFailureHandler: function (failure) {
+                                    return {
+                                        getSmaParticipants: function () {
+                                            console.log("Mock: Fetching participants...");
+                                            setTimeout(() => {
+                                                success({
+                                                    status: 'success',
+                                                    data: ["Ahmad (Test)", "Budi (Test)", "Citra (Test) - PREVIEW ONLY"]
+                                                });
+                                            }, 1000);
+                                        },
+                                        submitQuiz: function (data) {
+                                            console.log("Mock: Submitting data...", data);
+                                            setTimeout(() => {
+                                                success({ status: 'success' });
+                                            }, 1500);
+                                        }
+                                    };
+                                }
+                            };
+                        }
+                    }
+                }
+            };
+        }
 
-        // Answer Keys for Client-Side Grading
-        const ANSWERS = {
+        // --- MAIN LOGIC ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedName = localStorage.getItem('smk_user_name');
+            if (savedName) showQuiz(savedName);
+            else fetchNames();
+            restoreAnswers();
+        });
+
+        function fetchNames() {
+            const loading = document.getElementById('loading-indicator');
+            const errorBox = document.getElementById('error-display');
+            const select = document.getElementById('select-nama');
+            const retryBtn = document.getElementById('btn-retry');
+
+            loading.classList.remove('hidden');
+            errorBox.classList.add('hidden');
+            select.classList.add('hidden');
+            retryBtn.classList.add('hidden');
+
+            google.script.run
+                .withSuccessHandler(function (response) {
+                    loading.classList.add('hidden');
+                    if (response.status === 'error') {
+                        errorBox.innerText = response.message;
+                        errorBox.classList.remove('hidden');
+                        retryBtn.classList.remove('hidden');
+                    } else {
+                        select.classList.remove('hidden');
+                        select.innerHTML = '<option value="" disabled selected>-- Pilih Nama --</option>';
+                        response.data.forEach(name => {
+                            const opt = document.createElement('option');
+                            opt.value = name;
+                            opt.innerText = name;
+                            select.appendChild(opt);
+                        });
+                        select.addEventListener('change', function () { if (this.value) document.getElementById('btn-start').disabled = false; });
+                    }
+                })
+                .withFailureHandler(function (err) {
+                    loading.classList.add('hidden');
+                    errorBox.innerText = "Gagal koneksi: " + err;
+                    errorBox.classList.remove('hidden');
+                    retryBtn.classList.remove('hidden');
+                })
+                .getSmkParticipants();
+        }
+
+        function startQuiz() {
+            const name = document.getElementById('select-nama').value;
+            if (!name) return;
+            localStorage.setItem('smk_user_name', name);
+            showQuiz(name);
+        }
+
+        function showQuiz(name) {
+            document.getElementById('section-login').classList.add('hidden');
+            document.getElementById('quizForm').classList.remove('hidden');
+            document.getElementById('display-nama').innerText = name;
+        }
+
+        function resetIdentity() {
+            if (confirm('Ganti nama?')) { localStorage.clear(); location.reload(); }
+        }
+
+        document.getElementById('quizForm').addEventListener('change', function (e) {
+            if (e.target.type === 'radio') localStorage.setItem('ans_' + e.target.name, e.target.value);
+        });
+
+        function restoreAnswers() {
+            for (let i = 1; i <= 10; i++) {
+                const val = localStorage.getItem('ans_q' + i);
+                if (val) { const r = document.querySelector(`input[name="q${i}"][value="${val}"]`); if (r) r.checked = true; }
+            }
+        }
+
+        const CORRECT_ANSWERS = {
             q1: 'print',
             q2: 'x = 5',
             q3: 'String',
@@ -370,159 +474,46 @@ for i in range(3):
             q10: '3 kali'
         };
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedName = localStorage.getItem('post_smk_user_name');
-            if (savedName) showQuiz(savedName);
-            else fetchParticipants();
-            restoreAnswers();
-        });
-
-        function fetchParticipants() {
-            const loading = document.getElementById('loading-indicator');
-            const errorBox = document.getElementById('error-display');
-            const select = document.getElementById('select-nama');
-            const retryBtn = document.getElementById('btn-retry');
-
-            loading.classList.remove('hidden');
-            errorBox.classList.add('hidden');
-            select.classList.add('hidden');
-            retryBtn.classList.add('hidden');
-
-            console.log("Fetching participants from:", SCRIPT_URL);
-
-            fetch(SCRIPT_URL + '?action=getSmkParticipants')
-                .then(response => response.json())
-                .then(response => {
-                    console.log("Response:", response);
-                    if (response.status === 'success') {
-                        populateSelect(response.data);
-                    } else {
-                        throw new Error(response.message || "Gagal memuat data");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching participants:', error);
-                    loading.classList.add('hidden');
-                    errorBox.innerText = 'Gagal memuat data. ' + error.message;
-                    errorBox.classList.remove('hidden');
-                    retryBtn.classList.remove('hidden');
-                });
-        }
-
-        function populateSelect(names) {
-            const select = document.getElementById('select-nama');
-            const loading = document.getElementById('loading-indicator');
-            const retryBtn = document.getElementById('btn-retry');
-
-            loading.classList.add('hidden');
-            select.innerHTML = '<option value="" disabled selected>-- Pilih Nama --</option>';
-
-            if (!names || names.length === 0) {
-                loading.classList.add('hidden');
-                document.getElementById('error-display').innerText = 'Data siswa SMK tidak ditemukan.';
-                document.getElementById('error-display').classList.remove('hidden');
-                return;
-            }
-
-            names.forEach(name => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.innerText = name;
-                select.appendChild(option);
-            });
-
-            select.classList.remove('hidden');
-            select.addEventListener('change', function () {
-                if (this.value) document.getElementById('btn-start').disabled = false;
-            });
-        }
-
-        function startQuiz() {
-            const name = document.getElementById('select-nama').value;
-            if (!name) return;
-            localStorage.setItem('post_smk_user_name', name);
-            showQuiz(name);
-        }
-
-        function showQuiz(name) {
-            document.getElementById('section-login').classList.add('hidden');
-            document.getElementById('quizForm').classList.remove('hidden');
-            document.getElementById('display-nama').innerText = name;
-        }
-
-        function resetIdentity() {
-            if (confirm('Ganti nama?')) { localStorage.removeItem('post_smk_user_name'); location.reload(); }
-        }
-
-        document.getElementById('quizForm').addEventListener('change', function (e) {
-            if (e.target.type === 'radio') localStorage.setItem('post_ans_' + e.target.name, e.target.value);
-        });
-
-        function restoreAnswers() {
-            for (let i = 1; i <= 10; i++) {
-                const val = localStorage.getItem('post_ans_q' + i);
-                if (val) { const r = document.querySelector(`input[name="q${i}"][value="${val}"]`); if (r) r.checked = true; }
-            }
-        }
-
-        // Handle Form Submit
         document.getElementById('quizForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
             const btn = document.getElementById('btn-submit');
             const originalText = btn.innerText;
-            btn.disabled = true;
             btn.innerText = "MENGIRIM...";
+            btn.disabled = true;
 
-            const data = {};
-            data.nama_peserta = localStorage.getItem('post_smk_user_name');
-            data.action = 'submitQuizSmk';
-
+            const formData = { nama_peserta: localStorage.getItem('smk_user_name') };
             let score = 0;
-            let answeredCount = 0;
 
             for (let i = 1; i <= 10; i++) {
                 const checked = document.querySelector(`input[name="q${i}"]:checked`);
                 const answer = checked ? checked.value : '';
-                data['q' + i] = answer;
+                formData['q' + i] = answer;
 
-                if (answer) answeredCount++;
-
-                // Grading
-                if (answer === ANSWERS['q' + i]) {
-                    score += 10;
+                // Calculate score
+                if (answer === CORRECT_ANSWERS['q' + i]) {
+                    score++;
                 }
             }
 
-            data.score = score;
-            console.log("Submitting Data:", data);
+            formData.score = score;
 
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.status === 'success') {
-                        localStorage.removeItem('post_smk_user_name');
-                        for (let i = 1; i <= 10; i++) localStorage.removeItem('post_ans_q' + i);
-
+            google.script.run
+                .withSuccessHandler(function (res) {
+                    if (res.status === 'success') {
+                        localStorage.clear();
                         document.getElementById('quizForm').classList.add('hidden');
                         document.getElementById('section-success').classList.remove('hidden');
-                        document.getElementById('success-name-display').innerText = "Terima kasih, " + data.nama_peserta;
+                        document.getElementById('success-name-display').innerText = "Terima kasih, " + formData.nama_peserta + ". Nilai kamu: " + score + "/10";
                     } else {
-                        throw new Error(response.message || 'Unknown error');
+                        alert("Gagal: " + res.message);
+                        btn.disabled = false;
+                        btn.innerText = originalText;
                     }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan saat mengirim: ' + error.message);
-                    btn.disabled = false;
-                    btn.innerText = originalText;
-                });
+                .withFailureHandler(function (err) { alert("Error: " + err); btn.disabled = false; btn.innerText = originalText; })
+                .submitQuiz(formData);
         });
     </script>
-
 </body>
 
 </html>
