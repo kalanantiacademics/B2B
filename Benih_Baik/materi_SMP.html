@@ -6071,1557 +6071,411 @@
     </div>
 
 
-    <!-- MEETING 8: Escape Room Part 2 -->
+    <!-- MEETING 8: Dokter Coding (Debugging) -->
 
     <!-- Slide 8.1: Cover -->
     <div class="slide" id="meet8-1">
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-purple mb-4">PERTEMUAN 8</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Escape Room: Part 2</h1>
-            <p class="text-2xl text-gray-600 mb-8">Mempersiapkan Aset & Clue</p>
-            <img src="https://cdn-icons-png.flaticon.com/512/2919/2919600.png" alt="Assets" class="h-32 mx-auto">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Dokter Coding (Debugging) 🩺</h1>
+            <p class="text-2xl text-gray-600 mb-8">Menyembuhkan Game yang Sakit!</p>
+            <div class="flex justify-center gap-4">
+                <span class="text-6xl">🩺</span>
+                <span class="text-6xl">🐛</span>
+                <span class="text-6xl">💻</span>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 8.2: Misi Hari Ini -->
+    <!-- Slide 8.2: Ice Breaking - Quiz Ringan -->
     <div class="slide" id="meet8-2">
-        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Hari Ini</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🎨</div>
-                <h3 class="text-xl font-bold">Buat Aset</h3>
-                <p>Karpet, Palu, TV, Kunci.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🎭</div>
-                <h3 class="text-xl font-bold">Multi-Kostum</h3>
-                <p>Benda yang bisa berubah.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">👻</div>
-                <h3 class="text-xl font-bold">Show/Hide</h3>
-                <p>Logika kemunculan.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">📍</div>
-                <h3 class="text-xl font-bold">Posisi</h3>
-                <p>Menata ruangan.</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Kuis Dokter 🩺</h2>
+            <p class="text-xl mb-6">Jawab dengan cepat! Angkat tanganmu! 🙋‍♂️</p>
+            <div class="grid grid-cols-3 gap-6 text-left">
+                <div class="bg-blue-50 p-4 rounded-xl">
+                    <p class="font-bold text-lg mb-2">1. Warna Blok Motion?</p>
+                    <p class="text-blue-600 font-bold">A. Biru</p>
+                    <p class="text-gray-400">B. Merah</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-xl">
+                    <p class="font-bold text-lg mb-2">2. Blok untuk Looping?</p>
+                    <p class="text-purple-600 font-bold">A. Forever</p>
+                    <p class="text-gray-400">B. If-Then</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl">
+                    <p class="font-bold text-lg mb-2">3. Bendera Hijau untuk...</p>
+                    <p class="text-green-600 font-bold">A. Mulai</p>
+                    <p class="text-gray-400">B. Berhenti</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 8.3: Review Scene Management -->
+    <!-- Slide 8.3: Materi Inti - Apa itu Bug? -->
     <div class="slide" id="meet8-3">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Review: Manajemen Scene</h2>
-            <p class="text-xl mb-6">Ingat aturan main kita?</p>
-            <div class="bg-yellow-100 p-6 rounded-xl inline-block text-left">
-                <p class="font-bold mb-2">Setiap Sprite harus tahu:</p>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li>Kapan harus MUNCUL (Show).</li>
-                    <li>Kapan harus SEMBUNYI (Hide).</li>
-                </ul>
+            <h2 class="text-4xl font-bold mb-6 text-red-500">Apa itu Bug? 🐛</h2>
+            <p class="text-xl mb-6">Bug adalah kesalahan dalam kode yang membuat game jadi "sakit".</p>
+            <div class="grid grid-cols-2 gap-6 mt-8">
+                <div class="bg-red-50 p-6 rounded-xl text-left">
+                    <p class="font-bold text-red-700">Tanda-tanda Game Sakit:</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>Karakter jalan mundur.</li>
+                        <li>Skor tidak bertambah.</li>
+                        <li>Game tidak mau mulai.</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl text-left">
+                    <p class="font-bold text-green-700">Tugas Dokter Coding:</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>Cari Bug-nya (Diagnosa).</li>
+                        <li>Perbaiki Kodenya (Obati).</li>
+                        <li>Tes lagi (Check-up).</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 8.4: Konsep Multi-Kostum -->
+    <!-- Slide 8.4: Challenge 1 Demo -->
     <div class="slide" id="meet8-4">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-purple-600">Konsep: Multi-Kostum</h2>
-            <p class="text-xl mb-6">Benda di game puzzle harus bisa BERUBAH.</p>
-            <div class="flex justify-center gap-8">
-                <div class="bg-white p-4 rounded-lg shadow-sm">
-                    <p>TV Mati</p>
-                    <p class="text-2xl">📺</p>
-                </div>
-                <div class="text-4xl self-center">➡️</div>
-                <div class="bg-white p-4 rounded-lg shadow-sm">
-                    <p>TV Pecah</p>
-                    <p class="text-2xl">💥</p>
-                </div>
+        <div class="glass-card p-6 max-w-6xl w-full text-center">
+            <span class="tag tag-red mb-2">CHALLENGE 1</span>
+            <h2 class="text-3xl font-bold mb-4">Demo: Game yang SAKIT 🤒</h2>
+            <p class="mb-4">Perhatikan apa yang salah dengan game ini.</p>
+            <div class="relative w-full flex justify-center mb-4">
+                <iframe src="https://scratch.mit.edu/projects/1273340826/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen class="rounded-xl shadow-lg border-4 border-red-200"></iframe>
             </div>
+            <a href="https://scratch.mit.edu/projects/1273340826/" target="_blank" class="btn btn-primary text-lg">
+                🚀 Buka di Scratch
+            </a>
         </div>
     </div>
 
-    <!-- Slide 8.5: Misi 1 Aset Karpet -->
+    <!-- Slide 8.5: Challenge 1 Goal -->
     <div class="slide" id="meet8-5">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 1: Aset Karpet</h2>
-            <p class="text-xl mb-6">Kita akan sembunyikan sesuatu di bawah karpet.</p>
-            <p class="text-lg">Buat Sprite Baru: <strong>Karpet</strong>.</p>
-            <div class="mt-4 bg-gray-200 w-32 h-20 mx-auto rounded-lg flex items-center justify-center">Gambar Kotak
+        <div class="glass-card p-6 max-w-6xl w-full text-center">
+            <h2 class="text-3xl font-bold mb-6 text-green-600">Misi: Sembuhkan Kodenya! 💊</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <div class="flex-shrink-0">
+                    <p class="mb-2 font-bold text-gray-600">Harusnya Seperti Ini:</p>
+                    <iframe src="https://scratch.mit.edu/projects/1263360342/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen class="rounded-xl shadow-md border-4 border-green-200"></iframe>
+                </div>
+                <div class="flex flex-col items-center gap-6 max-w-md">
+                    <div class="bg-yellow-50 p-6 rounded-xl w-full text-left shadow-sm border border-yellow-200">
+                        <h3 class="font-bold text-xl mb-3 flex items-center gap-2">
+                            <span class="bg-yellow-200 p-1 rounded">📋</span> Tugas Kalian:
+                        </h3>
+                        <ol class="list-decimal pl-5 space-y-3 text-lg text-gray-700">
+                            <li>Klik tombol <strong>REMIX</strong> di bawah.</li>
+                            <li>Cari blok kode yang <strong>SALAH</strong>.</li>
+                            <li>Perbaiki sampai Kucing bisa jalan & Skor bertambah!</li>
+                        </ol>
+                    </div>
+                    <a href="https://bit.ly/debug-sc1" target="_blank" class="btn btn-primary text-2xl font-bold px-8 py-4 w-full shadow-lg hover:scale-105 transition transform animate-pulse">
+                        🛠️ REMIX & FIX IT!
+                        <div class="text-sm font-normal mt-1 opacity-80">bit.ly/debug-sc1</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 8.6: Langkah 1 Buat Sprite Karpet -->
+    <!-- Slide 8.6: Challenge 2 -->
     <div class="slide" id="meet8-6">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 1: Gambar Karpet</h2>
-            <p class="text-xl mb-6">Gunakan Paint Editor.</p>
-            <ul class="text-left text-xl space-y-2 inline-block bg-white p-8 rounded-xl shadow-sm">
-                <li>1. Klik "Paint" di menu Sprite.</li>
-                <li>2. Gambar persegi panjang (Warna bebas).</li>
-                <li>3. Beri nama sprite: "Karpet".</li>
+            <span class="tag tag-purple mb-4">CHALLENGE 2</span>
+            <h2 class="text-4xl font-bold mb-6">Misteri Bug Kedua 🕷️</h2>
+            <p class="text-xl mb-6">Sudah berhasil Misi 1? Lanjut ke sini!</p>
+            <div class="bg-purple-50 p-8 rounded-xl inline-block mb-8">
+                <p class="text-2xl font-bold mb-4">"Kenapa bolanya tidak mau mantul?"</p>
+                <p class="text-gray-600">Analisis kodenya, temukan masalahnya.</p>
+            </div>
+            <br>
+            <a href="https://bit.ly/debug-sc2" target="_blank" class="btn btn-secondary text-2xl px-12 py-4">
+                🔍 Mulai Challenge 2 <br><span class="text-sm font-normal">bit.ly/debug-sc2</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Slide 8.7: Tips Membaca Alur (Old 8.5) -->
+    <div class="slide" id="meet8-7">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Cara Membaca Resep (Kode) 📜</h2>
+            <p class="text-xl mb-6">Baca blok dari ATAS ke BAWAH.</p>
+            <div class="flex justify-center gap-4 text-left">
+                <div class="bg-gray-100 p-4 rounded-xl font-mono text-sm w-64">
+                    When Green Flag Clicked<br>
+                    Forever<br>
+                    &nbsp;&nbsp;Move <span class="text-red-500 font-bold">-10</span> steps<br>
+                    &nbsp;&nbsp;Next Costume
+                </div>
+                <div class="self-center text-4xl">👉</div>
+                <div class="bg-white p-4 rounded-xl w-64 items-center flex">
+                    <p>Kenapa jalan mundur?<br>Karena -10!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8.8: Rapikan Game Sendiri (Old 8.6) -->
+    <div class="slide" id="meet8-8">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Misi 2: Rapikan Gamemu 🧹</h2>
+            <p class="text-xl mb-6">Sekarang cek game buatanmu sendiri.</p>
+            <ul class="text-left list-disc pl-8 inline-block text-lg">
+                <li>Apakah ada yang aneh?</li>
+                <li>Tambahkan Background baru?</li>
+                <li>Tambahkan Suara biar seru?</li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 8.7: Langkah 2 Kode Awal Karpet -->
-    <div class="slide" id="meet8-7">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 2: Kode Show/Hide</h2>
-            <p class="text-xl mb-6">Karpet hanya ada di Room1.</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Depan]</span> -> Hide</div>
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Room1]</span> -> Show</div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-events">When backdrop switches to
-                        [Room2]</span> -> Hide</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.8: Langkah 3 Posisi Awal -->
-    <div class="slide" id="meet8-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 3: Posisi Awal</h2>
-            <p class="text-xl mb-6">PENTING: Reset posisi setiap masuk ruangan.</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Room1]</span></div>
-                <div class="pl-8 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-motion">Go to x: (0) y:
-                            (-100)</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-looks">Show</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.9: Misi 2 Aset Palu -->
+    <!-- Slide 8.9: Penutup (Old 8.7) -->
     <div class="slide" id="meet8-9">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 2: Aset Palu 🔨</h2>
-            <p class="text-xl mb-6">Alat untuk memecahkan kaca.</p>
-            <p class="text-lg">Buat Sprite Baru: <strong>Palu</strong>.</p>
+            <h2 class="text-4xl font-bold mb-6">Ice Breaking Akhir: Pesan Berantai 🤐</h2>
+            <p class="text-xl mb-6">Kakak akan lakukan 3 gerakan.</p>
+            <p class="text-lg">Tiru dan sampaikan ke teman sebelah!</p>
+            <p class="mt-8 text-gray-500">Sampai jumpa minggu depan di Fase Final Project!</p>
         </div>
     </div>
 
-    <!-- Slide 8.10: Langkah 4 Buat Sprite Palu -->
-    <div class="slide" id="meet8-10">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 4: Gambar Palu</h2>
-            <p class="text-xl mb-6">Bisa gambar sendiri atau cari di Library ("Hammer").</p>
-            <p class="text-lg">Letakkan di atas meja atau rak buku.</p>
-        </div>
-    </div>
 
-    <!-- Slide 8.11: Langkah 5 Kode Awal Palu -->
-    <div class="slide" id="meet8-11">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 5: Kode Palu</h2>
-            <p class="text-xl mb-6">Sama seperti Karpet: Hanya Show di Room1.</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Room1]</span></div>
-                <div class="pl-8 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-motion">Go to x: (100) y:
-                            (50)</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-looks">Show</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- MEETING 9: Perencanaan Proyek Impian -->
 
-    <!-- Slide 8.12: Misi 3 Aset TV -->
-    <div class="slide" id="meet8-12">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 3: Aset TV 📺</h2>
-            <p class="text-xl mb-6">Ini puzzle utama kita.</p>
-            <p class="text-lg">TV ini punya rahasia di dalamnya!</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.13: Langkah 6 Kostum TV -->
-    <div class="slide" id="meet8-13">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 6: Dua Kostum TV</h2>
-            <p class="text-xl mb-6">Buat Sprite TV, lalu ke tab <strong>Costumes</strong>.</p>
-            <div class="grid grid-cols-2 gap-6">
-                <div class="bg-white p-4 rounded-lg border-2 border-gray-300">
-                    <h3 class="font-bold">Kostum 1: Normal</h3>
-                    <p>Gambar TV biasa.</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg border-2 border-red-300">
-                    <h3 class="font-bold">Kostum 2: Pecah</h3>
-                    <p>Gambar TV retak/bolong.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.14: Langkah 7 Kode Awal TV -->
-    <div class="slide" id="meet8-14">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 7: Kode TV</h2>
-            <p class="text-xl mb-6">Selain posisi, kita harus reset KOSTUM-nya.</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Room1]</span></div>
-                <div class="pl-8 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-looks">Switch costume to
-                            [Normal]</span></div>
-                    <div class="flex items-center gap-2"><span class="scratch-block block-looks">Show</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.15: Konsep Reset State -->
-    <div class="slide" id="meet8-15">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-yellow-500">Kenapa Harus Reset?</h2>
-            <p class="text-xl mb-6">Bayangkan kalau pemain keluar ruangan lalu masuk lagi...</p>
-            <p class="text-lg">Jika TV sudah pecah, masa pecah terus? Kita ingin game terasa "rapi".</p>
-            <p class="text-sm mt-4 text-gray-500">(Kecuali kalau memang logic gamenya begitu, tapi untuk sekarang kita
-                reset dulu).</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.16: Misi 4 Aset Kunci -->
-    <div class="slide" id="meet8-16">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 4: Aset Kunci 🗝️</h2>
-            <p class="text-xl mb-6">Kunci untuk membuka Pintu.</p>
-            <p class="text-lg">Kunci ini disembunyikan di dalam TV!</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.17: Langkah 8 Buat Sprite Kunci -->
-    <div class="slide" id="meet8-17">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 8: Gambar Kunci</h2>
-            <p class="text-xl mb-6">Buat Sprite Kunci (Kecil saja).</p>
-            <p class="text-lg">Letakkan di posisi yang SAMA dengan TV.</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.18: Pertanyaan Logika -->
-    <div class="slide" id="meet8-18">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-blue-600">Pertanyaan Logika 🤔</h2>
-            <p class="text-xl mb-6">Apakah Kunci harus MUNCUL saat kita masuk Room1?</p>
-            <div class="flex justify-center gap-8 mt-8">
-                <button class="bg-green-500 text-white px-6 py-3 rounded-lg font-bold">YA</button>
-                <button class="bg-red-500 text-white px-6 py-3 rounded-lg font-bold">TIDAK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.19: Jawaban -->
-    <div class="slide" id="meet8-19">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-red-500">Jawabannya: TIDAK!</h2>
-            <p class="text-xl mb-6">Kunci harus TERSEMBUNYI dulu.</p>
-            <p class="text-lg">Dia baru muncul nanti kalau TV-nya pecah.</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.20: Langkah 9 Kode Kunci -->
-    <div class="slide" id="meet8-20">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 9: Kode Kunci</h2>
-            <p class="text-xl mb-6">Sembunyikan di SEMUA tempat (untuk sekarang).</p>
-            <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When green flag
-                        clicked</span> -> Hide</div>
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                        switches to [Room1]</span> -> Hide</div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-events">When backdrop switches to
-                        [Room2]</span> -> Hide</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.21: Misi 5 Penataan -->
-    <div class="slide" id="meet8-21">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 5: Penataan Ruangan</h2>
-            <p class="text-xl mb-6">Pastikan Room1 terlihat rapi.</p>
-            <p class="text-lg">Jangan sampai benda-benda melayang aneh!</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.22: Langkah 10 Susun Aset -->
-    <div class="slide" id="meet8-22">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Langkah 10: Cek Susunan</h2>
-            <div class="relative w-full h-64 bg-gray-200 rounded-xl border-4 border-gray-400 overflow-hidden">
-                <div
-                    class="absolute bottom-0 left-10 w-32 h-10 bg-blue-500 text-white flex items-center justify-center">
-                    Karpet</div>
-                <div
-                    class="absolute bottom-20 right-20 w-24 h-20 bg-gray-800 text-white flex items-center justify-center">
-                    TV</div>
-                <div
-                    class="absolute bottom-40 right-10 w-10 h-10 bg-red-500 text-white flex items-center justify-center rounded-full">
-                    Palu</div>
-                <div
-                    class="absolute top-10 left-10 w-20 h-40 bg-yellow-700 text-white flex items-center justify-center">
-                    Pintu</div>
-            </div>
-            <p class="mt-4">Kira-kira seperti ini layoutnya.</p>
-        </div>
-    </div>
-
-    <!-- Slide 8.23: Checklist Aset -->
-    <div class="slide" id="meet8-23">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Checklist Aset ✅</h2>
-            <div class="grid grid-cols-2 gap-4 text-left text-lg">
-                <label class="flex items-center gap-2"><input type="checkbox" class="w-6 h-6"> Karpet (Show di
-                    Room1).</label>
-                <label class="flex items-center gap-2"><input type="checkbox" class="w-6 h-6"> Palu (Show di
-                    Room1).</label>
-                <label class="flex items-center gap-2"><input type="checkbox" class="w-6 h-6"> TV (Show & Normal di
-                    Room1).</label>
-                <label class="flex items-center gap-2"><input type="checkbox" class="w-6 h-6"> Kunci (Hide
-                    Selalu).</label>
-                <label class="flex items-center gap-2"><input type="checkbox" class="w-6 h-6"> Pintu (Show di
-                    Room1).</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.24: Refleksi -->
-    <div class="slide" id="meet8-24">
-        <h2 class="text-4xl font-bold mb-8 text-center">Apa yang Kita Pelajari?</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Asset Creation</h4>
-                <p>Menggambar benda game.</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Multi-Costume</h4>
-                <p>Satu benda, banyak bentuk.</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Initial State</h4>
-                <p>Reset kondisi awal (Posisi/Kostum).</p>
-            </div>
-            <div class="glass-card p-6">
-                <h4 class="font-bold mb-2">Game Logic</h4>
-                <p>Merencanakan alur (Kunci sembunyi).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feedback Slide -->
-    <div class="slide" id="meet8-feedback">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
-            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
-            <div class="flex flex-col items-center gap-6">
-                <div class="bg-white p-4 rounded-xl shadow-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                        alt="QR Code Feedback" class="w-48 h-48">
-                </div>
-                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
-                    bit.ly/feedback_benihbaik
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 8.25: Penutup -->
-    <div class="slide" id="meet8-25">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">SIAP BERAKSI! 🎬</h1>
-            <p class="text-2xl mb-8">Panggung Sudah Siap.</p>
-            <p class="text-xl text-gray-600">Minggu depan: Kita akan buat semuanya BERGERAK!</p>
-        </div>
-    </div>
-    <!-- MEETING 9: Planning Project -->
-
-    <!-- Slide 9.1: Title -->
+    <!-- Slide 9.1: Cover -->
     <div class="slide" id="meet9-1">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <span class="tag tag-blue mb-4">PERTEMUAN 9</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Proyek Impian 🚀</h1>
-            <p class="text-2xl text-gray-600">Planning & Game Design</p>
+        <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
+            <span class="tag tag-purple mb-4">PERTEMUAN 9</span>
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Fase 3: Final Project 🚀</h1>
+            <p class="text-2xl text-gray-600 mb-8">Perencanaan Proyek Impian</p>
+            <p class="text-lg text-gray-500">4 Minggu Menjadi Game Developer!</p>
         </div>
     </div>
 
-    <!-- Slide 9.2: Game Genres -->
+    <!-- Slide 9.2: Ice Breaking - Jika Aku Jadi -->
     <div class="slide" id="meet9-2">
-        <h2 class="text-4xl font-bold mb-8">Pilih Genre Game-mu</h2>
-        <div class="grid grid-cols-3 gap-6 max-w-6xl">
-            <div class="glass-card p-6 text-center hover:bg-blue-50 cursor-pointer transition">
-                <h3 class="text-2xl font-bold mb-2">Platformer</h3>
-                <p>Mario Bros style. Lompat-lompat rintangan.</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Jika Aku Jadi... 🦸</h2>
+            <p class="text-xl mb-6">Jawab Cepat!</p>
+            <div class="bg-blue-50 p-8 rounded-xl">
+                <p class="text-2xl font-bold text-dark">"Jika kamu jadi karakter game, apa kekuatan supermu?"</p>
+                <p class="mt-4 text-gray-500">(Contoh: Bisa terbang, Bisa menghilang, Tembak laser)</p>
             </div>
-            <div class="glass-card p-6 text-center hover:bg-blue-50 cursor-pointer transition">
-                <h3 class="text-2xl font-bold mb-2">Maze / Labirin</h3>
-                <p>Pacman style. Cari jalan keluar.</p>
-            </div>
-            <div class="glass-card p-6 text-center hover:bg-blue-50 cursor-pointer transition">
-                <h3 class="text-2xl font-bold mb-2">Clicker / Story</h3>
-                <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Hari Ini</h2>
-                <div class="grid grid-cols-3 gap-6 max-w-5xl w-full">
-                    <div class="glass-card p-6 text-center">
-                        <div class="text-5xl mb-4">🖱️</div>
-                        <h3 class="text-xl font-bold">Klik & Geser</h3>
-                        <p>Karpet & Palu.</p>
-                    </div>
-                    <div class="glass-card p-6 text-center">
-                        <div class="text-5xl mb-4">📡</div>
-                        <h3 class="text-xl font-bold">Broadcast</h3>
-                        <p>Palu -> TV.</p>
-                    </div>
-                    <div class="glass-card p-6 text-center">
-                        <div class="text-5xl mb-4">🚪</div>
-                        <h3 class="text-xl font-bold">Kabur!</h3>
-                        <p>Kunci -> Pintu.</p>
-                    </div>
+        </div>
+    </div>
+
+    <!-- Slide 9.3: Inspirasi Game -->
+    <div class="slide" id="meet9-3">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Contoh Proyek Keren 🌟</h2>
+            <p class="text-xl mb-8">Kalian bisa buat game seperti ini:</p>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-sm hover:scale-105 transition">
+                    <div class="text-4xl mb-2">🏃</div>
+                    <p class="font-bold">Platformer</p>
+                    <p class="text-sm">Lompat rintangan (Mario Bros)</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm hover:scale-105 transition">
+                    <div class="text-4xl mb-2">🧩</div>
+                    <p class="font-bold">Maze</p>
+                    <p class="text-sm">Cari jalan keluar (Pacman)</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm hover:scale-105 transition">
+                    <div class="text-4xl mb-2">📖</div>
+                    <p class="font-bold">Interactive Story</p>
+                    <p class="text-sm">Cerita dengan pilihan</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Slide 9.3: Review -->
-            <div class="slide" id="meet9-3">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Review: Aset Kita</h2>
-                    <p class="text-xl mb-6">Minggu lalu kita sudah siapkan:</p>
-                    <div class="flex justify-center gap-4 flex-wrap">
-                        <span class="bg-gray-200 px-4 py-2 rounded-lg">Karpet</span>
-                        <span class="bg-gray-200 px-4 py-2 rounded-lg">Palu</span>
-                        <span class="bg-gray-200 px-4 py-2 rounded-lg">TV (2 Kostum)</span>
-                        <span class="bg-gray-200 px-4 py-2 rounded-lg">Kunci (Hidden)</span>
-                        <span class="bg-gray-200 px-4 py-2 rounded-lg">Pintu</span>
-                    </div>
-                    <p class="mt-6 text-lg">Tapi semuanya masih DIAM. Ayo kita hidupkan!</p>
+    <!-- Slide 9.4: Syarat Proyek -->
+    <div class="slide" id="meet9-4">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-red-500">Syarat Game Final 📋</h2>
+            <p class="text-xl mb-6">Game-mu harus punya:</p>
+            <div class="text-left inline-block space-y-4">
+                <div class="flex items-center gap-4">
+                    <span class="scratch-block block-control">Forever / Repeat</span>
+                    <span>(Looping)</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="scratch-block block-variables">Score / Lives</span>
+                    <span>(Variabel)</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="scratch-block block-control">If ... Then</span>
+                    <span>(Logika)</span>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Slide 9.4: Konsep Interaksi -->
-            <div class="slide" id="meet9-4">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6 text-purple-600">Konsep: Interaksi Fisik</h2>
-                    <p class="text-xl mb-6">Di game Escape Room, kita sering:</p>
-                    <div class="grid grid-cols-2 gap-6 text-left">
-                        <div class="bg-blue-100 p-4 rounded-lg">
-                            <p class="font-bold">1. Menggeser Barang (Drag)</p>
-                            <p>Memindahkan bantal, buku, dll.</p>
-                        </div>
-                        <div class="bg-green-100 p-4 rounded-lg">
-                            <p class="font-bold">2. Menyentuh Barang (Touch)</p>
-                            <p>Kunci menyentuh Pintu -> Terbuka.</p>
-                        </div>
-                    </div>
+    <!-- Slide 9.5: Praktik - Desain -->
+    <div class="slide" id="meet9-5">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Ayo Desain! ✏️</h2>
+            <p class="text-xl mb-6">Ambil kertas atau buka Paint Editor.</p>
+            <div class="grid grid-cols-2 gap-8 text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-2">1. Karakter Utama</h3>
+                    <p>Siapa heronya? Hewan? Orang? Alien?</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">2. Latar Tempat</h3>
+                    <p>Di hutan? Di luar angkasa? Di dalam air?</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">3. Musuh/Rintangan</h3>
+                    <p>Apa yang harus dihindari?</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">4. Tujuan</h3>
+                    <p>Bagaimana cara menang?</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Slide 9.5: Misi 1 Karpet -->
-            <div class="slide" id="meet9-5">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Misi 1: Karpet Misterius</h2>
-                    <p class="text-xl mb-6">Saat diklik, karpet harus bergeser.</p>
-                    <p class="text-lg">Klik lagi -> Kembali ke posisi awal.</p>
-                </div>
-            </div>
+    <!-- Slide 9.6: Penutup -->
+    <div class="slide" id="meet9-6">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Tepuk Semangat! 👏</h2>
+            <p class="text-xl mb-6">Desain sudah siap?</p>
+            <p class="text-lg">Simpan idemu baik-baik. Minggu depan kita mulai BANGUN!</p>
+        </div>
+    </div>
 
-            <!-- Slide 9.6: Langkah 1 Kode Pemicu -->
-            <div class="slide" id="meet9-6">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 1: Pemicu</h2>
-                    <p class="text-xl mb-6">Gunakan blok Events.</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2"><span class="scratch-block block-events">When this sprite
-                                clicked</span></div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Slide 9.7: Langkah 2 Logika Posisi -->
-            <div class="slide" id="meet9-7">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 2: Cek Posisi</h2>
-                    <p class="text-xl mb-6">Kita cek: Apakah karpet ada di posisi awal?</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If &lt; (x
-                                position) = (-100) &gt; then</span></div>
-                        <div class="pl-8 border-l-2 border-gray-300 mb-2">
-                            <p class="text-gray-500">// Geser ke Kanan</p>
-                        </div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">Else</span>
-                        </div>
-                        <div class="pl-8 border-l-2 border-gray-300">
-                            <p class="text-gray-500">// Geser ke Kiri (Balik)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.8: Langkah 3 Aksi Glide -->
-            <div class="slide" id="meet9-8">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 3: Gerakan Halus</h2>
-                    <p class="text-xl mb-6">Gunakan <strong>Glide</strong> agar terlihat seperti ditarik.</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-motion">Glide (1)
-                                secs to x: (50) y: (-100)</span></div>
-                        <p class="text-sm text-gray-500 mt-2">Sesuaikan koordinat X dan Y dengan posisimu!</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.9: Uji Coba Karpet -->
-            <div class="slide" id="meet9-9">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <span class="tag tag-green mb-4">TESTING</span>
-                    <h2 class="text-4xl font-bold mb-6">Coba Karpetmu!</h2>
-                    <p class="text-xl mb-6">Klik Karpet -> Geser.</p>
-                    <p class="text-xl">Klik Lagi -> Balik.</p>
-                    <p class="text-lg text-gray-500 mt-4">Apakah gerakannya mulus?</p>
-                </div>
-            </div>
-
-            <!-- Slide 9.10: Misi 2 Palu & TV -->
-            <div class="slide" id="meet9-10">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Misi 2: Palu & TV 🔨📺</h2>
-                    <p class="text-xl mb-6">Kita harus mengambil Palu dan memukulkannya ke TV.</p>
-                    <p class="text-lg">TV akan pecah dan mengeluarkan kunci!</p>
-                </div>
-            </div>
-
-            <!-- Slide 9.11: Langkah 5 Setup Palu -->
-            <div class="slide" id="meet9-11">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 5: Setup Palu</h2>
-                    <p class="text-xl mb-6">Pastikan Palu bisa DIGESER (Drag).</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                                switches to [Room1]</span></div>
-                        <div class="pl-8 border-l-2 border-gray-300">
-                            <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-sensing">Set drag
-                                    mode [draggable]</span></div>
-                            <div class="flex items-center gap-2"><span class="scratch-block block-motion">Go to x: (100)
-                                    y: (50)</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.12: Langkah 6 Palu Memukul -->
-            <div class="slide" id="meet9-12">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 6: Palu Memukul</h2>
-                    <p class="text-xl mb-6">Saat Palu diklik DAN menyentuh TV...</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When this
-                                sprite clicked</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If
-                                &lt;touching [TV]?&gt; then</span></div>
-                        <div class="pl-8 border-l-2 border-gray-300">
-                            <div class="flex items-center gap-2"><span class="scratch-block block-events">Broadcast
-                                    [Pecahin TV]</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.13: Misi 3 Reaksi TV -->
-            <div class="slide" id="meet9-13">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Misi 3: Reaksi TV</h2>
-                    <p class="text-xl mb-6">TV harus "mendengar" teriakan Palu.</p>
-                    <p class="text-lg">Lalu berubah jadi rusak.</p>
-                </div>
-            </div>
-
-            <!-- Slide 9.14: Langkah 7 TV Pecah -->
-            <div class="slide" id="meet9-14">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 7: TV Pecah</h2>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When I
-                                receive [Pecahin TV]</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-looks">Switch costume
-                                to [Pecah]</span></div>
-                        <div class="flex items-center gap-2"><span class="scratch-block block-events">Broadcast
-                                [Munculkan Kunci]</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.15: Misi 4 Kunci Rahasia -->
-            <div class="slide" id="meet9-15">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Misi 4: Kunci Rahasia 🗝️</h2>
-                    <p class="text-xl mb-6">Kunci ada di belakang TV.</p>
-                    <p class="text-lg">Saat TV pecah, Kunci jadi kelihatan!</p>
-                </div>
-            </div>
-
-            <!-- Slide 9.16: Langkah 8 Setup Kunci -->
-            <div class="slide" id="meet9-16">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 8: Setup Kunci</h2>
-                    <p class="text-xl mb-6">Kunci harus di <strong>Back Layer</strong>.</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When backdrop
-                                switches to [Room1]</span></div>
-                        <div class="pl-8 border-l-2 border-gray-300">
-                            <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-looks">Go to back
-                                    layer</span></div>
-                            <div class="flex items-center gap-2"><span class="scratch-block block-looks">Show</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.17: Langkah 9 Ambil Kunci -->
-            <div class="slide" id="meet9-17">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 9: Ambil Kunci</h2>
-                    <p class="text-xl mb-6">Kunci baru bisa diambil (Drag) SETELAH TV pecah.</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When I
-                                receive [Munculkan Kunci]</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-looks">Go to front
-                                layer</span></div>
-                        <div class="flex items-center gap-2"><span class="scratch-block block-sensing">Set drag mode
-                                [draggable]</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.18: Misi 5 Buka Pintu -->
-            <div class="slide" id="meet9-18">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Misi 5: Buka Pintu 🚪</h2>
-                    <p class="text-xl mb-6">Seret Kunci ke Pintu -> Pintu Terbuka.</p>
-                    <p class="text-lg">Lalu kita masuk ke Room 2!</p>
-                </div>
-            </div>
-
-            <!-- Slide 9.19: Langkah 10 Logika Kunci -->
-            <div class="slide" id="meet9-19">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 10: Kunci Sentuh Pintu</h2>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When this
-                                sprite clicked</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-control">If
-                                &lt;touching [Pintu]?&gt; then</span></div>
-                        <div class="pl-8 border-l-2 border-gray-300">
-                            <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">Broadcast
-                                    [Buka Pintu]</span></div>
-                            <div class="flex items-center gap-2"><span class="scratch-block block-looks">Hide</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.20: Langkah 11 Reaksi Pintu -->
-            <div class="slide" id="meet9-20">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 11: Pintu Terbuka</h2>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When I
-                                receive [Buka Pintu]</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-looks">Switch costume
-                                to [Terbuka]</span></div>
-                        <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-sound">Start sound
-                                [Door Creak]</span></div>
-                        <div class="flex items-center gap-2"><span class="scratch-block block-control">Wait (1)
-                                seconds</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.21: Langkah 12 Pindah Ruangan -->
-            <div class="slide" id="meet9-21">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6">Langkah 12: Masuk Room 2!</h2>
-                    <p class="text-xl mb-6">Tambahkan di bawah kode Pintu tadi:</p>
-                    <div class="bg-gray-100 p-6 rounded-xl inline-block text-left">
-                        <div class="flex items-center gap-2"><span class="scratch-block block-looks">Switch backdrop to
-                                [Room2]</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.22: Full Test -->
-            <div class="slide" id="meet9-22">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <span class="tag tag-green mb-4">FINAL TEST</span>
-                    <h2 class="text-4xl font-bold mb-6">Uji Coba Keseluruhan</h2>
-                    <ul class="text-left text-xl space-y-2 inline-block bg-white p-8 rounded-xl shadow-sm">
-                        <li>✅ Klik Karpet (Geser).</li>
-                        <li>✅ Ambil Palu (Drag).</li>
-                        <li>✅ Pukul TV (Pecah).</li>
-                        <li>✅ Ambil Kunci (Muncul).</li>
-                        <li>✅ Buka Pintu (Terbuka).</li>
-                        <li>✅ Pindah ke Room 2.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Slide 9.23: Refleksi -->
-            <div class="slide" id="meet9-23">
-                <h2 class="text-4xl font-bold mb-8 text-center">Apa yang Kita Pelajari?</h2>
-                <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-                    <div class="glass-card p-6">
-                        <h4 class="font-bold mb-2">Drag & Drop</h4>
-                        <p>Menggeser sprite (Sensing).</p>
-                    </div>
-                    <div class="glass-card p-6">
-                        <h4 class="font-bold mb-2">Collision</h4>
-                        <p>Touching [Sprite] untuk interaksi.</p>
-                    </div>
-                    <div class="glass-card p-6">
-                        <h4 class="font-bold mb-2">Layering</h4>
-                        <p>Menyembunyikan benda di belakang benda lain.</p>
-                    </div>
-                    <div class="glass-card p-6">
-                        <h4 class="font-bold mb-2">Sequencing</h4>
-                        <p>Urutan puzzle (Palu -> TV -> Kunci -> Pintu).</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feedback Slide -->
-            <div class="slide" id="meet9-feedback">
-                <div class="glass-card p-10 max-w-4xl w-full text-center">
-                    <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
-                    <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
-                    <div class="flex flex-col items-center gap-6">
-                        <div class="bg-white p-4 rounded-xl shadow-lg">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                                alt="QR Code Feedback" class="w-48 h-48">
-                        </div>
-                        <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                            class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
-                            bit.ly/feedback_benihbaik
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9.24: Penutup -->
-            <div class="slide" id="meet9-24">
-                <div class="glass-card p-12 text-center max-w-4xl w-full">
-                    <h1 class="text-6xl font-bold mb-6 gradient-text">ROOM 1 CLEARED! 🏆</h1>
-                    <p class="text-2xl mb-8">Kalian berhasil kabur dari ruangan pertama!</p>
-                    <p class="text-xl text-gray-600">Minggu depan: Tantangan di Ruangan 2!</p>
-                </div>
-            </div>
-
-    <!-- MEETING 10: Building Foundation -->
+    <!-- MEETING 10: Membangun Pondasi Game -->
 
     <!-- Slide 10.1: Cover -->
     <div class="slide" id="meet10-1">
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-purple mb-4">PERTEMUAN 10</span>
             <h1 class="text-6xl font-bold mb-6 gradient-text">Membangun Pondasi 🏗️</h1>
-            <p class="text-2xl text-gray-600 mb-8">Core Mechanics Implementation</p>
-            <img src="https://cdn-icons-png.flaticon.com/512/1005/1005141.png" alt="Coding" class="h-32 mx-auto">
+            <p class="text-2xl text-gray-600 mb-8">Coding Mekanik Utama</p>
+            <div class="text-8xl animate-bounce">🧱</div>
         </div>
     </div>
 
-    <!-- Slide 10.2: Agenda -->
+    <!-- Slide 10.2: Ice Breaking - Temukan Benda -->
     <div class="slide" id="meet10-2">
-        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Hari Ini</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">⚙️</div>
-                <h3 class="text-xl font-bold">Core Mechanics</h3>
-                <p>Gerakan & Interaksi.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">💯</div>
-                <h3 class="text-xl font-bold">Game Systems</h3>
-                <p>Skor, Nyawa, Win/Lose.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">✨</div>
-                <h3 class="text-xl font-bold">Polishing</h3>
-                <p>Suara & Efek Visual.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🐛</div>
-                <h3 class="text-xl font-bold">Debugging</h3>
-                <p>Cari & Hapus Error.</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Temukan Benda 🔍</h2>
+            <div class="bg-gray-100 p-8 rounded-xl">
+                <p class="text-2xl font-bold mb-4">Cari benda berwarna MERAH!</p>
+                <p class="text-xl">Pegang dan tunjukkan ke kamera dalam 5 detik!</p>
+                <div class="text-6xl mt-4 animate-pulse">🔴</div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 10.3: Review Assets -->
+    <!-- Slide 10.3: Strategi Hari Ini -->
     <div class="slide" id="meet10-3">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Cek Dapur Coding-mu 🍳</h2>
-            <p class="text-xl mb-6">Pastikan semua bahan sudah siap sebelum memasak!</p>
-            <div class="grid grid-cols-3 gap-4 text-left">
-                <div class="bg-green-100 p-4 rounded-xl">
-                    <p class="font-bold">✅ Sprites</p>
-                    <p class="text-sm">Pemain, Musuh, Item.</p>
-                </div>
-                <div class="bg-green-100 p-4 rounded-xl">
-                    <p class="font-bold">✅ Backdrops</p>
-                    <p class="text-sm">Menu, Level 1, Game Over.</p>
-                </div>
-                <div class="bg-green-100 p-4 rounded-xl">
-                    <p class="font-bold">✅ Sounds</p>
-                    <p class="text-sm">BGM, Efek Suara.</p>
-                </div>
+            <h2 class="text-4xl font-bold mb-6">Fokus Hari Ini: Gerakan! 🏃</h2>
+            <p class="text-xl mb-6">Jangan pikirkan skor atau menang/kalah dulu.</p>
+            <div class="bg-blue-50 p-6 rounded-xl inline-block text-left text-lg">
+                <p>✅ Buat Karakter bisa jalan (Kanan/Kiri/Lompat).</p>
+                <p>✅ Buat Musuh bisa bergerak sendiri.</p>
+                <p>✅ Pasang Background yang pas.</p>
             </div>
         </div>
     </div>
 
-    <!-- Slide 10.4: Movement Basic -->
+    <!-- Slide 10.4: Praktik & Konsultasi -->
     <div class="slide" id="meet10-4">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">LANGKAH 1</span>
-            <h2 class="text-4xl font-bold mb-6">Gerakan Pemain (Dasar)</h2>
-            <p class="text-xl mb-6">Gunakan Event Key Pressed untuk kontrol sederhana.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-events">When [right arrow]
-                        key pressed</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-motion">Change x by (10)</span>
-                </div>
-            </div>
+            <span class="tag tag-green mb-4">WAKTU KODING: 55 MENIT</span>
+            <h2 class="text-4xl font-bold mb-6">Show Me Your Code! 💻</h2>
+            <p class="text-xl mb-6">Kakak akan panggil satu-satu untuk Share Screen.</p>
+            <p class="text-lg text-gray-500">Yang lain lanjut coding ya! Kalau bingung, Raise Hand ✋.</p>
         </div>
     </div>
 
-    <!-- Slide 10.5: Movement Smooth -->
+    <!-- Slide 10.5: Penutup -->
     <div class="slide" id="meet10-5">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">LANGKAH 1 (PRO)</span>
-            <h2 class="text-4xl font-bold mb-6">Gerakan Pemain (Halus)</h2>
-            <p class="text-xl mb-6">Gunakan Loop Forever + If Key Pressed untuk gerakan mulus.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block text-sm">
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-events">When green flag
-                        clicked</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">Forever</span></div>
-                <div class="pl-4 border-l-2 border-gray-300">
-                    <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">If &lt;key
-                            [right arrow] pressed?&gt; then</span></div>
-                    <div class="pl-4 border-l-2 border-gray-300 mb-1"><span class="scratch-block block-motion">Change x
-                            by (5)</span></div>
-                    <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">If &lt;key [left
-                            arrow] pressed?&gt; then</span></div>
-                    <div class="pl-4 border-l-2 border-gray-300"><span class="scratch-block block-motion">Change x by
-                            (-5)</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.6: Enemy Movement -->
-    <div class="slide" id="meet10-6">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-red mb-4">LANGKAH 2</span>
-            <h2 class="text-4xl font-bold mb-6">Gerakan Musuh 👾</h2>
-            <p class="text-xl mb-6">Musuh bisa bergerak sendiri (Patroli atau Kejar).</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Pola Patroli:</p>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">Forever</span></div>
-                <div class="pl-4 border-l-2 border-gray-300">
-                    <span class="scratch-block block-motion">Glide (1) secs to x: (100) y: (0)</span><br>
-                    <span class="scratch-block block-motion">Glide (1) secs to x: (-100) y: (0)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.7: Enemy Cloning -->
-    <div class="slide" id="meet10-7">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-red mb-4">LANGKAH 2 (PRO)</span>
-            <h2 class="text-4xl font-bold mb-6">Musuh Banyak (Cloning)</h2>
-            <p class="text-xl mb-6">Gunakan 'Create clone of myself' untuk membuat pasukan musuh.</p>
-            <div class="grid grid-cols-2 gap-4 text-left text-sm">
-                <div class="bg-white p-4 rounded shadow">
-                    <p class="font-bold">Induk:</p>
-                    <span class="scratch-block block-control">Repeat (10)</span><br>
-                    <span class="scratch-block block-control ml-4">Create clone of myself</span><br>
-                    <span class="scratch-block block-control ml-4">Wait (1) secs</span>
-                </div>
-                <div class="bg-white p-4 rounded shadow">
-                    <p class="font-bold">Klon:</p>
-                    <span class="scratch-block block-control">When I start as a clone</span><br>
-                    <span class="scratch-block block-motion ml-4">Go to random position</span><br>
-                    <span class="scratch-block block-control ml-4">Show</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.8: Interaction Collision -->
-    <div class="slide" id="meet10-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-green mb-4">LANGKAH 3</span>
-            <h2 class="text-4xl font-bold mb-6">Interaksi & Tabrakan 💥</h2>
-            <p class="text-xl mb-6">Apa yang terjadi jika Pemain menyentuh Musuh?</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">If &lt;touching
-                        [Musuh]?&gt; then</span></div>
-                <div class="pl-4 border-l-2 border-gray-300">
-                    <span class="scratch-block block-sound">Start sound [Boing]</span><br>
-                    <span class="scratch-block block-looks">Say [Aduh!] for (1) secs</span><br>
-                    <span class="scratch-block block-variables">Change [Nyawa] by (-1)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.9: Health System -->
-    <div class="slide" id="meet10-9">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-green mb-4">LANGKAH 3 (LANJUT)</span>
-            <h2 class="text-4xl font-bold mb-6">Sistem Nyawa ❤️</h2>
-            <p class="text-xl mb-6">Jangan lupa reset nyawa di awal game!</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-events">When green flag
-                        clicked</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-variables">Set [Nyawa] to
-                        (3)</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-control">Wait until &lt;(Nyawa) <
-                            (1)&gt;</span>
-                </div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-events">Broadcast [Game
-                        Over]</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.10: Scoring System -->
-    <div class="slide" id="meet10-10">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-yellow mb-4">LANGKAH 4</span>
-            <h2 class="text-4xl font-bold mb-6">Sistem Skor 🏆</h2>
-            <p class="text-xl mb-6">Berikan reward saat pemain mengambil koin/item.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Di Sprite Koin:</p>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">If &lt;touching
-                        [Player]?&gt; then</span></div>
-                <div class="pl-4 border-l-2 border-gray-300">
-                    <span class="scratch-block block-variables">Change [Skor] by (10)</span><br>
-                    <span class="scratch-block block-sound">Start sound [Coin]</span><br>
-                    <span class="scratch-block block-looks">Hide</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.11: Win Condition -->
-    <div class="slide" id="meet10-11">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-purple mb-4">LANGKAH 5</span>
-            <h2 class="text-4xl font-bold mb-6">Kondisi Menang 🎉</h2>
-            <p class="text-xl mb-6">Kapan pemain dinyatakan menang?</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-control">Wait until
-                        &lt;(Skor) > (99)&gt;</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-looks">Switch backdrop to
-                        [You Win]</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-sound">Play sound [Win] until
-                        done</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-control">Stop [all]</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.12: Game Over Condition -->
-    <div class="slide" id="meet10-12">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-purple mb-4">LANGKAH 6</span>
-            <h2 class="text-4xl font-bold mb-6">Kondisi Kalah 💀</h2>
-            <p class="text-xl mb-6">Apa yang terjadi saat nyawa habis?</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-events">When I receive [Game
-                        Over]</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-looks">Switch backdrop to
-                        [Game Over]</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-looks">Hide</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-control">Stop [all]</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.13: Polishing Sound -->
-    <div class="slide" id="meet10-13">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">POLISHING 1</span>
-            <h2 class="text-4xl font-bold mb-6">Musik & Suara 🎵</h2>
-            <p class="text-xl mb-6">Game tanpa suara itu membosankan!</p>
-            <div class="grid grid-cols-2 gap-4 text-left">
-                <div class="bg-white p-4 rounded shadow">
-                    <p class="font-bold">Background Music (BGM)</p>
-                    <p class="text-sm">Gunakan Loop Forever + Play Sound until done di Stage.</p>
-                </div>
-                <div class="bg-white p-4 rounded shadow">
-                    <p class="font-bold">Sound Effects (SFX)</p>
-                    <p class="text-sm">Start Sound saat lompat, nembak, atau kena musuh.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.14: Polishing Visuals -->
-    <div class="slide" id="meet10-14">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">POLISHING 2</span>
-            <h2 class="text-4xl font-bold mb-6">Efek Visual ✨</h2>
-            <p class="text-xl mb-6">Buat game-mu lebih "Juicy"!</p>
-            <ul class="text-left list-disc pl-8 space-y-2 text-lg inline-block">
-                <li><strong>Squash & Stretch:</strong> Ubah size sedikit saat lompat/mendarat.</li>
-                <li><strong>Particles:</strong> Buat klon kecil yang memudar saat ledakan.</li>
-                <li><strong>Ghost Effect:</strong> Saat kena damage, buat karakter berkedip.</li>
+            <h2 class="text-4xl font-bold mb-6">Ice Breaking Akhir: Hujan & Petir ⛈️</h2>
+            <p class="text-xl mb-6">Ikuti suara tepukan Kakak!</p>
+            <ul class="text-left inline-block text-lg space-y-2">
+                <li>👆 1 Jari = Hujan Rintik (Tik tik...)</li>
+                <li>✌️ 2 Jari = Hujan Sedang</li>
+                <li>👏 Tepuk Tangan = Hujan Deras</li>
+                <li>🦶 Hentak Kaki = PETIR! (Duar!)</li>
             </ul>
         </div>
     </div>
 
-    <!-- Slide 10.15: UI Start Screen -->
-    <div class="slide" id="meet10-15">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">POLISHING 3</span>
-            <h2 class="text-4xl font-bold mb-6">Menu Utama 🏠</h2>
-            <p class="text-xl mb-6">Jangan langsung masuk game. Buat tombol "Play"!</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Tombol Play:</p>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-events">When this sprite
-                        clicked</span></div>
-                <div class="flex items-center gap-2 mb-1"><span class="scratch-block block-events">Broadcast [Start
-                        Game]</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-looks">Hide</span></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Slide 10.16: Bug Hunting 1 -->
-    <div class="slide" id="meet10-16">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-red mb-4">DEBUGGING</span>
-            <h2 class="text-4xl font-bold mb-6">Masalah: Sprite Nyangkut? 🐛</h2>
-            <p class="text-xl mb-6">"Kak, karakterku nembus tembok!"</p>
-            <div class="bg-yellow-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold">Solusi:</p>
-                <p>Cek <strong>Center Point</strong> (Titik Tengah) di tab Costumes. Pastikan tepat di tengah gambar
-                    (+).</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.17: Bug Hunting 2 -->
-    <div class="slide" id="meet10-17">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-red mb-4">DEBUGGING</span>
-            <h2 class="text-4xl font-bold mb-6">Masalah: Skor Tidak Nambah? 🐛</h2>
-            <p class="text-xl mb-6">"Kak, koinnya hilang tapi skor tetap 0!"</p>
-            <div class="bg-yellow-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold">Solusi:</p>
-                <p>Pastikan blok <code>Change [Skor] by 1</code> diletakkan <strong>SEBELUM</strong> blok
-                    <code>Delete this clone</code> atau <code>Hide</code>.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.18: Peer Review -->
-    <div class="slide" id="meet10-18">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Cek Tetangga 🤝</h2>
-            <p class="text-xl mb-6">Tukar tempat duduk dengan teman di sebelahmu!</p>
-            <div class="bg-white p-6 rounded-xl shadow-sm inline-block text-left">
-                <p>1. Coba mainkan game temanmu.</p>
-                <p>2. Apakah ada bug?</p>
-                <p>3. Apakah terlalu sudah atau terlalu mudah?</p>
-                <p>4. Beri satu pujian!</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.19: Final Checklist -->
-    <div class="slide" id="meet10-19">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Checklist Final ✅</h2>
-            <p class="text-xl mb-6">Sebelum kita pameran minggu depan...</p>
-            <ul class="text-left list-disc pl-8 space-y-2 text-lg inline-block">
-                <li>Game bisa dimainkan dari awal sampai akhir.</li>
-                <li>Tidak ada bug yang fatal (game crash/stuck).</li>
-                <li>Instruksi cara main jelas.</li>
-                <li>Nama project sudah benar.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Slide 10.20: Save Project -->
-    <div class="slide" id="meet10-20">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">PENTING: Simpan Karyamu! 💾</h2>
-            <p class="text-xl mb-6">Jangan sampai hilang!</p>
-            <div class="bg-blue-100 p-6 rounded-xl text-left inline-block">
-                <ol class="list-decimal pl-5 space-y-2">
-                    <li>Klik <strong>File</strong> di pojok kiri atas.</li>
-                    <li>Pilih <strong>Save to your computer</strong>.</li>
-                    <li>Beri nama: <code>Final_NamaKamu_Kelas</code>.</li>
-                    <li>Pastikan file <code>.sb3</code> tersimpan.</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feedback Slide -->
-    <div class="slide" id="meet10-feedback">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
-            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
-            <div class="flex flex-col items-center gap-6">
-                <div class="bg-white p-4 rounded-xl shadow-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                        alt="QR Code Feedback" class="w-48 h-48">
-                </div>
-                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
-                    bit.ly/feedback_benihbaik
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 10.21: Closing -->
-    <div class="slide" id="meet10-21">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">SIAP PAMERAN! 🚀</h1>
-            <p class="text-2xl mb-8">Kerja keras kalian luar biasa.</p>
-            <p class="text-xl text-gray-600">Minggu depan kita akan mengadakan <strong>SHOWCASE DAY</strong>!</p>
-            <p class="text-lg mt-4">Ajak orang tua atau teman untuk melihat karyamu.</p>
-        </div>
-    </div>
-
-
-    <!-- MEETING 11: Finishing & Innovation -->
+    <!-- MEETING 11: Finishing & Polishing -->
 
     <!-- Slide 11.1: Cover -->
     <div class="slide" id="meet11-1">
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-purple mb-4">PERTEMUAN 11</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Finishing Touch ✨</h1>
-            <p class="text-2xl text-gray-600 mb-8">Polishing & Instructions</p>
-            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png" alt="Innovation" class="h-32 mx-auto">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Finishing & Polishing ✨</h1>
+            <p class="text-2xl text-gray-600 mb-8">Membuat Game Mengkilap!</p>
+            <div class="text-8xl">💎</div>
         </div>
     </div>
 
-    <!-- Slide 11.2: Agenda -->
+    <!-- Slide 11.2: Ice Breaking - Senam Wajah -->
     <div class="slide" id="meet11-2">
-        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Misi Hari Ini</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🛠️</div>
-                <h3 class="text-xl font-bold">Catch-up & Fix</h3>
-                <p>Perbaiki bug & selesaikan.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">✨</div>
-                <h3 class="text-xl font-bold">Inovasi</h3>
-                <p>Tambah fitur keren.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">📝</div>
-                <h3 class="text-xl font-bold">Kuis Asesmen</h3>
-                <p>Uji pemahamanmu.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">📤</div>
-                <h3 class="text-xl font-bold">Submit</h3>
-                <p>Kumpulkan karyamu.</p>
-            </div>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Senam Wajah 🤪</h2>
+            <p class="text-xl mb-6">Biar rileks sebelum finishing!</p>
+            <p class="text-2xl font-bold">A - I - U - E - O</p>
+            <p class="text-lg mt-4">Buka mulut lebar-lebar! Ekspresi maksimal!</p>
         </div>
     </div>
 
-    <!-- Slide 11.3: Catch-up -->
+    <!-- Slide 11.3: Instruksi Game -->
     <div class="slide" id="meet11-3">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 1: Catch-up & Fix 🛠️</h2>
-            <p class="text-xl mb-6">Apakah game-mu masih ada error? Belum selesai?</p>
-            <p class="text-lg text-gray-600">Sekarang saatnya memperbaiki! Minta bantuan teman atau kakak guru jika
-                buntu.</p>
-            <div class="mt-8 bg-yellow-100 p-4 rounded-lg inline-block">
-                <p class="font-bold text-yellow-800">Sudah selesai? Lanjut ke Misi 2!</p>
+            <h2 class="text-4xl font-bold mb-6">Jangan Lupa Instruksi! 📜</h2>
+            <p class="text-xl mb-6">Pemain harus tahu cara mainnya.</p>
+            <div class="grid grid-cols-2 gap-6 text-left">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold mb-2">Layar Start</h3>
+                    <p>Buat tombol "PLAY" atau "MULAI".</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold mb-2">Teks Tutorial</h3>
+                    <p>"Tekan Spasi untuk Lompat"</p>
+                    <p>"Hindari Duri"</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 11.4: Intro Inovasi -->
+    <!-- Slide 11.4: Peer Testing -->
     <div class="slide" id="meet11-4">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 2: Waktunya Inovasi! ✨</h2>
-            <p class="text-xl mb-6">Game-mu sudah jalan. Sekarang, buatlah jadi <strong>UNIK</strong>!</p>
-            <p class="text-lg">Pilih salah satu tantangan berikut untuk ditambahkan ke game-mu.</p>
+            <span class="tag tag-green mb-4">WAKTU KODING: 55 MENIT</span>
+            <h2 class="text-4xl font-bold mb-6">Cek Punya Teman 👥</h2>
+            <p class="text-xl mb-6">Coba mainkan game teman (jika memungkinkan) atau minta Kakak coba.</p>
+            <div class="bg-yellow-50 p-6 rounded-xl inline-block text-left text-lg">
+                <p>❓ Apakah terlalu susah?</p>
+                <p>❓ Apakah ada bug?</p>
+                <p>❓ Apakah tombol start berfungsi?</p>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 11.5: Inovasi 1 - Start Screen -->
+    <!-- Slide 11.5: Penutup -->
     <div class="slide" id="meet11-5">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">IDE 1</span>
-            <h2 class="text-4xl font-bold mb-6">Layar Judul (Start Screen) 🎬</h2>
-            <p class="text-xl mb-6">Buat tombol "Mulai" sebelum game dimulai.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Logika:</p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Saat Green Flag: Show tombol, Hide game.</li>
-                    <li>Saat Tombol Klik: Broadcast [Mulai], lalu Hide tombol.</li>
-                    <li>Saat terima [Mulai]: Show game.</li>
-                </ul>
-            </div>
+            <h2 class="text-4xl font-bold mb-6">Ice Breaking Akhir: Freeze Dance 🥶</h2>
+            <p class="text-xl mb-6">Joget saat musik nyala.</p>
+            <p class="text-2xl font-bold text-blue-500">BEKU saat musik berhenti!</p>
+            <p class="mt-8 text-gray-500">Siapkan dirimu untuk SHOWCASE minggu depan!</p>
         </div>
     </div>
-
-    <!-- Slide 11.6: Inovasi 2 - Hidden Clues -->
-    <div class="slide" id="meet11-6">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">IDE 2</span>
-            <h2 class="text-4xl font-bold mb-6">Petunjuk Tersembunyi 🔍</h2>
-            <p class="text-xl mb-6">Klik objek (misal: Lukisan) untuk melihat petunjuk.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Logika:</p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Sprite Petunjuk: Hide di awal.</li>
-                    <li>Sprite Lukisan: When clicked -> Broadcast [Show Hint].</li>
-                    <li>Sprite Petunjuk: When receive [Show Hint] -> Show.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.7: Inovasi 3 - Room 2 -->
-    <div class="slide" id="meet11-7">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">IDE 3</span>
-            <h2 class="text-4xl font-bold mb-6">Ruangan Baru (Room 2) 🚪</h2>
-            <p class="text-xl mb-6">Pindah ke backdrop baru setelah pintu terbuka.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <p class="font-bold mb-2">Logika:</p>
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Pintu: Broadcast [Masuk Room 2].</li>
-                    <li>Stage: When receive [Masuk Room 2] -> Switch backdrop.</li>
-                    <li>Sprite Room 1: Hide saat masuk Room 2.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.8: Inovasi 4 - Password -->
-    <div class="slide" id="meet11-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">IDE 4</span>
-            <h2 class="text-4xl font-bold mb-6">Brankas Password 🔒</h2>
-            <p class="text-xl mb-6">Gunakan blok Sensing untuk meminta kode.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <div class="flex items-center gap-2 mb-2"><span class="scratch-block block-sensing">Ask [Masukkan Kode]
-                        and wait</span></div>
-                <div class="flex items-center gap-2"><span class="scratch-block block-control">If &lt;(answer) =
-                        (1234)&gt; then ...</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.9: Inovasi 5 - Inventory -->
-    <div class="slide" id="meet11-9">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">IDE 5</span>
-            <h2 class="text-4xl font-bold mb-6">Sistem Inventori 🎒</h2>
-            <p class="text-xl mb-6">Gunakan Variabel untuk mengingat barang.</p>
-            <div class="bg-gray-100 p-6 rounded-xl text-left inline-block">
-                <ul class="list-disc pl-5 space-y-1">
-                    <li>Buat Variabel [Punya Kunci?]. Set ke 0 di awal.</li>
-                    <li>Saat Kunci diklik: Set [Punya Kunci?] ke 1.</li>
-                    <li>Pintu: If &lt;(Punya Kunci?) = 1&gt; then Open.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.10: Show & Tell -->
-    <div class="slide" id="meet11-10">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Show & Tell 🎤</h2>
-            <p class="text-xl mb-6">Tunjukkan karyamu ke teman-teman!</p>
-            <div class="text-left bg-white p-6 rounded-xl shadow-sm inline-block">
-                <p>1. Apa nama game-mu?</p>
-                <p>2. Inovasi apa yang kamu tambahkan?</p>
-                <p>3. Bagian mana yang paling sulit?</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.11: Submission -->
-    <div class="slide" id="meet11-11">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Misi 3: Kumpulkan Tugas 📤</h2>
-            <p class="text-xl mb-6">Jangan lupa SHARE project-mu dulu!</p>
-            <div class="bg-white p-4 rounded-xl inline-block">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/kumpul_tugas_dms"
-                    alt="QR Code" class="w-48 h-52">
-                <p class="mt-2 font-mono text-lg">bit.ly/kumpul_tugas_dms</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.12: Intro Kuis -->
-    <div class="slide" id="meet11-12">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <span class="tag tag-red mb-4">ASESMEN</span>
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Kuis Pengetahuan 🧠</h1>
-            <p class="text-2xl text-gray-600">Siap menguji kemampuan kodingmu?</p>
-            <p class="text-xl mt-4">10 Soal - Pilih jawaban yang paling tepat!</p>
-        </div>
-    </div>
-
-    <!-- Slide 11.13: Soal 1 -->
-    <div class="slide" id="meet11-13">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 1/10</h2>
-            <p class="text-2xl mb-8">Untuk menyimpan SKOR atau NYAWA, kita menggunakan blok dari kategori...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    Looks</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">B.
-                    Sensing</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">C. Variables ✅</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.14: Soal 2 -->
-    <div class="slide" id="meet11-14">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 2/10</h2>
-            <p class="text-2xl mb-8">Blok 'set [skor] to 0' biasanya diletakkan di awal game. Apa fungsinya?</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    Menambah skor</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">B. Reset skor jadi nol
-                    ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    Sembunyikan skor</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.15: Soal 3 -->
-    <div class="slide" id="meet11-15">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 3/10</h2>
-            <p class="text-2xl mb-8">Jika pemain berhasil, kita ingin menambah poin. Blok apa yang dipakai?</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">A. change [skor] by 1
-                    ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">B.
-                    set [skor] to 1</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    show variable [skor]</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.16: Soal 4 -->
-    <div class="slide" id="meet11-16">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 4/10</h2>
-            <p class="text-2xl mb-8">Agar sprite bisa digeser-geser (drag) dengan mouse, kita pakai blok...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    go to mouse-pointer</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">B. set drag mode
-                    [draggable] ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    glide to mouse-pointer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.17: Soal 5 -->
-    <div class="slide" id="meet11-17">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 5/10</h2>
-            <p class="text-2xl mb-8">Blok 'if &lt;...&gt; then' digunakan untuk...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    Mengulang selamanya</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">B. Cek kondisi (Jika
-                    Benar) ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    Membuat kloning</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.18: Soal 6 -->
-    <div class="slide" id="meet11-18">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 6/10</h2>
-            <p class="text-2xl mb-8">Untuk mendeteksi tabrakan antar sprite, kita pakai...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    touching color?</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">B.
-                    key pressed?</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">C. touching [Sprite]?
-                    ✅</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.19: Soal 7 -->
-    <div class="slide" id="meet11-19">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 7/10</h2>
-            <p class="text-2xl mb-8">Apa bedanya 'If-Then' dan 'If-Then-Else'?</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">A. Else menangani
-                    kondisi SALAH ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">B.
-                    Tidak ada bedanya</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    Else untuk mengulang</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.20: Soal 8 -->
-    <div class="slide" id="meet11-20">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 8/10</h2>
-            <p class="text-2xl mb-8">Agar sprite selalu mulai di tempat yang sama saat game dimulai, kita pakai...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    go to random position</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">B. go to x: ... y: ...
-                    ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    glide to random position</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.21: Soal 9 -->
-    <div class="slide" id="meet11-21">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 9/10</h2>
-            <p class="text-2xl mb-8">Fitur 'Broadcast' berguna untuk...</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">A.
-                    Main musik</button>
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">B. Kirim sinyal antar
-                    sprite ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    Ganti kostum</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.22: Soal 10 -->
-    <div class="slide" id="meet11-22">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-3xl font-bold mb-6">Soal 10/10</h2>
-            <p class="text-2xl mb-8">Saat Game Over, perintah apa untuk menghentikan semuanya?</p>
-            <div class="grid grid-cols-1 gap-4 text-left text-xl">
-                <button class="p-4 bg-green-100 rounded-xl border-2 border-green-500 font-bold">A. stop [all] ✅</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">B.
-                    delete this clone</button>
-                <button
-                    class="p-4 bg-white rounded-xl hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 transition">C.
-                    hide</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.23: Quiz Result -->
-    <div class="slide" id="meet11-23">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">KUIS SELESAI! 🏆</h1>
-            <p class="text-2xl mb-8">Kerja bagus, Pahlawan Koding!</p>
-            <p class="text-xl text-gray-600">Kamu sudah resmi menjadi Game Developer Level 1!</p>
-        </div>
-    </div>
-
-    <!-- Slide 11.24: Contoh Game -->
-    <div class="slide" id="meet11-24">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Inspirasi Project Lain</h2>
-            <div class="grid grid-cols-3 gap-6">
-                <div class="bg-gray-100 p-4 rounded-xl">
-                    <p class="font-bold">Flappy Bird</p>
-                    <p class="text-sm">Game lompat rintangan.</p>
-                </div>
-                <div class="bg-gray-100 p-4 rounded-xl">
-                    <p class="font-bold">Space Shooter</p>
-                    <p class="text-sm">Tembak alien.</p>
-                </div>
-                <div class="bg-gray-100 p-4 rounded-xl">
-                    <p class="font-bold">Platformer</p>
-                    <p class="text-sm">Petualangan Mario-style.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feedback Slide -->
-    <div class="slide" id="meet11-feedback">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
-            <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
-            <div class="flex flex-col items-center gap-6">
-                <div class="bg-white p-4 rounded-xl shadow-lg">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://bit.ly/feedback_benihbaik"
-                        alt="QR Code Feedback" class="w-48 h-48">
-                </div>
-                <a href="https://bit.ly/feedback_benihbaik" target="_blank" rel="noopener"
-                    class="text-xl font-bold text-blue-600 hover:underline bg-blue-50 px-4 py-2 rounded-lg">
-                    bit.ly/feedback_benihbaik
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 11.25: Closing -->
-    <div class="slide" id="meet11-25">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">MODUL 2 SELESAI! 🎓</h1>
-            <p class="text-2xl mb-8">Selamat! Kalian luar biasa.</p>
-            <p class="text-xl text-gray-600">Sampai jumpa di Modul berikutnya!</p>
-        </div>
-    </div>
-
 
 
     <!-- MEETING 12: Grand Showcase -->
@@ -7631,290 +6485,76 @@
         <div class="glass-card p-12 text-center max-w-4xl w-full relative overflow-hidden">
             <span class="tag tag-purple mb-4">PERTEMUAN 12</span>
             <h1 class="text-6xl font-bold mb-6 gradient-text">GRAND SHOWCASE 🏆</h1>
-            <p class="text-2xl text-gray-600 mb-8">Perayaan Karya Game Developer Muda!</p>
+            <p class="text-2xl text-gray-600 mb-8">HARI INI HARI BESAR!</p>
             <img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png" alt="Trophy" class="h-32 mx-auto">
         </div>
     </div>
 
-    <!-- Slide 12.2: Agenda -->
+    <!-- Slide 12.2: Ice Breaking - Yel Yel -->
     <div class="slide" id="meet12-2">
-        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">Rundown Acara</h2>
-        <div class="grid grid-cols-2 gap-6 max-w-4xl w-full">
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🧹</div>
-                <h3 class="text-xl font-bold">Persiapan</h3>
-                <p>Setup & Final Check.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🎮</div>
-                <h3 class="text-xl font-bold">Pameran</h3>
-                <p>Main & Nilai Karya Teman.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">💭</div>
-                <h3 class="text-xl font-bold">Refleksi</h3>
-                <p>Cerita Pengalaman.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-                <div class="text-5xl mb-4">🎓</div>
-                <h3 class="text-xl font-bold">Wisuda</h3>
-                <p>Sertifikat & Foto.</p>
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6 text-primary">Ice Breaking: Yel-Yel Kelas 📣</h2>
+            <p class="text-xl mb-6">Mari kita sorakkan semangat!</p>
+            <div class="bg-blue-50 p-8 rounded-xl">
+                <p class="text-2xl font-bold italic">"Siapa Kita? PROGRAMMER GENIUS!"</p>
+                <p class="text-2xl font-bold italic mt-4">"Coding itu? SERU! SERU! SERU!"</p>
             </div>
         </div>
     </div>
 
-    <!-- Slide 12.3: Preparation -->
+    <!-- Slide 12.3: Rundown Showcase -->
     <div class="slide" id="meet12-3">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Persiapan Pameran 🛠️</h2>
-            <p class="text-xl mb-6">Kalian punya waktu <strong>5 Menit</strong>!</p>
-            <div class="bg-yellow-100 p-6 rounded-xl text-left inline-block">
-                <ul class="list-disc pl-5 space-y-2 text-lg">
-                    <li>Pastikan game berjalan lancar.</li>
-                    <li>Besarkan volume suara (tapi jangan terlalu keras).</li>
-                    <li>Klik tombol <strong>Full Screen</strong> (kotak di pojok kanan atas stage).</li>
-                    <li>Siapkan kertas/catatan untuk teman yang berkunjung.</li>
-                </ul>
+            <h2 class="text-4xl font-bold mb-6">Waktunya Presentasi! 🎤</h2>
+            <p class="text-xl mb-8">Setiap anak maju ke panggung (Share Screen).</p>
+            <div class="bg-white p-6 rounded-xl text-left inline-block shadow-sm">
+                <p class="mb-2"><strong>1. Perkenalan:</strong> Nama & Judul Game.</p>
+                <p class="mb-2"><strong>2. Cara Main:</strong> Jelaskan tombolnya.</p>
+                <p class="mb-2"><strong>3. Demo:</strong> Mainkan sebentar.</p>
+                <p class="mb-2"><strong>4. Tantangan:</strong> Bagian tersulit saat buat.</p>
             </div>
         </div>
     </div>
 
-    <!-- Slide 12.4: Rules -->
+    <!-- Slide 12.4: Showcase Session -->
     <div class="slide" id="meet12-4">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Aturan Main 📜</h2>
-            <p class="text-xl mb-6">Jadilah pengunjung yang baik!</p>
-            <div class="grid grid-cols-2 gap-4 text-left">
-                <div class="bg-green-100 p-4 rounded-xl">
-                    <p class="font-bold">DOs (Lakukan):</p>
-                    <p>✅ Puji karya teman.</p>
-                    <p>✅ Tanya "Gimana cara buat ini?".</p>
-                    <p>✅ Main sampai Game Over/Win.</p>
-                </div>
-                <div class="bg-red-100 p-4 rounded-xl">
-                    <p class="font-bold">DON'Ts (Jangan):</p>
-                    <p>❌ Mengejek karya teman.</p>
-                    <p>❌ Mengubah kode teman tanpa izin.</p>
-                    <p>❌ Kasar saat main (banting keyboard/mouse).</p>
-                </div>
+            <span class="tag tag-green mb-4">KEGIATAN INTI: 60 MENIT</span>
+            <h2 class="text-4xl font-bold mb-6">Panggung Digital 🌟</h2>
+            <div class="flex justify-center gap-8 mb-8">
+                <div class="text-8xl animate-pulse">👨💻</div>
+                <div class="text-8xl animate-pulse delay-100">👩💻</div>
             </div>
+            <p class="text-xl text-gray-500">Berikan tepuk tangan yang meriah untuk setiap teman yang maju! 👏👏👏</p>
         </div>
     </div>
 
-    <!-- Slide 12.5: Round 1 -->
+    <!-- Slide 12.5: Refleksi -->
     <div class="slide" id="meet12-5">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">RONDE 1</span>
-            <h2 class="text-4xl font-bold mb-6">Kunjungan Tetangga Kanan 👉</h2>
-            <div class="text-8xl mb-6">➡️</div>
-            <p class="text-xl">Geser ke komputer teman di sebelah <strong>KANAN</strong>-mu.</p>
-            <p class="text-lg mt-4 text-gray-600">Waktu main: 5 Menit.</p>
+            <h2 class="text-4xl font-bold mb-6 text-pink-500">Refleksi Akhir 🤔</h2>
+            <p class="text-xl mb-6">Apa satu pelajaran coding yang paling kamu ingat?</p>
+            <div class="grid grid-cols-2 gap-4 text-left">
+                <div class="bg-pink-50 p-4 rounded-xl">Looping (Putar-putar)?</div>
+                <div class="bg-pink-50 p-4 rounded-xl">Variable (Skor)?</div>
+                <div class="bg-pink-50 p-4 rounded-xl">Koordinat X Y?</div>
+                <div class="bg-pink-50 p-4 rounded-xl">Sabar mencari Bug?</div>
+            </div>
         </div>
     </div>
 
-    <!-- Slide 12.6: Feedback 1 -->
+    <!-- Slide 12.6: Sertifikat -->
     <div class="slide" id="meet12-6">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Ronde 1 📝</h2>
-            <p class="text-xl mb-6">Tuliskan satu hal yang paling kamu SUKA dari game temanmu.</p>
-            <div class="bg-white p-6 rounded-xl shadow-sm inline-block italic text-gray-500">
-                "Aku suka gambar karakternya lucu!"<br>
-                "Level 2-nya susah tapi seru!"
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.7: Round 2 -->
-    <div class="slide" id="meet12-7">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-blue mb-4">RONDE 2</span>
-            <h2 class="text-4xl font-bold mb-6">Kunjungan Tetangga Kiri 👈</h2>
-            <div class="text-8xl mb-6">⬅️</div>
-            <p class="text-xl">Geser ke komputer teman di sebelah <strong>KIRI</strong>-mu.</p>
-            <p class="text-lg mt-4 text-gray-600">Waktu main: 5 Menit.</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.8: Feedback 2 -->
-    <div class="slide" id="meet12-8">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Feedback Ronde 2 📝</h2>
-            <p class="text-xl mb-6">Tuliskan satu SARAN agar game temanmu makin keren.</p>
-            <div class="bg-white p-6 rounded-xl shadow-sm inline-block italic text-gray-500">
-                "Mungkin musuhnya bisa dipercepat?"<br>
-                "Coba tambah suara ledakan!"
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.9: Round 3 -->
-    <div class="slide" id="meet12-9">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-purple mb-4">RONDE 3</span>
-            <h2 class="text-4xl font-bold mb-6">Free Roam (Bebas) 🚀</h2>
-            <p class="text-xl mb-6">Jalan-jalan keliling kelas!</p>
-            <p class="text-lg">Cari game yang paling ramai atau paling unik.</p>
-            <p class="text-lg mt-4 text-gray-600">Waktu main: 10 Menit.</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.10: Highlights -->
-    <div class="slide" id="meet12-10">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Sorotan Karya 🌟</h2>
-            <p class="text-xl mb-6">Mari kita lihat 3 game pilihan di layar depan!</p>
-            <div class="grid grid-cols-3 gap-4">
-                <div class="bg-gray-100 p-4 rounded-xl h-32 flex items-center justify-center">Game 1</div>
-                <div class="bg-gray-100 p-4 rounded-xl h-32 flex items-center justify-center">Game 2</div>
-                <div class="bg-gray-100 p-4 rounded-xl h-32 flex items-center justify-center">Game 3</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.11: Reflection 1 -->
-    <div class="slide" id="meet12-11">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">REFLEKSI</span>
-            <h2 class="text-4xl font-bold mb-6">Tantangan Terbesar 🏔️</h2>
-            <p class="text-xl mb-6">Apa hal paling SUSAH yang kamu hadapi saat membuat game ini?</p>
-            <p class="text-lg text-gray-600">Coding musuh? Gambar karakter? Atau mencari ide?</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.12: Reflection 2 -->
-    <div class="slide" id="meet12-12">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">REFLEKSI</span>
-            <h2 class="text-4xl font-bold mb-6">Kebanggaan Terbesar 🏅</h2>
-            <p class="text-xl mb-6">Bagian mana dari game-mu yang paling kamu BANGGAKAN?</p>
-            <p class="text-lg text-gray-600">"Aku bangga bisa bikin fitur Shop!"</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.13: Reflection 3 -->
-    <div class="slide" id="meet12-13">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <span class="tag tag-pink mb-4">REFLEKSI</span>
-            <h2 class="text-4xl font-bold mb-6">Jika Ada Waktu Lebih... ⏳</h2>
-            <p class="text-xl mb-6">Apa yang ingin kamu tambahkan lagi?</p>
-            <p class="text-lg text-gray-600">Level baru? Boss battle? Multiplayer?</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.14: Fun Awards -->
-    <div class="slide" id="meet12-14">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Penghargaan Kelas 🏆</h2>
-            <div class="grid grid-cols-2 gap-6 text-left">
-                <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
-                    <h3 class="font-bold text-yellow-800">🎨 The Best Artist</h3>
-                    <p class="text-sm">Game dengan visual paling keren.</p>
-                </div>
-                <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
-                    <h3 class="font-bold text-blue-800">🧠 The Logic Master</h3>
-                    <p class="text-sm">Game dengan coding paling rumit.</p>
-                </div>
-                <div class="bg-green-50 p-4 rounded-xl border border-green-200">
-                    <h3 class="font-bold text-green-800">💡 The Innovator</h3>
-                    <p class="text-sm">Ide game paling unik.</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
-                    <h3 class="font-bold text-purple-800">🎮 The Funnest Gameplay</h3>
-                    <p class="text-sm">Game paling seru dimainkan.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.15: Future Path 1 -->
-    <div class="slide" id="meet12-15">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Apa Selanjutnya? 🚀</h2>
-            <p class="text-xl mb-6">Perjalananmu baru saja dimulai!</p>
-            <div class="grid grid-cols-3 gap-4">
-                <div class="bg-white p-4 rounded-xl shadow-sm">
-                    <div class="text-4xl mb-2">🌐</div>
-                    <p class="font-bold">Web Design</p>
-                    <p class="text-sm">HTML & CSS</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm">
-                    <div class="text-4xl mb-2">🐍</div>
-                    <p class="font-bold">Python</p>
-                    <p class="text-sm">AI & Data</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm">
-                    <div class="text-4xl mb-2">📱</div>
-                    <p class="font-bold">App Dev</p>
-                    <p class="text-sm">Thunkable / Flutter</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.16: Future Path 2 -->
-    <div class="slide" id="meet12-16">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Karier Masa Depan 💼</h2>
-            <p class="text-xl mb-6">Skill coding-mu bisa jadi profesi!</p>
-            <ul class="text-left list-disc pl-8 space-y-2 text-lg inline-block">
-                <li><strong>Game Developer:</strong> Pembuat game profesional.</li>
-                <li><strong>Software Engineer:</strong> Pembuat aplikasi canggih.</li>
-                <li><strong>UI/UX Designer:</strong> Perancang tampilan aplikasi.</li>
-                <li><strong>Data Scientist:</strong> Ahli analisis data.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Slide 12.17: Testimony -->
-    <div class="slide" id="meet12-17">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Kata Mereka 💬</h2>
-            <p class="text-xl mb-6">Apa kata teman-temanmu tentang kelas ini?</p>
-            <div class="bg-gray-100 p-6 rounded-xl italic text-gray-600">
-                "Awalnya susah, tapi pas gamenya jadi, seneng banget!"<br>
-                - Alumni Kalananti
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 12.18: Photo Session -->
-    <div class="slide" id="meet12-18">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Foto Bersama 📸</h2>
-            <div class="text-8xl mb-6">🤳</div>
-            <p class="text-xl">Ayo berkumpul di depan untuk foto angkatan!</p>
-            <p class="text-lg text-gray-600">Tunjukkan gaya coding terbaikmu!</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.19: Certificate -->
-    <div class="slide" id="meet12-19">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Pembagian Sertifikat 📜</h2>
-            <p class="text-xl mb-6">Tanda bukti keahlianmu.</p>
-            <p class="text-lg">Simpan baik-baik, ini bisa jadi portofolio masa depanmu!</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.20: Thank You -->
-    <div class="slide" id="meet12-20">
-        <div class="glass-card p-10 max-w-4xl w-full text-center">
-            <h2 class="text-4xl font-bold mb-6">Terima Kasih! 🙏</h2>
-            <p class="text-xl mb-6">Kepada Guru, Orang Tua, dan Teman-teman.</p>
-            <p class="text-lg">Kalian semua adalah tim support terbaik!</p>
-        </div>
-    </div>
-
-    <!-- Slide 12.21: Final Quote -->
-    <div class="slide" id="meet12-21">
-        <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-5xl font-bold mb-8 gradient-text">"Coding is a Superpower."</h1>
-            <p class="text-2xl text-gray-600">Gunakan kekuatanmu untuk membuat dunia lebih baik.</p>
+            <h2 class="text-4xl font-bold mb-6 text-yellow-500">Pembagian Sertifikat 📜</h2>
+            <p class="text-xl mb-6">Selamat! Kalian sudah lulus Level SMP Scratch!</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/2912/2912761.png" alt="Diploma" class="h-40 mx-auto animate-bounce">
+            <p class="text-lg mt-6 font-bold">Kakak bangga pada kalian!</p>
         </div>
     </div>
 
     <!-- Feedback Slide -->
-    <div class="slide" id="meet12-old-feedback">
+    <div class="slide" id="meet12-feedback">
         <div class="glass-card p-10 max-w-4xl w-full text-center">
             <h2 class="text-4xl font-bold mb-6 text-primary">Feedback Time!</h2>
             <p class="text-xl mb-8">Bantu kami jadi lebih baik dengan isi feedback singkat ini.</p>
@@ -7931,16 +6571,22 @@
         </div>
     </div>
 
-    <!-- Slide 12.22: Closing -->
-    <div class="slide" id="meet12-22">
+    <!-- Slide 12.7: Foto Bersama -->
+    <div class="slide" id="meet12-7">
+        <div class="glass-card p-10 max-w-4xl w-full text-center">
+            <h2 class="text-4xl font-bold mb-6">Foto Bersama Gaya Bebas! 📸</h2>
+            <p class="text-xl mb-6">Nyalakan kamera, tunjukkan gaya terheboh!</p>
+            <div class="text-8xl mb-8">🤪✌️🚀</div>
+            <p class="text-sm text-gray-400">Siap-siap screenshot...</p>
+        </div>
+    </div>
+
+    <!-- Slide 12.8: Penutup Akhir -->
+    <div class="slide" id="meet12-8">
         <div class="glass-card p-12 text-center max-w-4xl w-full">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">SAMPAI JUMPA! 👋</h1>
-            <p class="text-2xl mb-8">Teruslah Berkarya, Pahlawan Koding!</p>
-            <div class="flex justify-center gap-4 mt-8">
-                <span class="text-4xl">🚀</span>
-                <span class="text-4xl">💻</span>
-                <span class="text-4xl">✨</span>
-            </div>
+            <h1 class="text-5xl font-bold mb-8 gradient-text">"Coding is a Superpower."</h1>
+            <p class="text-2xl text-gray-600 mb-8">Gunakan untuk membuat hal-hal keren!</p>
+            <p class="text-xl font-bold text-primary">Sampai jumpa di level berikutnya! 👋👋👋</p>
         </div>
     </div>
 
