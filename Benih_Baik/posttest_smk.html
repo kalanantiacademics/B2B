@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Test Python Fundamentals (SMK)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-yellow: #FDB913;
+            --color-green: #00A651;
+            --color-blue: #0054A6;
+            --color-cream: #FFF8E7;
+            --color-black: #231F20;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-black);
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        .bg-geo {
+            background-image: radial-gradient(circle at 10% 10%, var(--color-yellow) 10%, transparent 10.5%), radial-gradient(circle at 90% 90%, var(--color-green) 15%, transparent 15.5%);
+            background-attachment: fixed;
+        }
+
+        .neo-card {
+            background: white;
+            border: 3px solid black;
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .neo-input {
+            border: 2px solid black;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .neo-input:focus {
+            background-color: #FEF3C7;
+            box-shadow: 4px 4px 0px black;
+            transform: translate(-2px, -2px);
+        }
+
+        .neo-btn {
+            background-color: var(--color-blue);
+            color: white;
+            border: 2px solid black;
+            font-weight: bold;
+            box-shadow: 4px 4px 0px black;
+            transition: 0.2s;
+        }
+
+        .neo-btn:hover:not(:disabled) {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .neo-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            filter: grayscale(100%);
+        }
+
+        .neo-radio:checked+span {
+            background-color: var(--color-yellow);
+            font-weight: bold;
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px black;
+            transform: translate(-2px, -2px);
+        }
+
+        .error-box {
+            background-color: #FEE2E2;
+            border: 2px solid #EF4444;
+            color: #B91C1C;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .code-block {
+            background-color: #1F2937;
+            color: #F3F4F6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px black;
+            overflow-x: auto;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .neo-modal {
+            background: white;
+            border: 4px solid black;
+            box-shadow: 10px 10px 0px black;
+            max-width: 400px;
+            width: 90%;
+            padding: 2rem;
+            transform: scale(0.9);
+            transition: 0.2s;
+        }
+
+        .modal-overlay.active .neo-modal {
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body class="bg-geo min-h-screen p-4 flex flex-col items-center justify-center">
+
+    <!-- Logos -->
+    <div class="fixed top-5 left-5 z-50 flex gap-4">
+        <img src="https://futureskills.id/fs/uploads/mitras/64b0be0613b0d_1689304582.png" class="h-10 md:h-12">
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="neo-card w-full max-w-3xl p-0 overflow-hidden mt-12 mb-10 relative">
+        <div class="bg-green-600 p-6 text-white border-b-2 border-black">
+            <h1 class="text-3xl md:text-4xl font-bold">Post-Test: Python (SMK)</h1>
+            <p class="mt-2 text-sm md:text-lg opacity-90 italic font-serif">"Selamat! Kamu telah menyelesaikan pelajaran Python."</p>
+        </div>
+
+        <div class="p-6 md:p-8">
+            <!-- SECTION 1: LOGIN -->
+            <div id="section-login" class="space-y-6">
+                <h2 class="text-2xl font-bold border-b-2 border-black pb-2 inline-block">Identitas Diri</h2>
+
+                <div class="bg-gray-50 p-6 border-2 border-black">
+                    <label class="block text-lg font-bold mb-2">Pilih Nama Kamu</label>
+                    <div id="loading-indicator" class="text-gray-500 animate-pulse flex items-center gap-2">
+                        <svg class="animate-spin h-5 w-5 text-blue-600" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Mencari data siswa SMK...
+                    </div>
+                    <div id="error-display" class="hidden error-box mb-2"></div>
+                    <select id="select-nama" class="w-full p-3 neo-input bg-white hidden">
+                        <option value="" disabled selected>-- Pilih Nama --</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="fetchNames()" id="btn-retry" class="hidden w-1/3 neo-btn py-3 bg-gray-500 hover:bg-gray-600">Coba Lagi</button>
+                    <button onclick="startQuiz()" id="btn-start" class="w-full neo-btn py-3 text-xl" disabled>MULAI UJIAN</button>
+                </div>
+            </div>
+
+            <!-- SECTION 2: QUIZ -->
+            <form id="quizForm" class="hidden space-y-8">
+                <div class="bg-yellow-100 p-4 border-2 border-black flex justify-between items-center sticky top-0 z-10 shadow-md">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-600">Peserta:</span>
+                        <div id="display-nama" class="text-lg font-bold truncate">...</div>
+                    </div>
+                    <button type="button" onclick="resetIdentity()" class="text-xs text-red-600 underline hover:text-red-800">Ganti Nama</button>
+                </div>
+
+                <div id="questions-container" class="space-y-8 mt-4">
+                    <!-- Q1 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">1. Apa output dari kode berikut?</p>
+                        <pre class="code-block">x = 10
+y = 3
+print(x % y)</pre>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q1" value="3.33" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">3.33</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q1" value="1" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">1</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q1" value="3" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">3</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">2. Manakah cara yang benar untuk menambah item "Kopi" ke dalam list 'minuman'?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="minuman.add('Kopi')" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">minuman.add("Kopi")</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="minuman.append('Kopi')" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">minuman.append("Kopi")</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="minuman.push('Kopi')" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">minuman.push("Kopi")</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">3. Apa output dari kode ini?</p>
+                        <pre class="code-block">txt = "Kalananti"
+print(txt[0:4])</pre>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="Kala" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Kala</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="Kalan" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Kalan</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="alan" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">alan</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">4. Bagaimana cara mengambil nilai 'umur' dari dictionary berikut?</p>
+                        <pre class="code-block">user = {"nama": "Ahmad", "umur": 17}</pre>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="user[1]" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">user[1]</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="user['umur']" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">user["umur"]</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="user.umur" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">user.umur</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">5. Apa hasil akhir dari variabel 'n'?</p>
+                        <pre class="code-block">n = 5
+n += 10
+n = n / 3</pre>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="5.0" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">5.0</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="15.0" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">15.0</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="45.0" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">45.0</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">6. Manakah kondisi yang bernilai True jika x = 7?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q6" value="x < 5 or x == 10" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">x < 5 or x == 10</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q6" value="x > 5 and x < 10" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">x > 5 and x < 10</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q6" value="not (x == 7)" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">not (x == 7)</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">7. Bagaimana cara mengubah angka "20" (string) menjadi Integer di Python?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q7" value="int('20')" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">int("20")</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q7" value="str(20)" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">str(20)</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q7" value="to_int('20')" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">to_int("20")</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">8. Apa output dari kode ini?</p>
+                        <pre class="code-block">for i in range(2, 5):
+    print(i, end=" ")</pre>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q8" value="2 3 4 5" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">2 3 4 5</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q8" value="2 3 4" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">2 3 4</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q8" value="3 4 5" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">3 4 5</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">9. Manakah tipe data yang TIDAK bisa diubah (immutable) setelah dibuat?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q9" value="List" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">List</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q9" value="Tuple" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Tuple</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q9" value="Dictionary" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Dictionary</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="question-box">
+                        <p class="font-bold text-lg mb-2">10. Apa kegunaan 'elif' dalam struktur percabangan Python?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q10" value="Mengakhiri program" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Mengakhiri program</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q10" value="Menyatakan kondisi alternatif jika kondisi pertama salah" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Menyatakan kondisi alternatif jika kondisi pertama salah</span></label>
+                            <label class="flex items-center cursor-pointer"><input type="radio" name="q10" value="Mengulang kode berkali-kali" class="neo-radio hidden"><span class="w-full p-3 border-2 border-gray-200 rounded block hover:bg-gray-50">Mengulang kode berkali-kali</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-submit" class="w-full neo-btn py-4 text-xl">KIRIM JAWABAN</button>
+            </form>
+
+            <!-- Modal Validation -->
+            <div id="modal-validation" class="modal-overlay">
+                <div class="neo-modal text-center">
+                    <div class="text-6xl mb-4">⚠️</div>
+                    <h3 class="text-2xl font-bold mb-2">Ups! Belum Lengkap</h3>
+                    <p class="mb-6">Ada pertanyaan yang belum kamu jawab. Yuk, cek lagi!</p>
+                    <button onclick="closeModal()" class="w-full neo-btn py-3 bg-yellow-400 text-black hover:bg-yellow-500">OKE, SAYA CEK</button>
+                </div>
+            </div>
+
+            <!-- SECTION 3: SUCCESS -->
+            <div id="section-success" class="hidden text-center py-10">
+                <div class="text-8xl mb-4">🎉</div>
+                <h2 class="text-3xl font-bold mb-2">Jawaban Terkirim!</h2>
+                <p class="text-gray-600 mb-8" id="success-name-display">Terima kasih.</p>
+                <div class="bg-green-100 p-4 border-2 border-black inline-block mb-8">
+                    <p class="font-bold text-green-800">Python Mastery Unlocked! 🐍✨</p>
+                </div>
+                <br>
+                <button onclick="location.reload()" class="text-blue-600 underline">Reload Halaman</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJILDKsAU361X75iwiHBFHkqW3bMe15qZE-yl3WpJzKgw2uYAhebXz1ZrwGKP_124k/exec';
+
+        const CORRECT_ANSWERS = {
+            q1: '1', q2: "minuman.append('Kopi')", q3: 'Kala', q4: "user['umur']",
+            q5: '5.0', q6: 'x > 5 and x < 10', q7: "int('20')", q8: '2 3 4',
+            q9: 'Tuple', q10: 'Menyatakan kondisi alternatif jika kondisi pertama salah'
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedName = localStorage.getItem('smk_user_name_post');
+            if (savedName) showQuiz(savedName);
+            else fetchNames();
+        });
+
+        function fetchNames() {
+            const loading = document.getElementById('loading-indicator');
+            const errorBox = document.getElementById('error-display');
+            const select = document.getElementById('select-nama');
+            const retryBtn = document.getElementById('btn-retry');
+
+            fetch(SCRIPT_URL + '?action=getSmkParticipants')
+                .then(response => {
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        return response.json();
+                    } else {
+                        throw new Error("Apps Script mengembalikan HTML (Bukan JSON). Pastikan Deploy sebagai 'Web App', 'Execute as: Me', dan 'Who has access: Anyone'.");
+                    }
+                })
+                .then(response => {
+                    loading.classList.add('hidden');
+                    if (response.status === 'success') {
+                        select.classList.remove('hidden');
+                        select.innerHTML = '<option value="" disabled selected>-- Pilih Nama --</option>';
+                        response.data.forEach(name => {
+                            const opt = document.createElement('option');
+                            opt.value = name; opt.innerText = name;
+                            select.appendChild(opt);
+                        });
+                        select.addEventListener('change', function () { if (this.value) document.getElementById('btn-start').disabled = false; });
+                    } else { throw new Error(response.message); }
+                })
+                .catch(err => {
+                    loading.classList.add('hidden');
+                    errorBox.innerText = "Gagal memuat: " + err.message;
+                    errorBox.classList.remove('hidden');
+                    retryBtn.classList.remove('hidden');
+                });
+        }
+
+        function startQuiz() {
+            const name = document.getElementById('select-nama').value;
+            if (!name) return;
+            localStorage.setItem('smk_user_name_post', name);
+            showQuiz(name);
+        }
+
+        function showQuiz(name) {
+            document.getElementById('section-login').classList.add('hidden');
+            document.getElementById('quizForm').classList.remove('hidden');
+            document.getElementById('display-nama').innerText = name;
+        }
+
+        function resetIdentity() {
+            if (confirm('Ganti nama?')) { localStorage.removeItem('smk_user_name_post'); location.reload(); }
+        }
+
+        function showValidationModal() {
+            document.getElementById('modal-validation').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-validation').classList.remove('active');
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            // Validation
+            const unanswered = [];
+            for (let i = 1; i <= 10; i++) {
+                if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+                    unanswered.push(i);
+                }
+            }
+
+            if (unanswered.length > 0) {
+                showValidationModal();
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "MENGIRIM...";
+            btn.disabled = true;
+
+            const formData = {
+                nama_peserta: localStorage.getItem('smk_user_name_post'),
+                action: 'submitPosttestSmk'
+            };
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const checked = document.querySelector(`input[name="q${i}"]:checked`);
+                const answer = checked ? checked.value : '';
+                formData['q' + i] = answer;
+                if (answer === CORRECT_ANSWERS['q' + i]) score += 10;
+            }
+            formData.score = score;
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(res => {
+                if (res.status === 'success') {
+                    document.getElementById('quizForm').classList.add('hidden');
+                    document.getElementById('section-success').classList.remove('hidden');
+                    document.getElementById('success-name-display').innerText = "Terima kasih, " + formData.nama_peserta + ". Nilai: " + score + "/100";
+                    localStorage.removeItem('smk_user_name_post');
+                } else { alert("Gagal: " + res.message); btn.disabled = false; btn.innerText = "KIRIM JAWABAN"; }
+            })
+            .catch(err => { alert("Error: " + err.message); btn.disabled = false; btn.innerText = "KIRIM JAWABAN"; });
+        });
+    </script>
+</body>
+</html>
