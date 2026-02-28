@@ -218,7 +218,7 @@
             <div id="questions-container" class="space-y-6"></div>
 
             <div class="glass-card p-8 text-center">
-                <button type="submit" id="submitBtn" class="btn-primary text-xl py-4">KIRIM JAWABAN</button>
+                <button type="submit" id="submitBtn" class="btn-primary text-xl py-4">LANJUT KE PENGUMPULAN KARYA ➜</button>
             </div>
         </form>
 
@@ -232,11 +232,31 @@
             </div>
         </div>
 
-        <!-- SECTION 3: SUCCESS -->
+        <!-- SECTION 3: PROJECT SUBMISSION -->
+        <div id="section-project" class="hidden space-y-8">
+            <div class="glass-card p-4 flex justify-between items-center sticky top-4 z-40 bg-white/80 backdrop-blur-md">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Peserta:</span>
+                    <div id="display-nama-project" class="text-lg font-bold text-primary truncate">...</div>
+                </div>
+            </div>
+            <div class="glass-card p-8">
+                <h2 class="text-2xl font-bold mb-2 text-dark">🔗 Kumpulkan Innovation Project</h2>
+                <p class="text-gray-600 mb-6">Tempel link sharing Scratch project kamu di sini. Pastikan project-nya sudah <strong>di-share</strong> dan bisa diakses semua orang!</p>
+                <div class="mb-2">
+                    <label class="block text-sm font-bold mb-2 text-gray-700">Link Project Scratch</label>
+                    <input type="url" id="project-link" placeholder="https://scratch.mit.edu/projects/..." class="input-field" />
+                </div>
+                <p class="text-xs text-gray-400 mb-6">Contoh: https://scratch.mit.edu/projects/12345678</p>
+                <button onclick="submitFinal()" id="finalSubmitBtn" class="btn-primary text-xl py-4">🚀 KIRIM SEMUA</button>
+            </div>
+        </div>
+
+        <!-- SECTION 4: SUCCESS -->
         <div id="successMessage" class="hidden glass-card p-12 text-center">
             <div class="text-6xl mb-6">🎉</div>
-            <h2 class="text-3xl font-bold text-primary mb-4">Jawaban Terkirim!</h2>
-            <p class="text-xl text-gray-600 mb-8">Terima kasih sudah mengerjakan Post-Test.</p>
+            <h2 class="text-3xl font-bold text-primary mb-4">Semua Terkirim!</h2>
+            <p class="text-xl text-gray-600 mb-8">Terima kasih sudah mengerjakan Post-Test dan mengumpulkan karya.</p>
             <p class="text-lg">Selamat, perjalanan belajarmu di kelas SMP sudah tuntas!</p>
             <div class="mt-8 p-4 bg-green-100 rounded-xl inline-block">
                 <p class="font-bold text-green-800">You are a Scratch Master! 🚀</p>
@@ -364,6 +384,9 @@
             document.getElementById('modal-validation').classList.remove('active');
         }
 
+        // Temp storage for quiz answers
+        let tempQuizData = null;
+
         document.getElementById('quizForm').onsubmit = function(e) {
             e.preventDefault();
 
@@ -381,32 +404,48 @@
                 return;
             }
 
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = "MENGIRIM...";
-            btn.disabled = true;
-
-            const data = { nama_peserta: localStorage.getItem('peserta_smp_post'), action: 'submitPosttestSmp' };
+            // Store quiz data temporarily
+            tempQuizData = { nama_peserta: localStorage.getItem('peserta_smp_post'), action: 'submitPosttestSmp' };
             let score = 0;
-
             questions.forEach((q, i) => {
                 const answer = quizFormData.get('q' + (i+1));
-                data['q' + (i+1)] = answer;
+                tempQuizData['q' + (i+1)] = answer;
                 if (answer === q.a) score += 10;
             });
-            data.score = score;
+            tempQuizData.score = score;
+
+            // Advance to Section 3
+            document.getElementById('quizForm').classList.add('hidden');
+            document.getElementById('section-project').classList.remove('hidden');
+            document.getElementById('display-nama-project').innerText = localStorage.getItem('peserta_smp_post');
+            window.scrollTo(0, 0);
+        };
+
+        function submitFinal() {
+            const projectLink = document.getElementById('project-link').value.trim();
+            if (!projectLink) {
+                alert('Tolong isi link project Scratch-mu dulu ya!');
+                return;
+            }
+
+            const btn = document.getElementById('finalSubmitBtn');
+            btn.innerText = 'MENGIRIM...';
+            btn.disabled = true;
+
+            const data = { ...tempQuizData, project_link: projectLink };
 
             fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
                 .then(response => response.json())
                 .then(res => {
                     if (res.status === 'success') {
-                        document.getElementById('quizForm').classList.add('hidden');
+                        document.getElementById('section-project').classList.add('hidden');
                         document.getElementById('successMessage').classList.remove('hidden');
                         localStorage.removeItem('peserta_smp_post');
                         window.scrollTo(0, 0);
                     } else throw new Error(res.message);
                 })
-                .catch(err => { alert("Gagal: " + err.message); btn.disabled = false; btn.innerText = "KIRIM JAWABAN"; });
-        };
+                .catch(err => { alert('Gagal: ' + err.message); btn.disabled = false; btn.innerText = '🚀 KIRIM SEMUA'; });
+        }
     </script>
 </body>
 </html>
