@@ -302,7 +302,7 @@ n = n / 3</pre>
                     </div>
                 </div>
 
-                <button type="submit" id="btn-submit" class="w-full neo-btn py-4 text-xl">KIRIM JAWABAN</button>
+                <button type="submit" id="btn-submit" class="w-full neo-btn py-4 text-xl">LANJUT KE PENGUMPULAN KODE ➜</button>
             </form>
 
             <!-- Modal Validation -->
@@ -315,10 +315,25 @@ n = n / 3</pre>
                 </div>
             </div>
 
-            <!-- SECTION 3: SUCCESS -->
+            <!-- SECTION 3: CODE SUBMISSION -->
+            <div id="section-project" class="hidden space-y-6">
+                <div class="bg-yellow-100 p-4 border-2 border-black flex items-center gap-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-gray-600">Peserta:</span>
+                    <span id="display-nama-project" class="text-lg font-bold">...</span>
+                </div>
+                <div class="neo-card p-6">
+                    <h2 class="text-2xl font-bold mb-2">🐍 Kumpulkan Kode Python Final Project</h2>
+                    <p class="text-gray-600 mb-4">Paste seluruh kode Python final project-mu di bawah. Pastikan kode bisa di-run!</p>
+                    <textarea id="project-code" rows="18" placeholder="# Paste kode Python-mu di sini...&#10;print('Hello World')" class="w-full p-4 border-2 border-black neo-input font-mono text-sm bg-gray-50 resize-y"></textarea>
+                    <p class="text-xs text-gray-400 mt-2 mb-6">Tips: Ctrl+A lalu Ctrl+C dari Google Colab, lalu Ctrl+V di sini.</p>
+                    <button onclick="submitFinal()" id="finalSubmitBtn" class="w-full neo-btn py-4 text-xl">🚀 KIRIM SEMUA</button>
+                </div>
+            </div>
+
+            <!-- SECTION 4: SUCCESS -->
             <div id="section-success" class="hidden text-center py-10">
                 <div class="text-8xl mb-4">🎉</div>
-                <h2 class="text-3xl font-bold mb-2">Jawaban Terkirim!</h2>
+                <h2 class="text-3xl font-bold mb-2">Semuanya Terkirim!</h2>
                 <p class="text-gray-600 mb-8" id="success-name-display">Terima kasih.</p>
                 <div class="bg-green-100 p-4 border-2 border-black inline-block mb-8">
                     <p class="font-bold text-green-800">Python Mastery Unlocked! 🐍✨</p>
@@ -405,6 +420,9 @@ n = n / 3</pre>
             document.getElementById('modal-validation').classList.remove('active');
         }
 
+        // Temp storage for quiz answers
+        let tempQuizData = null;
+
         document.getElementById('quizForm').addEventListener('submit', function (e) {
             e.preventDefault();
             
@@ -421,39 +439,55 @@ n = n / 3</pre>
                 return;
             }
 
-            const btn = document.getElementById('btn-submit');
-            btn.innerText = "MENGIRIM...";
-            btn.disabled = true;
-
-            const formData = {
+            // Store quiz data temporarily
+            tempQuizData = {
                 nama_peserta: localStorage.getItem('smk_user_name_post'),
                 action: 'submitPosttestSmk'
             };
             let score = 0;
-
             for (let i = 1; i <= 10; i++) {
                 const checked = document.querySelector(`input[name="q${i}"]:checked`);
                 const answer = checked ? checked.value : '';
-                formData['q' + i] = answer;
+                tempQuizData['q' + i] = answer;
                 if (answer === CORRECT_ANSWERS['q' + i]) score += 10;
             }
-            formData.score = score;
+            tempQuizData.score = score;
+
+            // Advance to Section 3
+            document.getElementById('quizForm').classList.add('hidden');
+            document.getElementById('section-project').classList.remove('hidden');
+            document.getElementById('display-nama-project').innerText = localStorage.getItem('smk_user_name_post');
+            window.scrollTo(0, 0);
+        });
+
+        function submitFinal() {
+            const code = document.getElementById('project-code').value.trim();
+            if (!code) {
+                alert('Pastikan kode Python-mu sudah ditempel ya!');
+                return;
+            }
+
+            const btn = document.getElementById('finalSubmitBtn');
+            btn.innerText = 'MENGIRIM...';
+            btn.disabled = true;
+
+            const data = { ...tempQuizData, project_code: code };
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: JSON.stringify(formData)
+                body: JSON.stringify(data)
             })
             .then(response => response.json())
             .then(res => {
                 if (res.status === 'success') {
-                    document.getElementById('quizForm').classList.add('hidden');
+                    document.getElementById('section-project').classList.add('hidden');
                     document.getElementById('section-success').classList.remove('hidden');
-                    document.getElementById('success-name-display').innerText = "Terima kasih, " + formData.nama_peserta + ". Nilai: " + score + "/100";
+                    document.getElementById('success-name-display').innerText = 'Terima kasih, ' + tempQuizData.nama_peserta + '. Nilai: ' + tempQuizData.score + '/100';
                     localStorage.removeItem('smk_user_name_post');
-                } else { alert("Gagal: " + res.message); btn.disabled = false; btn.innerText = "KIRIM JAWABAN"; }
+                } else { alert('Gagal: ' + res.message); btn.disabled = false; btn.innerText = '🚀 KIRIM SEMUA'; }
             })
-            .catch(err => { alert("Error: " + err.message); btn.disabled = false; btn.innerText = "KIRIM JAWABAN"; });
-        });
+            .catch(err => { alert('Error: ' + err.message); btn.disabled = false; btn.innerText = '🚀 KIRIM SEMUA'; });
+        }
     </script>
 </body>
 </html>
